@@ -5,9 +5,7 @@
 First, run the development server:
 
 ```bash
-git clone https://github.com/ekovegeance/better-auth-nexts.git
-cd better-auth-nexts
-pnpm install
+pnpm create next-app --example "https://github.com/ekovegeance/better-auth-nexts"
 ```
 
 Set up your environment variables:
