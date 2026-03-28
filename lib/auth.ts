@@ -7,7 +7,6 @@ import { resend } from "@/lib/email/resend";
 import EmailVerification from "@/components/email-templates/email-verification";
 import EmailResetPassword from "@/components/email-templates/email-reset-password";
 
-const from = process.env.RESEND_FROM_EMAIL;
 
 export const auth = betterAuth({
   secret: process.env.BETTER_AUTH_SECRET,
@@ -24,11 +23,11 @@ export const auth = betterAuth({
 
   emailAndPassword: {
     enabled: true,
-    requireEmailVerification: true,
+    requireEmailVerification: false,
 
     sendResetPassword: async ({ user, url }) => {
       await resend.emails.send({
-        from: from as string,
+        from: process.env.RESEND_FROM_EMAIL as string,
         to: user.email,
         subject: "Reset Password",
         react: EmailResetPassword({
@@ -39,20 +38,10 @@ export const auth = betterAuth({
       });
     },
   },
-  socialProviders: {
-    github: {
-      clientId: process.env.GITHUB_CLIENT_ID as string,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
-    },
-    discord: {
-      clientId: process.env.DISCORD_CLIENT_ID as string,
-      clientSecret: process.env.DISCORD_CLIENT_SECRET as string,
-    },
-  },
   emailVerification: {
     sendVerificationEmail: async ({ user, url }) => {
       await resend.emails.send({
-        from: from as string,
+        from: process.env.RESEND_FROM_EMAIL as string,
         to: user.email,
         subject: "Verify your email",
         react: EmailVerification({
@@ -65,5 +54,16 @@ export const auth = betterAuth({
 
     sendOnSignUp: true,
     autoSignInAfterVerification: true,
+  },
+
+  socialProviders: {
+    github: {
+      clientId: process.env.GITHUB_CLIENT_ID as string,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
+    },
+    discord: {
+      clientId: process.env.DISCORD_CLIENT_ID as string,
+      clientSecret: process.env.DISCORD_CLIENT_SECRET as string,
+    },
   },
 });
