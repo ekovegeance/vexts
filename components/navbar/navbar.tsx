@@ -118,11 +118,11 @@ export default function Navbar() {
                     {session ? (
                         <UserMenu user={session.user}/>
                     ) : (
-                        <Button asChild variant="ghost" size="sm" className="text-sm">
+                        <Button asChild variant="ghost" className="text-sm">
                             <a href="/signin">Sign In</a>
                         </Button>
                     )}
-                    <Button asChild size="sm" className="text-sm">
+                    <Button asChild className="text-sm">
                         <Link href="https://github.com/ekovegeance/better-auth-nexts">Get Started</Link>
                     </Button>
                     <ModeToggle/>

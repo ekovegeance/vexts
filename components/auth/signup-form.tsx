@@ -14,6 +14,7 @@ import {useRouter} from "next/navigation";
 import {toast} from "sonner";
 import {CircleAlert, Loader2} from "lucide-react";
 import {Alert, AlertDescription, AlertTitle} from "@/components/ui/alert";
+import InputPasswordStrength from '@/components/ui/input-password-strength';
 
 const signUpSchema = z.object({
     name: z.string().min(2, "Name is required"),
@@ -117,7 +118,7 @@ export function SignUpForm({className, ...props}: ComponentProps<"form">) {
                             <FormItem>
                                 <FormLabel>Password</FormLabel>
                                 <FormControl>
-                                    <Input type="password" placeholder="••••••" {...field} />
+                                    <InputPasswordStrength {...field} />
                                 </FormControl>
                                 <FormMessage/>
                             </FormItem>

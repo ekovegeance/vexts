@@ -13,6 +13,7 @@ import {authClient} from "@/lib/auth-client";
 import {CircleAlert, Loader2} from "lucide-react";
 import {FaDiscord} from "react-icons/fa";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import InputPassword from "@/components/ui/input-password";
 
 const signInSchema = z.object({
     email: z.string().email().min(2, "Email is required"),
@@ -135,7 +136,7 @@ export function SignInForm({className, ...props}: ComponentProps<"form">) {
                                         </Link>
                                     </div>
                                     <FormControl>
-                                        <Input type="password" placeholder="••••••" {...field} />
+                                        <InputPassword placeholder="••••••" {...field} />
                                     </FormControl>
                                     <FormMessage/>
                                 </FormItem>
