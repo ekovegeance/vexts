@@ -1,12 +1,15 @@
 "use client";
 
-import { CheckIcon, EyeIcon, EyeOffIcon, XIcon } from "lucide-react";
 import { useId, useMemo, useState } from "react";
+import { EyeIcon, EyeOffIcon } from "lucide-react";
 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-export default function InputPasswordStrength({...props}: React.ComponentProps<"input">) {
+export default function InputPasswordStrength({
+  label,
+  ...props
+}: React.ComponentProps<"input"> & { label?: string }) {
   const id = useId();
   const [password, setPassword] = useState("");
   const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -41,41 +44,41 @@ export default function InputPasswordStrength({...props}: React.ComponentProps<"
     return "bg-emerald-500";
   };
 
-  const getStrengthText = (score: number) => {
-    if (score === 0) return "Enter a password";
-    if (score <= 2) return "Weak password";
-    if (score === 3) return "Medium password";
-    return "Strong password";
-  };
+  // const getStrengthText = (score: number) => {
+  //   if (score === 0) return "Enter a password"
+  //   if (score <= 2) return "Weak password"
+  //   if (score === 3) return "Medium password"
+  //   return "Strong password"
+  // }
 
   return (
     <div>
       {/* Password input field with toggle visibility button */}
       <div className="*:not-first:mt-2">
-        <Label htmlFor={id}>Input with password strength indicator</Label>
+        <Label htmlFor={id}>{label}</Label>
         <div className="relative">
           <Input
-            aria-describedby={`${id}-description`}
-            className="pe-9"
             id={id}
-            onChange={(e) => setPassword(e.target.value)}
+            className="pe-9"
             placeholder="Password"
             type={isVisible ? "text" : "password"}
             value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            aria-describedby={`${id}-description`}
             {...props}
           />
           <button
-            aria-controls="password"
+            className="text-muted-foreground/80 hover:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 absolute inset-y-0 end-0 flex h-full w-9 items-center justify-center rounded-e-md transition-[color,box-shadow] outline-none focus:z-10 focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
+            type="button"
+            onClick={toggleVisibility}
             aria-label={isVisible ? "Hide password" : "Show password"}
             aria-pressed={isVisible}
-            className="absolute inset-y-0 end-0 flex h-full w-9 items-center justify-center rounded-e-md text-muted-foreground/80 outline-none transition-[color,box-shadow] hover:text-foreground focus:z-10 focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
-            onClick={toggleVisibility}
-            type="button"
+            aria-controls="password"
           >
             {isVisible ? (
-              <EyeOffIcon aria-hidden="true" size={16} />
+              <EyeOffIcon size={16} aria-hidden="true" />
             ) : (
-              <EyeIcon aria-hidden="true" size={16} />
+              <EyeIcon size={16} aria-hidden="true" />
             )}
           </button>
         </div>
@@ -83,43 +86,42 @@ export default function InputPasswordStrength({...props}: React.ComponentProps<"
 
       {/* Password strength indicator */}
       <div
-        aria-label="Password strength"
-        aria-valuemax={4}
-        aria-valuemin={0}
-        aria-valuenow={strengthScore}
-        className="mt-3 mb-4 h-1 w-full overflow-hidden rounded-full bg-border"
+        className="bg-border mt-2 mb-2 h-1 w-full overflow-hidden rounded-full"
         role="progressbar"
-        tabIndex={-1}
+        aria-valuenow={strengthScore}
+        aria-valuemin={0}
+        aria-valuemax={4}
+        aria-label="Password strength"
       >
         <div
           className={`h-full ${getStrengthColor(strengthScore)} transition-all duration-500 ease-out`}
           style={{ width: `${(strengthScore / 4) * 100}%` }}
-        />
+        ></div>
       </div>
 
       {/* Password strength description */}
-      <p
-        className="mb-2 font-medium text-foreground text-sm"
+      {/* <p
         id={`${id}-description`}
+        className="text-foreground mb-2 text-sm font-medium"
       >
         {getStrengthText(strengthScore)}. Must contain:
-      </p>
+      </p> */}
 
       {/* Password requirements list */}
-      <ul aria-label="Password requirements" className="space-y-1.5">
-        {strength.map((req, _index) => (
-          <li className="flex items-center gap-2" key={req.text}>
+      {/* <ul className="space-y-1.5" aria-label="Password requirements">
+        {strength.map((req, index) => (
+          <li key={index} className="flex items-center gap-2">
             {req.met ? (
               <CheckIcon
-                aria-hidden="true"
-                className="text-emerald-500"
                 size={16}
+                className="text-emerald-500"
+                aria-hidden="true"
               />
             ) : (
               <XIcon
-                aria-hidden="true"
-                className="text-muted-foreground/80"
                 size={16}
+                className="text-muted-foreground/80"
+                aria-hidden="true"
               />
             )}
             <span
@@ -132,7 +134,7 @@ export default function InputPasswordStrength({...props}: React.ComponentProps<"
             </span>
           </li>
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 }
