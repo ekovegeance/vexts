@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3187be8f-7757-495a-87a1-881de46cb89b" name="Changes" comment="feat: add theme provider and mode toggle component for theme switching">
+    <list default="true" id="3187be8f-7757-495a-87a1-881de46cb89b" name="Changes" comment="feat: add migration XML files and update README for project name change">
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +41,8 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "vexts",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "Rebasing vexts",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
     "node.js.detected.package.eslint": "true",
@@ -87,7 +88,7 @@
       <workItem from="1751545719088" duration="505000" />
       <workItem from="1751546345984" duration="619000" />
       <workItem from="1751597687096" duration="9213000" />
-      <workItem from="1774946724824" duration="283000" />
+      <workItem from="1774946724824" duration="576000" />
     </task>
     <task id="LOCAL-00001" summary="fix: correct typo in database variable name and update module file reference">
       <option name="closed" value="true" />
@@ -121,7 +122,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751614368855</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="feat: add migration XML files and update README for project name change">
+      <option name="closed" value="true" />
+      <created>1774947184222</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1774947184222</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,6 +149,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: add theme provider and mode toggle component for theme switching" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add theme provider and mode toggle component for theme switching" />
+    <MESSAGE value="feat: add migration XML files and update README for project name change" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add migration XML files and update README for project name change" />
   </component>
 </project>
