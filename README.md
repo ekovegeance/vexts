@@ -1,6 +1,6 @@
 
 
-# Better Auth Nextjs Typescript
+# Vexts
 Production-ready staterkit
 
 ## Tech Stack 
@@ -30,7 +30,7 @@ An overview of the modern and powerful technologies used in the Pro Next.js Driz
 Get your Pro Next.js Drizzle project up and running in less than 30 minutes.
 
 ```bash
-pnpm create next-app --example "https://github.com/ekovegeance/better-auth-nexts"
+pnpm create next-app --example "https://github.com/ekovegeance/vexts"
 ```
 
 Set up your environment variables:
