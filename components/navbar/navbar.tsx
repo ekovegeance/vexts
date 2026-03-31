@@ -11,17 +11,16 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover"
-import {ShieldUser} from "lucide-react";
 
 import {client} from "@/lib/auth/client";
 import UserMenu from "@/components/navbar/user-menu";
 import { ModeToggle } from "@/components/mode-toggle";
 import Link from "next/link";
+import {AudioWaveform} from "lucide-react";
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
-    {href: "/", label: "Better Auth", active: true},
-    {href: "https://www.better-auth.com/docs/introduction", label: "Docs", active: false},
+    {href: "/", label: "vexts", active: true},
 ]
 
 export default function Navbar() {
@@ -93,7 +92,7 @@ export default function Navbar() {
                     {/* Main nav */}
                     <div className="flex items-center gap-6">
                         <a href="#" className="text-primary hover:text-primary/90">
-                            <ShieldUser/>
+                            <AudioWaveform/>
                         </a>
                         {/* Navigation menu */}
                         <NavigationMenu className="max-md:hidden">
@@ -123,7 +122,7 @@ export default function Navbar() {
                         </Button>
                     )}
                     <Button asChild className="text-sm">
-                        <Link href="https://github.com/ekovegeance/better-auth-nexts">Get Started</Link>
+                        <Link href="/signup">Signup</Link>
                     </Button>
                     <ModeToggle/>
                 </div>

@@ -4,82 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3187be8f-7757-495a-87a1-881de46cb89b" name="Changes" comment="refactor: update authentication structure and improve environment variable usage">
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/AGENTS.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/CLAUDE.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/SKILL.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/_contributing.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/_sections.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/_template.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/advanced-full-text-search.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/advanced-jsonb-indexing.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/conn-idle-timeout.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/conn-limits.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/conn-pooling.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/conn-prepared-statements.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/data-batch-inserts.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/data-n-plus-one.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/data-pagination.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/data-upsert.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/lock-advisory.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/lock-deadlock-prevention.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/lock-short-transactions.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/lock-skip-locked.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/monitor-explain-analyze.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/monitor-pg-stat-statements.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/monitor-vacuum-analyze.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/query-composite-indexes.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/query-covering-indexes.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/query-index-types.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/query-missing-indexes.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/query-partial-indexes.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-constraints.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-data-types.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-foreign-key-indexes.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-lowercase-identifiers.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-partitioning.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-primary-keys.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/security-privileges.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/security-rls-basics.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/security-rls-performance.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/auth/social-sign-button.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/auth/types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/env.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/better-auth-best-practices/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/better-auth-best-practices/SKILL.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/better-auth-security-best-practices/SKILL.MD" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/better-auth-security-best-practices/SKILL.MD" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/create-auth-skill/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/create-auth-skill/SKILL.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/email-and-password-best-practices/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/email-and-password-best-practices/SKILL.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/neon-drizzle/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/neon-drizzle/SKILL.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/neon-drizzle/guides/schema-only.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/neon-drizzle/guides/schema-only.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/next-best-practices/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/next-best-practices/SKILL.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/next-best-practices/error-handling.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/next-best-practices/error-handling.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/organization-best-practices/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/organization-best-practices/SKILL.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/two-factor-authentication-best-practices/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/two-factor-authentication-best-practices/SKILL.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+    <list default="true" id="3187be8f-7757-495a-87a1-881de46cb89b" name="Changes" comment="feat: add landing components including hero, features, author, and call-to-action sections">
+      <change afterPath="$PROJECT_DIR$/components/landing/author.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/landing/cta.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/landing/features.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/landing/hero.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/hover-card.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(auth)/signin/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/signin/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(auth)/signup/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/signup/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(landing)/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/auth/[...all]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/auth/[...all]/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/auth/forgot-password-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/auth/forgot-password-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/auth/reset-password-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/auth/reset-password-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/auth/signin-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/auth/signin-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/auth/signup-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/auth/signup-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/landing/edit-user-dialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/landing/edit-user-dialog.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/landing/user-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/landing/user-card.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/navbar/navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/navbar/navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/navbar/user-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/navbar/user-menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/db/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/auth-client.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/auth/client.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/auth-types.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/auth/server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/email/resend.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/email/resend.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proxy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/proxy.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/skills-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/skills-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +102,7 @@
       <workItem from="1751545719088" duration="505000" />
       <workItem from="1751546345984" duration="619000" />
       <workItem from="1751597687096" duration="9213000" />
-      <workItem from="1774946724824" duration="11028000" />
+      <workItem from="1774946724824" duration="12667000" />
     </task>
     <task id="LOCAL-00001" summary="fix: correct typo in database variable name and update module file reference">
       <option name="closed" value="true" />
@@ -217,7 +152,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774947534031</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="refactor: update authentication structure and improve environment variable usage">
+      <option name="closed" value="true" />
+      <created>1774968784429</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1774968784429</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -238,6 +181,7 @@
     <MESSAGE value="feat: add theme provider and mode toggle component for theme switching" />
     <MESSAGE value="feat: add migration XML files and update README for project name change" />
     <MESSAGE value="refactor: update authentication structure and improve environment variable usage" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: update authentication structure and improve environment variable usage" />
+    <MESSAGE value="feat: add landing components including hero, features, author, and call-to-action sections" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add landing components including hero, features, author, and call-to-action sections" />
   </component>
 </project>

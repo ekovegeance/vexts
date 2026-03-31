@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from "next/link";
-import {ShieldUser} from "lucide-react";
 import Image from "next/image";
 import placeholder from "@/public/placeholder.png";
 import {SignUpForm} from "@/components/auth/signup-form";
+import { AudioWaveform } from "lucide-react";
 
 export default function SignUpPage() {
     return (
@@ -13,9 +13,9 @@ export default function SignUpPage() {
                     <Link href="/" className="flex items-center gap-2 font-medium">
                         <div
                             className="bg-primary text-primary-foreground flex size-6 items-center justify-center rounded-md">
-                            <ShieldUser className="size-4"/>
+                            <AudioWaveform className="size-4"/>
                         </div>
-                        Better Auth
+                        vexts
                     </Link>
                 </div>
                 <div className="flex flex-1 items-center justify-center">

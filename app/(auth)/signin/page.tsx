@@ -1,5 +1,5 @@
 import React from 'react';
-import {ShieldUser} from "lucide-react";
+import {AudioWaveform} from "lucide-react";
 import {SignInForm} from "@/components/auth/signin-form";
 import Image from "next/image";
 import placeholder from "@/public/placeholder.png";
@@ -13,9 +13,9 @@ export default function SignInPage() {
                     <Link href="/" className="flex items-center gap-2 font-medium">
                         <div
                             className="bg-primary text-primary-foreground flex size-6 items-center justify-center rounded-md">
-                            <ShieldUser className="size-4"/>
+                            <AudioWaveform className="size-4"/>
                         </div>
-                        Better Auth
+                        vexts
                     </Link>
                 </div>
                 <div className="flex flex-1 items-center justify-center">
