@@ -46,7 +46,7 @@ import { config } from 'dotenv';
 config({ path: '.env.local' });
 
 export default defineConfig({
-  schema: './src/db/schema.ts',
+  users: './src/db/users.ts',
   out: './src/db/migrations',
   dialect: 'postgresql',
   dbCredentials: {
@@ -298,11 +298,11 @@ const user = await db.select().from(users);
 console.log(user[0].nonExistentField); // Error
 ```
 
-**Cause:** Column not defined in schema.
+**Cause:** Column not defined in users.
 
 **Solution:**
 
-Add column to schema:
+Add column to users:
 ```typescript
 export const users = pgTable('users', {
   id: serial('id').primaryKey(),
@@ -351,7 +351,7 @@ Regenerate and apply migrations:
 
 **2. Wrong table name in query**
 
-Check schema definition vs query.
+Check users definition vs query.
 
 **3. Case sensitivity**
 

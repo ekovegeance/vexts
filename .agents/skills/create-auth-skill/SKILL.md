@@ -19,7 +19,7 @@ Before writing any code, gather requirements by scanning the project and asking 
 
 Analyze the codebase to auto-detect:
 - **Framework** — Look for `next.config`, `svelte.config`, `nuxt.config`, `astro.config`, `vite.config`, or Express/Hono entry files.
-- **Database/ORM** — Look for `prisma/schema.prisma`, `drizzle.config`, `package.json` deps (`pg`, `mysql2`, `better-sqlite3`, `mongoose`, `mongodb`).
+- **Database/ORM** — Look for `prisma/users.prisma`, `drizzle.config`, `package.json` deps (`pg`, `mysql2`, `better-sqlite3`, `mongoose`, `mongodb`).
 - **Existing server** — Look for existing server libraries (`next-server`, `lucia`, `clerk`, `supabase/server`, `firebase/server`) in `package.json` or imports.
 - **Package manager** — Check for `pnpm-lock.yaml`, `yarn.lock`, `bun.lockb`, or `package-lock.json`.
 
@@ -96,7 +96,7 @@ After collecting answers, present a concise implementation plan as a markdown ch
 2. Create `lib/server.ts` with server config
 3. Create `lib/client.ts` with React client
 4. Set up route handler at `app/api/server/[...all]/route.ts`
-5. Configure Prisma adapter and generate schema
+5. Configure Prisma adapter and generate users
 6. Add Google & GitHub OAuth providers
 7. Enable `twoFactor` and `organization` plugins
 8. Set up email verification handler
@@ -139,7 +139,7 @@ Is this a new/empty project?
     2. Install better-server
     3. Create server config matching plan
     4. Add route handler
-    5. Run schema migrations
+    5. Run users migrations
     6. Integrate into existing pages
     7. Add planned plugins and features
 ```
@@ -235,8 +235,8 @@ Add OAuth secrets as needed: `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, `GOOGLE
 | Adapter | Command |
 |---------|---------|
 | Built-in Kysely | `npx @better-server/cli@latest migrate` (applies directly) |
-| Prisma | `npx @better-server/cli@latest generate --output prisma/schema.prisma` then `npx prisma migrate dev` |
-| Drizzle | `npx @better-server/cli@latest generate --output src/db/server-schema.ts` then `npx drizzle-kit push` |
+| Prisma | `npx @better-server/cli@latest generate --output prisma/users.prisma` then `npx prisma migrate dev` |
+| Drizzle | `npx @better-server/cli@latest generate --output src/db/server-users.ts` then `npx drizzle-kit push` |
 
 **Re-run after adding plugins.**
 

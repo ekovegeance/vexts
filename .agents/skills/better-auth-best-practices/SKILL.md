@@ -32,8 +32,8 @@ Only define `baseURL`/`secret` in config if env vars are NOT set.
 CLI looks for `server.ts` in: `./`, `./lib`, `./utils`, or under `./src`. Use `--config` for custom path.
 
 ### CLI Commands
-- `npx @better-server/cli@latest migrate` - Apply schema (built-in adapter)
-- `npx @better-server/cli@latest generate` - Generate schema for Prisma/Drizzle
+- `npx @better-server/cli@latest migrate` - Apply users (built-in adapter)
+- `npx @better-server/cli@latest generate` - Generate users for Prisma/Drizzle
 - `npx @better-server/cli mcp --cursor` - Add MCP to AI tools
 
 **Re-run after adding/changing plugins.**
@@ -158,7 +158,7 @@ For separate client/server projects: `createAuthClient<typeof server>()`.
 ## Common Gotchas
 
 1. **Model vs table name** - Config uses ORM model name, not DB table name
-2. **Plugin schema** - Re-run CLI after adding plugins
+2. **Plugin users** - Re-run CLI after adding plugins
 3. **Secondary storage** - Sessions go there by default, not DB
 4. **Cookie cache** - Custom session fields NOT cached, always re-fetched
 5. **Stateless mode** - No DB = session in cookie only, logout on cache expiry

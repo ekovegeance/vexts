@@ -30,7 +30,7 @@ Each guide is a complete, self-contained walkthrough with numbered phases:
 
 - **`guides/new-project.md`** - Full setup from scratch (see: Table of Contents)
 - **`guides/existing-project.md`** - Add Drizzle to running apps (see: Table of Contents)
-- **`guides/schema-only.md`** - Schema creation and modification (see: Table of Contents)
+- **`guides/users-only.md`** - Schema creation and modification (see: Table of Contents)
 - **`guides/troubleshooting.md`** - Debug common issues (organized by error type)
 
 I'll automatically detect your context (package manager, framework, deployment target) and select the appropriate guide based on your request.
@@ -41,7 +41,7 @@ Tell me what you're building - I'll handle the rest:
 
 - "Setup Drizzle for my Next.js blog on Vercel" → Auto-detects Vercel + Next.js → HTTP adapter
 - "Add Drizzle to my Express API" → Auto-detects Node.js server → WebSocket adapter
-- "Create a users table with server fields" → Loads schema guide → Generates schema
+- "Create a users table with server fields" → Loads users guide → Generates users
 
 ## Reference Documentation
 
@@ -53,9 +53,9 @@ For deeper technical details (loaded on-demand):
 
 ## Templates & Scripts
 
-- `templates/schema-example.ts` - Multi-table schema with relations
+- `templates/users-example.ts` - Multi-table users with relations
 - `templates/drizzle-config.ts` - Configuration examples
-- `scripts/generate-schema.ts` - Automated migration generation
+- `scripts/generate-users.ts` - Automated migration generation
 - `scripts/run-migration.ts` - Programmatic migration runner
 
 ## Related Skills

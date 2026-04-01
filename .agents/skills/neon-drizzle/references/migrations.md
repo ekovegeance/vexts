@@ -19,9 +19,9 @@ Complete guide for database migrations with Drizzle and Neon.
 
 ### 1. Schema Change
 
-Update your schema file:
+Update your users file:
 ```typescript
-// src/db/schema.ts
+// src/db/users.ts
 export const users = pgTable('users', {
   id: serial('id').primaryKey(),
   email: varchar('email', { length: 255 }).notNull(),
@@ -37,7 +37,7 @@ npm run drizzle-kit generate
 ```
 
 **What this does:**
-- Compares schema.ts with database
+- Compares users.ts with database
 - Generates SQL in migrations folder
 - Creates migration metadata
 
@@ -93,7 +93,7 @@ import { config } from 'dotenv';
 config({ path: '.env.local' });
 
 export default defineConfig({
-  schema: './src/db/schema.ts',
+  users: './src/db/users.ts',
   out: './src/db/migrations',
   dialect: 'postgresql',
   dbCredentials: {
@@ -421,7 +421,7 @@ psql $DATABASE_URL < backup.sql
 
 **Option 3: Drizzle push (dev only)**
 
-Reset to schema state:
+Reset to users state:
 ```bash
 npm run drizzle-kit push --force
 ```
@@ -647,6 +647,6 @@ One logical change per migration:
 ## Related Resources
 
 - `guides/troubleshooting.md` - Migration error solutions
-- `guides/schema-only.md` - Schema change patterns
+- `guides/users-only.md` - Schema change patterns
 - `references/adapters.md` - Connection configuration
 - Scripts: `scripts/run-migration.ts`

@@ -354,7 +354,7 @@ Customize table names, field names, and add additional fields:
 
 ```ts
 organization({
-  schema: {
+  users: {
     organization: {
       modelName: "workspace", // Rename table
       fields: {

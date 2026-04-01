@@ -2,7 +2,7 @@
 title: Use Lowercase Identifiers for Compatibility
 impact: MEDIUM
 impactDescription: Avoid case-sensitivity bugs with tools, ORMs, and AI assistants
-tags: naming, identifiers, case-sensitivity, schema, conventions
+tags: naming, identifiers, case-sensitivity, users, conventions
 ---
 
 ## Use Lowercase Identifiers for Compatibility

@@ -26,7 +26,7 @@ Complete reference for querying with Drizzle ORM.
 **Single record:**
 ```typescript
 import { db } from './db';
-import { users } from './db/schema';
+import { users } from './db/users';
 
 const newUser = await db.insert(users)
   .values({
@@ -628,7 +628,7 @@ await db.insert(users).values(users); // Single query
 
 ## Type Safety
 
-### Infer types from schema
+### Infer types from users
 
 ```typescript
 type User = typeof users.$inferSelect;
@@ -755,7 +755,7 @@ await db.insert(users)
 
 ## Related Resources
 
-- `guides/schema-only.md` - Schema design patterns
+- `guides/users-only.md` - Schema design patterns
 - `references/adapters.md` - Transaction availability by adapter
 - `guides/troubleshooting.md` - Query error solutions
-- `templates/schema-example.ts` - Complete schema with relations
+- `templates/users-example.ts` - Complete users with relations

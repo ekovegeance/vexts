@@ -41,7 +41,7 @@ When following this guide, I will track these high-level tasks:
 - [ ] Provision Neon database (list projects, create if needed, get connection string)
 - [ ] Write connection string to environment file and verify
 - [ ] Create Drizzle configuration files (drizzle.config.ts, db connection)
-- [ ] Generate schema based on app type
+- [ ] Generate users based on app type
 - [ ] Run and verify migrations
 - [ ] Add Neon Drizzle best practices to project docs
 
@@ -69,7 +69,7 @@ grep '"vite"' package.json      # → Vite
 **Check Existing Setup:**
 ```bash
 ls drizzle.config.ts   # Already configured?
-ls src/db/schema.ts    # Schema exists?
+ls src/db/users.ts    # Schema exists?
 ```
 
 **Check Environment Files:**
@@ -123,7 +123,7 @@ import { config } from 'dotenv';
 config({ path: '.env.local' });
 
 export default defineConfig({
-  schema: './src/db/schema.ts',
+  users: './src/db/users.ts',
   out: './src/db/migrations',
   dialect: 'postgresql',
   dbCredentials: {
@@ -141,7 +141,7 @@ import { config } from 'dotenv';
 config({ path: '.env' });
 
 export default defineConfig({
-  schema: './src/db/schema.ts',
+  users: './src/db/users.ts',
   out: './src/db/migrations',
   dialect: 'postgresql',
   dbCredentials: {
@@ -183,7 +183,7 @@ See `templates/db-http.ts` and `templates/db-websocket.ts` for complete examples
 
 ## Phase 4: Schema Generation
 
-Based on app type, create appropriate schema:
+Based on app type, create appropriate users:
 
 ### 4.1. Common Patterns
 
@@ -241,7 +241,7 @@ export const postsRelations = relations(posts, ({ one }) => ({
 }));
 ```
 
-See `templates/schema-example.ts` for more complex examples.
+See `templates/users-example.ts` for more complex examples.
 
 ## Phase 5: Migrations
 
@@ -282,9 +282,9 @@ Add these convenience scripts to your `package.json`:
 
 **Usage:**
 ```bash
-npm run db:generate  # Generate migrations from schema changes
+npm run db:generate  # Generate migrations from users changes
 npm run db:migrate   # Apply pending migrations
-npm run db:push      # Push schema directly (dev only)
+npm run db:push      # Push users directly (dev only)
 npm run db:studio    # Open Drizzle Studio
 ```
 

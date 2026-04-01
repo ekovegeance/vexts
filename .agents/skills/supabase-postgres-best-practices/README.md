@@ -22,7 +22,7 @@ npm run build
    - `query-` Query Performance (CRITICAL)
    - `conn-` Connection Management (CRITICAL)
    - `security-` Security & RLS (CRITICAL)
-   - `schema-` Schema Design (HIGH)
+   - `users-` Schema Design (HIGH)
    - `lock-` Concurrency & Locking (MEDIUM-HIGH)
    - `data-` Data Access Patterns (MEDIUM)
    - `monitor-` Monitoring & Diagnostics (LOW-MEDIUM)

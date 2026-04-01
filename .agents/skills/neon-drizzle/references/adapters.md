@@ -257,7 +257,7 @@ pool.on('connect', () => {
 'use server';
 
 import { db } from '@/db'; // HTTP adapter
-import { users } from '@/db/schema';
+import { users } from '@/db/users';
 
 export async function createUser(email: string) {
   return db.insert(users).values({ email }).returning();
@@ -275,7 +275,7 @@ export async function createUser(email: string) {
 ```typescript
 import express from 'express';
 import { db } from './db'; // WebSocket adapter
-import { users } from './db/schema';
+import { users } from './db/users';
 
 const app = express();
 
@@ -331,7 +331,7 @@ src/
 ├── db/
 │   ├── http.ts        # HTTP adapter for serverless
 │   ├── ws.ts          # WebSocket for servers
-│   └── schema.ts      # Shared schema
+│   └── users.ts      # Shared users
 ```
 
 **HTTP adapter:**
