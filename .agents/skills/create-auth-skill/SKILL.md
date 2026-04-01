@@ -94,7 +94,7 @@ After collecting answers, present a concise implementation plan as a markdown ch
 ### Steps
 1. Install `better-server` and `@better-server/cli`
 2. Create `lib/server.ts` with server config
-3. Create `lib/client.ts` with React client
+3. Create `lib/client.tsx` with React client
 4. Set up route handler at `app/api/server/[...all]/route.ts`
 5. Configure Prisma adapter and generate users
 6. Add Google & GitHub OAuth providers
@@ -119,7 +119,7 @@ Is this a new/empty project?
 ├─ YES → New project setup
 │   1. Install better-server (+ scoped packages per plan)
 │   2. Create server.ts with all planned config
-│   3. Create client.ts with framework client
+│   3. Create client.tsx with framework client
 │   4. Set up route handler
 │   5. Set up environment variables
 │   6. Run CLI migrate/generate
@@ -198,7 +198,7 @@ Add OAuth secrets as needed: `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, `GOOGLE
 
 ---
 
-## Client Config (client.ts)
+## Client Config (client.tsx)
 
 **Import by framework:**
 | Framework | Import |

@@ -4,35 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3187be8f-7757-495a-87a1-881de46cb89b" name="Changes" comment="refactor: update menu color and adjust CSS variable for border radius">
-      <change beforePath="$PROJECT_DIR$/.agents/skills/better-auth-best-practices/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/better-auth-best-practices/SKILL.md" afterDir="false" />
+    <list default="true" id="3187be8f-7757-495a-87a1-881de46cb89b" name="Changes" comment="refactor: rename schema files and update references to users">
+      <change afterPath="$PROJECT_DIR$/app/api/trpc/[trpc]/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/trpc/client.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/trpc/init.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/trpc/query-client.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/trpc/routes/_app.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/trpc/server.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.agents/skills/create-auth-skill/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/create-auth-skill/SKILL.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/neon-drizzle/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/neon-drizzle/SKILL.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/neon-drizzle/guides/existing-project.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/neon-drizzle/guides/existing-project.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/neon-drizzle/guides/new-project.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/neon-drizzle/guides/new-project.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/neon-drizzle/guides/schema-only.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/neon-drizzle/guides/schema-only.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/neon-drizzle/guides/troubleshooting.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/neon-drizzle/guides/troubleshooting.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/neon-drizzle/references/adapters.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/neon-drizzle/references/adapters.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/neon-drizzle/references/migrations.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/neon-drizzle/references/migrations.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/neon-drizzle/references/query-patterns.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/neon-drizzle/references/query-patterns.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/organization-best-practices/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/organization-best-practices/SKILL.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/AGENTS.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/AGENTS.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/CLAUDE.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/CLAUDE.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/SKILL.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/_sections.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/_sections.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-constraints.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-constraints.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-data-types.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-data-types.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-foreign-key-indexes.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-foreign-key-indexes.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-lowercase-identifiers.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-lowercase-identifiers.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-primary-keys.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-primary-keys.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/security-privileges.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/security-privileges.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-schema.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/db/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/db/schema/users.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drizzle.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/drizzle.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/auth/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/auth/server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,7 +187,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775005969530</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="refactor: rename schema files and update references to users">
+      <option name="closed" value="true" />
+      <created>1775007726965</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1775007726965</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,6 +219,7 @@
     <MESSAGE value="feat: add landing components including hero, features, author, and call-to-action sections" />
     <MESSAGE value="refactor: update dropdown menu styles and adjust global CSS variables" />
     <MESSAGE value="refactor: update menu color and adjust CSS variable for border radius" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: update menu color and adjust CSS variable for border radius" />
+    <MESSAGE value="refactor: rename schema files and update references to users" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: rename schema files and update references to users" />
   </component>
 </project>
