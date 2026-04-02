@@ -3,17 +3,25 @@
 # vexts
 Production-ready opinionated stater kit with Next.js end to end typesafe
 
-First, run the development server:
+## Setup
+### Create Project
 
 ```bash
-git clone https://github.com/ekovegeance/better-server-nexts.git
-cd better-server-nexts
-pnpm install
+pnpm create next-app --example "https://github.com/ekovegeance/vexts"
 ```
 
-Set up your environment variables:
+Setup your environment variables:
 ```bash
 cp .env.example .env
+```
+
+Run migrations:
+```bash
+# Generate and apply migrations:
+pnpm db:push
+
+# Or if you prefer to use migrations:
+pnpm db:migrate
 ```
 
 Start the Development Server
@@ -34,17 +42,18 @@ Here’s what this app supports out of the box:
 - **[Session Management](https://www.better-auth.com/docs/concepts/session-management)**: Handle user sessions seamlessly.
 - **[Users & Accounts](https://www.better-auth.com/docs/concepts/users-accounts)** : Manage user accounts and profiles.
 
-## Learn More
+## Tech Stack
+We've selected the best-in-class tools to provide a professional, scalable, and high-performance foundation
+### Core Framework
 
-To learn more about Tech Stack used in this project, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Better Auth Documentation](https://better-auth.com/docs) - learn about Better Auth features and API.
-- [Drizzle ORM Documentation](https://orm.drizzle.team/docs) - learn about Drizzle ORM features and API.
-- [Shadcn UI Documentation](https://ui.shadcn.com/docs) - learn about shadcn UI features and API.
-- [Neon DB](https://neon.com/) - learn about Database with Neon
-- [Resend](https://resend.com/) - learn about Resend for sending emails
-
+- [Next.js Documentation](https://nextjs.org/docs): The React framework for the web, using the App Router for modern features like Server Components and Streaming.
+- [Drizzle ORM Documentation](https://orm.drizzle.team/docs): A lightweight, high-performance TypeScript ORM for SQL databases.
+- [Better Auth Documentation](https://better-auth.com/docs): A robust and flexible authentication library for Next.js.
+- [tRPC](https://trpc.io/): For building end-to-end type-safe APIs without the boilerplate.
+- [TanStack Query](https://tanstack.com/query/latest): For powerful data fetching, caching, and state management on the client.
+- [Resend](https://resend.com/): For creating beautiful, responsive email templates.
+- [React Email](https://react.email/): For creating beautiful, responsive email templates.
+- [Shadcn UI Documentation](https://ui.shadcn.com/docs): Beautifully designed components built with Radix UI and Tailwind CSS.
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.

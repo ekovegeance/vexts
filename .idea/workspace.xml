@@ -4,92 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3187be8f-7757-495a-87a1-881de46cb89b" name="Changes" comment="feat: restructure schema and implement posts table with foreign key constraints">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(landing)/posts/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/posts/post.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ui/separator.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drizzle/20250626111131_milky_dragon_man/migration.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drizzle/20250626111131_milky_dragon_man/snapshot.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drizzle/20250628070505_regular_tony_stark/migration.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drizzle/20250628070505_regular_tony_stark/snapshot.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drizzle/20250628070714_flawless_silver_samurai/migration.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drizzle/20250628070714_flawless_silver_samurai/snapshot.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drizzle/20260401051138_green_bloodscream/migration.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drizzle/20260401051138_green_bloodscream/snapshot.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drizzle/20260401071458_married_speedball/migration.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drizzle/20260401071458_married_speedball/snapshot.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drizzle/20260401093555_worthless_zarda/migration.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drizzle/20260401093555_worthless_zarda/snapshot.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/db/relations.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/post.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/trpc/routers/app.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/trpc/routers/post.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/trpc/routers/user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/better-auth-best-practices/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/better-auth-best-practices/SKILL.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/better-auth-security-best-practices/SKILL.MD" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/better-auth-security-best-practices/SKILL.MD" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/create-auth-skill/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/create-auth-skill/SKILL.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/email-and-password-best-practices/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/email-and-password-best-practices/SKILL.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/neon-drizzle/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/neon-drizzle/SKILL.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/neon-drizzle/guides/existing-project.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/neon-drizzle/guides/existing-project.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/neon-drizzle/guides/new-project.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/neon-drizzle/guides/new-project.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/neon-drizzle/guides/schema-only.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/neon-drizzle/guides/schema-only.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/neon-drizzle/guides/troubleshooting.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/neon-drizzle/guides/troubleshooting.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/neon-drizzle/references/adapters.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/neon-drizzle/references/adapters.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/neon-drizzle/references/migrations.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/neon-drizzle/references/migrations.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/neon-drizzle/references/query-patterns.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/neon-drizzle/references/query-patterns.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/next-best-practices/data-patterns.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/next-best-practices/data-patterns.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/next-best-practices/debug-tricks.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/next-best-practices/debug-tricks.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/next-best-practices/parallel-routes.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/next-best-practices/parallel-routes.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/next-best-practices/route-handlers.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/next-best-practices/route-handlers.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/next-best-practices/self-hosting.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/next-best-practices/self-hosting.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/next-cache-components/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/next-cache-components/SKILL.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/organization-best-practices/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/organization-best-practices/SKILL.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/AGENTS.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/AGENTS.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/CLAUDE.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/CLAUDE.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/SKILL.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/_contributing.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/_contributing.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/_sections.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/_sections.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/_template.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/_template.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/conn-pooling.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/conn-pooling.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/conn-prepared-statements.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/conn-prepared-statements.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/data-n-plus-one.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/data-n-plus-one.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/query-covering-indexes.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/query-covering-indexes.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/query-index-types.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/query-index-types.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/query-partial-indexes.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/query-partial-indexes.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-constraints.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-constraints.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-data-types.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-data-types.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-foreign-key-indexes.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-foreign-key-indexes.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-lowercase-identifiers.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-lowercase-identifiers.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-primary-keys.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-primary-keys.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/security-privileges.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/security-privileges.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/security-rls-basics.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/security-rls-basics.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/two-factor-authentication-best-practices/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/two-factor-authentication-best-practices/SKILL.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+    <list default="true" id="3187be8f-7757-495a-87a1-881de46cb89b" name="Changes" comment="fix: correct typo in hero description and update README title for clarity">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/trpc/[trpc]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/trpc/[trpc]/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drizzle.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/drizzle.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drizzle/0000_milky_dragon_man.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/drizzle/0001_regular_tony_stark.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/drizzle/0002_flawless_silver_samurai.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/drizzle/meta/0000_snapshot.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/drizzle/meta/0001_snapshot.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/drizzle/meta/0002_snapshot.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/drizzle/meta/_journal.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/auth/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/auth/server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/db/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/db/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/db/schema/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/db/schema.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trpc/client.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/trpc/client.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trpc/init.ts" beforeDir="false" afterPath="$PROJECT_DIR$/trpc/init.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trpc/query-client.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/trpc/routes/_app.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/trpc/server.tsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +100,7 @@
       <workItem from="1774946724824" duration="13276000" />
       <workItem from="1775054804478" duration="18000" />
       <workItem from="1775054919619" duration="4414000" />
-      <workItem from="1775138740900" duration="640000" />
+      <workItem from="1775138740900" duration="2055000" />
     </task>
     <task id="LOCAL-00001" summary="fix: correct typo in database variable name and update module file reference">
       <option name="closed" value="true" />
@@ -281,7 +198,23 @@
       <option name="project" value="LOCAL" />
       <updated>1775010507941</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="feat: restructure schema and implement posts table with foreign key constraints">
+      <option name="closed" value="true" />
+      <created>1775139457563</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1775139457563</updated>
+    </task>
+    <task id="LOCAL-00014" summary="fix: correct typo in hero description and update README title for clarity">
+      <option name="closed" value="true" />
+      <created>1775139688711</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1775139688711</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -308,6 +241,7 @@
     <MESSAGE value="refactor: rename schema files and update references to users" />
     <MESSAGE value="feat: implement TRPC setup with client and server integration" />
     <MESSAGE value="feat: restructure schema and implement posts table with foreign key constraints" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: restructure schema and implement posts table with foreign key constraints" />
+    <MESSAGE value="fix: correct typo in hero description and update README title for clarity" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: correct typo in hero description and update README title for clarity" />
   </component>
 </project>
