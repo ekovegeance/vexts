@@ -7,10 +7,10 @@ export default function Hero() {
     return (
         <section className="container flex flex-col items-center gap-4 pb-8 pt-6 md:py-10">
             <div className="flex max-w-[980px] flex-col items-center gap-2 text-center">
-                <h1 className="text-5xl/[1.1] font-extrabold md:text-5xl lg:text-6xl lg:leading-[1.1] bg-clip-text text-transparent bg-gradient-to-r from-primary to-zinc-600">
+                <h1 className="font-semibold text-4xl tracking-tighter sm:text-5xl md:text-6xl md:leading-[1.2] lg:text-7xl">
                     vexts
                 </h1>
-                <p className="max-w-[750px] text-lg text-muted-foreground sm:text-xl">
+                <p className="mt-6 text-foreground/80 md:text-lg">
                     Production-ready opinionated stater kit with Next.js end to end typesafe
                 </p>
                 <p className="max-w-[750px] text-md text-muted-foreground">

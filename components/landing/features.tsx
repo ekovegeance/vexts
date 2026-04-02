@@ -1,51 +1,78 @@
 import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card";
-import { ClipboardCheck, ShieldCheck, UserRoundCog } from "lucide-react";
+    Cable,
+    Code,
+    Contrast,
+    MonitorSmartphone,
+    SquareDashedMousePointer,
+    Zap,
+} from "lucide-react";
 
 const features = [
     {
-        icon: <ClipboardCheck className="h-10 w-10" />,
-        title: "Dashboard",
+        title: "Blazing Fast Performance",
         description:
-            "Manage data effortlessly with a user-friendly interface and flexible CRUD features for various needs.",
+            "Optimized for speed with minimal loading times and instant interactions, ensuring a smooth experience across devices.",
+        icon: Zap,
     },
     {
-        icon: <ShieldCheck className="h-10 w-10" />,
-        title: "Secure Authentication",
+        title: "Fully Customizable",
         description:
-            "Login and registration system powered by better-auth, ensuring reliable session management.",
+            "Tailor every component to match your brand or workflow — with built-in support for themes, layouts, and configurations.",
+        icon: SquareDashedMousePointer,
     },
     {
-        icon: <UserRoundCog className="h-10 w-10" />,
-        title: "User Management",
+        title: "Developer-Friendly",
         description:
-            "Handle users and manage content with complete features for adding, editing, and deleting data efficiently.",
+            "Built with clean, modern code and best practices in mind, making it easy to integrate, extend, and scale.",
+        icon: Code,
+    },
+    {
+        title: "Responsive by Default",
+        description:
+            "Every component is designed to look great on all screen sizes — no extra work needed to make things mobile-friendly.",
+        icon: MonitorSmartphone,
+    },
+    {
+        title: "Accessible for Everyone",
+        description:
+            "Built with accessibility best practices in mind to ensure an inclusive experience for all users, regardless of ability.",
+        icon: Contrast,
+    },
+    {
+        title: "Seamless Integration",
+        description:
+            "Easily connect with your favorite tools, APIs, and services — whether it's authentication, databases, or third-party libraries.",
+        icon: Cable,
     },
 ];
 
-export default function Features() {
+const Features = () => {
     return (
-        <section className="container py-12 md:py-24 lg:py-32">
-            <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
+        <div className="mx-auto flex max-w-screen-xl flex-col px-6 py-12 sm:py-14">
+            <h2 className="text-pretty text-center font-semibold text-4xl tracking-tight sm:text-[2.75rem]">
+                Powerful Features, Built for You
+            </h2>
+            <p className="mt-3 text-center text-muted-foreground text-xl sm:text-2xl">
+                Designed for speed, flexibility, and ease of use.
+            </p>
+
+            <div className="mt-16 grid grid-cols-1 gap-6 sm:mt-20 sm:grid-cols-2 lg:grid-cols-3">
                 {features.map((feature, index) => (
-                    <Card key={index}>
-                        <CardHeader>
-                            <div className="p-2 bg-primary-foreground rounded-full w-fit">
-                                {feature.icon}
-                            </div>
-                            <CardTitle className="mt-4">{feature.title}</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                            <CardDescription>{feature.description}</CardDescription>
-                        </CardContent>
-                    </Card>
+                    <div className="rounded-lg border px-5 py-7" key={index}>
+                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary dark:bg-primary/15">
+                            <feature.icon />
+                        </div>
+                        <h3 className="mt-5 font-semibold text-xl tracking-[-0.005em]">
+                            {feature.title}
+                        </h3>
+                        <p className="mt-2 text-base text-foreground/90">
+                            {feature.description}
+                        </p>
+                    </div>
                 ))}
             </div>
-        </section>
+        </div>
     );
-}
+};
+
+export default Features;

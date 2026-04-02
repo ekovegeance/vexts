@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3187be8f-7757-495a-87a1-881de46cb89b" name="Changes" comment="fix: correct typo in hero description and update README title for clarity">
+    <list default="true" id="3187be8f-7757-495a-87a1-881de46cb89b" name="Changes" comment="fix: update README setup instructions and enhance tech stack section for clarity">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/landing/author.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/landing/author.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/landing/features.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/landing/features.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/landing/hero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/landing/hero.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +102,7 @@
       <workItem from="1774946724824" duration="13276000" />
       <workItem from="1775054804478" duration="18000" />
       <workItem from="1775054919619" duration="4414000" />
-      <workItem from="1775138740900" duration="2055000" />
+      <workItem from="1775138740900" duration="3093000" />
     </task>
     <task id="LOCAL-00001" summary="fix: correct typo in database variable name and update module file reference">
       <option name="closed" value="true" />
@@ -214,7 +216,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775139688711</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="fix: update README setup instructions and enhance tech stack section for clarity">
+      <option name="closed" value="true" />
+      <created>1775141171408</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1775141171408</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -242,6 +252,7 @@
     <MESSAGE value="feat: implement TRPC setup with client and server integration" />
     <MESSAGE value="feat: restructure schema and implement posts table with foreign key constraints" />
     <MESSAGE value="fix: correct typo in hero description and update README title for clarity" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: correct typo in hero description and update README title for clarity" />
+    <MESSAGE value="fix: update README setup instructions and enhance tech stack section for clarity" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: update README setup instructions and enhance tech stack section for clarity" />
   </component>
 </project>
