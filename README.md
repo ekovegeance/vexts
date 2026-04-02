@@ -1,6 +1,7 @@
 
 
-# Better Auth Example
+# vexts
+Production-ready opinionated stater kit with Next.js end to end typesafe
 
 First, run the development server:
 

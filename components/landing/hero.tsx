@@ -11,7 +11,7 @@ export default function Hero() {
                     vexts
                 </h1>
                 <p className="max-w-[750px] text-lg text-muted-foreground sm:text-xl">
-                    Production-ready opinionated stater kit with Next.js end to end type safety
+                    Production-ready opinionated stater kit with Next.js end to end typesafe
                 </p>
                 <p className="max-w-[750px] text-md text-muted-foreground">
                     Powered by <Author />
