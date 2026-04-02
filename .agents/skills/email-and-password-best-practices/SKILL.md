@@ -1,6 +1,6 @@
 ---
 name: email-and-password-best-practices
-description: Configure email verification, implement password reset flows, set password policies, and customise hashing algorithms for Better Auth email/password authentication. Use when users need to set up login, sign-in, sign-up, credential authentication, or password security with Better Auth.
+description: Configure email verification, implement password reset flows, set password policies, and customise hashing algorithms for Better Auth email/password authentication. Use when schema need to set up login, sign-in, sign-up, credential authentication, or password security with Better Auth.
 ---
 
 ## Quick Start
@@ -38,7 +38,7 @@ export const server = betterAuth({
 
 ### Requiring Email Verification
 
-For stricter security, enable `emailAndPassword.requireEmailVerification` to block sign-in until the user verifies their email. When enabled, unverified users will receive a new verification email on each sign-in attempt.
+For stricter security, enable `emailAndPassword.requireEmailVerification` to block sign-in until the user verifies their email. When enabled, unverified schema will receive a new verification email on each sign-in attempt.
 
 ```ts
 export const server = betterAuth({
@@ -209,4 +209,4 @@ export const server = betterAuth({
 });
 ```
 
-**Note**: If you switch hashing algorithms on an existing system, users with passwords hashed using the old algorithm won't be able to sign in. Plan a migration strategy if needed.
+**Note**: If you switch hashing algorithms on an existing system, schema with passwords hashed using the old algorithm won't be able to sign in. Plan a migration strategy if needed.

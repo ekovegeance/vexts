@@ -97,7 +97,7 @@ export const db = drizzle(sql);
 **1. Use batch for multiple operations:**
 ```typescript
 await db.batch([
-  db.insert(users).values({ email: 'test@example.com' }),
+  db.insert(schema).values({ email: 'test@example.com' }),
   db.insert(posts).values({ title: 'Test' }),
 ]);
 ```
@@ -107,15 +107,15 @@ await db.batch([
 import { unstable_cache } from 'next/cache';
 
 const getUsers = unstable_cache(
-  async () => db.select().from(users),
-  ['users'],
+  async () => db.select().from(schema),
+  ['schema'],
   { revalidate: 60 }
 );
 ```
 
 **3. Minimize round trips:**
 ```typescript
-const usersWithPosts = await db.query.users.findMany({
+const usersWithPosts = await db.query.schema.findMany({
   with: { posts: true },
 });
 ```
@@ -218,7 +218,7 @@ process.on('SIGINT', async () => {
 **3. Use transactions:**
 ```typescript
 await db.transaction(async (tx) => {
-  const user = await tx.insert(users)
+  const user = await tx.insert(schema)
     .values({ email: 'test@example.com' })
     .returning();
 
@@ -253,14 +253,14 @@ pool.on('connect', () => {
 
 **Example:**
 ```typescript
-// app/actions/users.ts
+// app/actions/schema.ts
 'use server';
 
 import { db } from '@/db'; // HTTP adapter
-import { users } from '@/db/users';
+import { schema } from '@/db/schema';
 
 export async function createUser(email: string) {
-  return db.insert(users).values({ email }).returning();
+  return db.insert(schema).values({ email }).returning();
 }
 ```
 
@@ -275,13 +275,13 @@ export async function createUser(email: string) {
 ```typescript
 import express from 'express';
 import { db } from './db'; // WebSocket adapter
-import { users } from './db/users';
+import { schema } from './db/schema';
 
 const app = express();
 
 app.get('/health', async (req, res) => {
   try {
-    await db.select().from(users).limit(1);
+    await db.select().from(schema).limit(1);
     res.json({ status: 'healthy' });
   } catch (err) {
     res.status(500).json({ status: 'unhealthy', error: err.message });
@@ -331,7 +331,7 @@ src/
 ├── db/
 │   ├── http.ts        # HTTP adapter for serverless
 │   ├── ws.ts          # WebSocket for servers
-│   └── users.ts      # Shared users
+│   └── schema.ts      # Shared schema
 ```
 
 **HTTP adapter:**

@@ -7,7 +7,7 @@ tags: rls, row-level-security, multi-tenant, security
 
 ## Enable Row Level Security for Multi-Tenant Data
 
-Row Level Security (RLS) enforces data access at the database level, ensuring users only see their own data.
+Row Level Security (RLS) enforces data access at the database level, ensuring schema only see their own data.
 
 **Incorrect (application-level filtering only):**
 
@@ -25,7 +25,7 @@ select * from orders;  -- Returns ALL orders
 -- Enable RLS on the table
 alter table orders enable row level security;
 
--- Create policy for users to see only their orders
+-- Create policy for schema to see only their orders
 create policy orders_user_policy on orders
   for all
   using (user_id = current_setting('app.current_user_id')::bigint);

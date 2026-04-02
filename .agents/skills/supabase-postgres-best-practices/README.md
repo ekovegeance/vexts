@@ -22,7 +22,7 @@ npm run build
    - `query-` Query Performance (CRITICAL)
    - `conn-` Connection Management (CRITICAL)
    - `security-` Security & RLS (CRITICAL)
-   - `users-` Schema Design (HIGH)
+   - `schema-` Schema Design (HIGH)
    - `lock-` Concurrency & Locking (MEDIUM-HIGH)
    - `data-` Data Access Patterns (MEDIUM)
    - `monitor-` Monitoring & Diagnostics (LOW-MEDIUM)
@@ -101,7 +101,7 @@ See `references/_contributing.md` for detailed guidelines. Key principles:
 2. **Error-first structure** - Show the problem before the solution
 3. **Quantify impact** - Include specific metrics (10x faster, 50% smaller)
 4. **Self-contained examples** - Complete, runnable SQL
-5. **Semantic naming** - Use meaningful names (users, email), not (table1, col1)
+5. **Semantic naming** - Use meaningful names (schema, email), not (table1, col1)
 
 ## Impact Levels
 

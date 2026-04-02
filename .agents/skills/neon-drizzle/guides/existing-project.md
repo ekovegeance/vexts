@@ -26,11 +26,11 @@ Guide for adding Drizzle ORM to an existing application with Neon.
 
 When following this guide, I will track these high-level tasks:
 
-- [ ] Pre-integration check (detect existing ORMs, database users, environment)
+- [ ] Pre-integration check (detect existing ORMs, database schema, environment)
 - [ ] Install Drizzle dependencies without disrupting existing setup
 - [ ] Create isolated Drizzle configuration (separate from existing code)
-- [ ] Choose and implement users strategy (new tables vs mirroring existing)
-- [ ] Handle migrations safely based on users strategy
+- [ ] Choose and implement schema strategy (new tables vs mirroring existing)
+- [ ] Handle migrations safely based on schema strategy
 - [ ] Set up coexistence patterns and gradual migration approach
 - [ ] Verify Drizzle integration without breaking existing functionality
 - [ ] Add Neon Drizzle best practices to project docs
@@ -109,7 +109,7 @@ Structure:
 ```
 src/drizzle/
 ├── index.ts      # Connection
-├── users.ts     # New schemas only
+├── schema.ts     # New schemas only
 └── migrations/   # Drizzle migrations
 ```
 
@@ -130,7 +130,7 @@ import { config } from 'dotenv';
 config({ path: '.env.local' });
 
 export default defineConfig({
-  users: './src/drizzle/users.ts',
+  schema: './src/drizzle/schema.ts',
   out: './src/drizzle/migrations',
   dialect: 'postgresql',
   dbCredentials: {
@@ -148,7 +148,7 @@ import { config } from 'dotenv';
 config({ path: '.env' });
 
 export default defineConfig({
-  users: './src/drizzle/users.ts',
+  schema: './src/drizzle/schema.ts',
   out: './src/drizzle/migrations',
   dialect: 'postgresql',
   dbCredentials: {
@@ -158,7 +158,7 @@ export default defineConfig({
 ```
 
 **Notes:**
-- Point users and migrations to `src/drizzle/` to avoid conflicts with existing code
+- Point schema and migrations to `src/drizzle/` to avoid conflicts with existing code
 - Explicit dotenv path prevents "url: undefined" errors during migrations
 
 ### 3.2. Create Connection
@@ -195,7 +195,7 @@ Choose integration approach:
 
 Create schemas for new features only, leave existing tables alone:
 
-`src/drizzle/users.ts`:
+`src/drizzle/schema.ts`:
 ```typescript
 import { pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core';
 
@@ -222,7 +222,7 @@ Define schemas for existing tables to gradually migrate queries:
 ```typescript
 import { pgTable, serial, varchar, timestamp } from 'drizzle-orm/pg-core';
 
-export const existingUsers = pgTable('users', {
+export const existingUsers = pgTable('schema', {
   id: serial('id').primaryKey(),
   email: varchar('email', { length: 255 }).notNull(),
   name: varchar('name', { length: 255 }),
@@ -236,7 +236,7 @@ export const existingUsers = pgTable('users', {
 - Type-safe access to existing tables
 
 **Cons:**
-- Must match existing users exactly
+- Must match existing schema exactly
 - Requires careful migration strategy
 
 ### 4.3. Recommended: Hybrid Approach
@@ -264,15 +264,15 @@ export DATABASE_URL="$(grep DATABASE_URL .env.local | cut -d '=' -f2)" && \
 Instead, use Drizzle schemas for querying only:
 ```typescript
 import { drizzleDb } from './drizzle';
-import { existingUsers } from './drizzle/users';
+import { existingUsers } from './drizzle/schema';
 
-const users = await drizzleDb.select().from(existingUsers);
+const schema = await drizzleDb.select().from(existingUsers);
 ```
 
 ### 5.3. Mixed Scenario
 
 If you have both new and existing tables:
-1. Define all schemas in `users.ts`
+1. Define all schemas in `schema.ts`
 2. Run `drizzle-kit generate`
 3. **Manually edit** generated migration to remove SQL for existing tables
 4. Apply migration
@@ -296,9 +296,9 @@ Add these convenience scripts to your `package.json`:
 
 **Usage:**
 ```bash
-npm run db:generate  # Generate migrations from users changes
+npm run db:generate  # Generate migrations from schema changes
 npm run db:migrate   # Apply pending migrations
-npm run db:push      # Push users directly (dev only)
+npm run db:push      # Push schema directly (dev only)
 npm run db:studio    # Open Drizzle Studio
 ```
 
@@ -352,7 +352,7 @@ Test integration without breaking existing functionality:
 
 ```typescript
 import { drizzleDb } from './drizzle';
-import { newFeatureTable } from './drizzle/users';
+import { newFeatureTable } from './drizzle/schema';
 
 const result = await drizzleDb.insert(newFeatureTable)
   .values({ data: 'test' })
@@ -365,10 +365,10 @@ console.log('New table works:', result);
 
 ```typescript
 import { drizzleDb } from './drizzle';
-import { existingUsers } from './drizzle/users';
+import { existingUsers } from './drizzle/schema';
 
-const users = await drizzleDb.select().from(existingUsers);
-console.log('Existing table accessible:', users);
+const schema = await drizzleDb.select().from(existingUsers);
+console.log('Existing table accessible:', schema);
 ```
 
 ### 7.3. Verify Old ORM Still Works
@@ -376,7 +376,7 @@ console.log('Existing table accessible:', users);
 ```typescript
 import { db as oldDb } from './lib/your-orm';
 
-const oldQuery = await oldDb.users.findMany();
+const oldQuery = await oldDb.schema.findMany();
 console.log('Old ORM still works:', oldQuery);
 ```
 

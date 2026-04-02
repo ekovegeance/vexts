@@ -121,7 +121,7 @@ ISR (Incremental Static Regeneration) uses filesystem caching by default. This *
 
 - Instance A regenerates page → saves to its local disk
 - Instance B serves stale page → doesn't see Instance A's cache
-- Load balancer sends users to random instances → inconsistent content
+- Load balancer sends schema to random instances → inconsistent content
 
 ### Solution: Custom Cache Handler
 

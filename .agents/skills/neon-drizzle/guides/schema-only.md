@@ -1,7 +1,7 @@
 # Schema Creation and Modification
 
 > **Complete Walkthrough**: This is a self-contained, step-by-step guide with its own numbered phases (Phase 1-6).
-> Follow each phase in order for users design, modification, and migration workflows.
+> Follow each phase in order for schema design, modification, and migration workflows.
 
 Guide for creating or modifying database schemas with Drizzle.
 
@@ -23,9 +23,9 @@ Guide for creating or modifying database schemas with Drizzle.
 
 When following this guide, I will track these high-level tasks:
 
-- [ ] Design users using appropriate patterns (tables, relationships, types)
-- [ ] Apply common users patterns (server, soft deletes, enums, JSON)
-- [ ] Implement users modifications (add/rename/drop columns, change types)
+- [ ] Design schema using appropriate patterns (tables, relationships, types)
+- [ ] Apply common schema patterns (server, soft deletes, enums, JSON)
+- [ ] Implement schema modifications (add/rename/drop columns, change types)
 - [ ] Add indexes and constraints for performance and data integrity
 - [ ] Generate and apply migrations
 - [ ] Verify changes and test with queries
@@ -135,7 +135,7 @@ export const postsRelations = relations(posts, ({ one }) => ({
 ```typescript
 import { pgTable, serial, varchar, timestamp, boolean } from 'drizzle-orm/pg-core';
 
-export const users = pgTable('users', {
+export const schema = pgTable('schema', {
   id: serial('id').primaryKey(),
   email: varchar('email', { length: 255 }).notNull().unique(),
   passwordHash: varchar('password_hash', { length: 255 }),
@@ -200,9 +200,9 @@ export const products = pgTable('products', {
 
 ### 3.1. Adding Columns
 
-**Step 1:** Update users:
+**Step 1:** Update schema:
 ```typescript
-export const users = pgTable('users', {
+export const schema = pgTable('schema', {
   id: serial('id').primaryKey(),
   email: varchar('email', { length: 255 }).notNull(),
   phoneNumber: varchar('phone_number', { length: 20 }), // NEW
@@ -224,9 +224,9 @@ export DATABASE_URL="$(grep DATABASE_URL .env.local | cut -d '=' -f2)" && \
 
 **Important:** Drizzle sees renames as drop + add. Manual migration required.
 
-**Step 1:** Update users:
+**Step 1:** Update schema:
 ```typescript
-export const users = pgTable('users', {
+export const schema = pgTable('schema', {
   id: serial('id').primaryKey(),
   fullName: varchar('full_name', { length: 255 }), // was 'name'
 });
@@ -240,11 +240,11 @@ export const users = pgTable('users', {
 **Step 3:** Edit migration file manually:
 ```sql
 -- Change from:
--- ALTER TABLE users DROP COLUMN name;
--- ALTER TABLE users ADD COLUMN full_name VARCHAR(255);
+-- ALTER TABLE schema DROP COLUMN name;
+-- ALTER TABLE schema ADD COLUMN full_name VARCHAR(255);
 
 -- To:
-ALTER TABLE users RENAME COLUMN name TO full_name;
+ALTER TABLE schema RENAME COLUMN name TO full_name;
 ```
 
 **Step 4:** Apply migration:
@@ -254,9 +254,9 @@ ALTER TABLE users RENAME COLUMN name TO full_name;
 
 ### 3.3. Dropping Columns
 
-**Step 1:** Remove from users:
+**Step 1:** Remove from schema:
 ```typescript
-export const users = pgTable('users', {
+export const schema = pgTable('schema', {
   id: serial('id').primaryKey(),
   email: varchar('email', { length: 255 }).notNull(),
   // removed: phoneNumber
@@ -273,7 +273,7 @@ export const users = pgTable('users', {
 
 ### 3.4. Changing Column Types
 
-**Step 1:** Update users:
+**Step 1:** Update schema:
 ```typescript
 export const posts = pgTable('posts', {
   id: serial('id').primaryKey(),
@@ -321,7 +321,7 @@ export const posts = pgTable('posts', {
 
 **Single column:**
 ```typescript
-export const users = pgTable('users', {
+export const schema = pgTable('schema', {
   id: serial('id').primaryKey(),
   email: varchar('email', { length: 255 }).notNull().unique(),
 });
@@ -358,7 +358,7 @@ export const products = pgTable('products', {
 
 ### 5.1. Generate Migration
 
-After any users changes:
+After any schema changes:
 ```bash
 [package-manager] drizzle-kit generate
 ```
@@ -388,7 +388,7 @@ psql $DATABASE_URL -c "\d table_name"
 **Test with queries:**
 ```typescript
 import { db } from './src/db';
-import { tableName } from './src/db/users';
+import { tableName } from './src/db/schema';
 
 const result = await db.select().from(tableName);
 console.log('Schema works:', result);
@@ -397,7 +397,7 @@ console.log('Schema works:', result);
 ## Phase 6: Advanced Patterns
 
 For complex schemas, see:
-- `templates/users-example.ts` - Multi-table examples with relations
+- `templates/schema-example.ts` - Multi-table examples with relations
 - `references/migrations.md` - Advanced migration patterns
 
 ## Common Issues
@@ -408,7 +408,7 @@ For complex schemas, see:
 
 ## Next Steps
 
-After users creation:
+After schema creation:
 1. Run migrations (see above)
 2. Create queries (see `references/query-patterns.md`)
 3. Add validation (use Zod or similar)

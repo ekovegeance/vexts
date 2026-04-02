@@ -46,7 +46,7 @@ Discover all routes by scanning filesystem:
 { "name": "get_routes", "arguments": {} }
 // Optional: { "name": "get_routes", "arguments": { "routerType": "app" } }
 ```
-Returns: `{ "appRouter": ["/", "/api/users/[id]", ...], "pagesRouter": [...] }`
+Returns: `{ "appRouter": ["/", "/api/schema/[id]", ...], "pagesRouter": [...] }`
 
 #### `get_project_metadata`
 Get project path and dev server URL:

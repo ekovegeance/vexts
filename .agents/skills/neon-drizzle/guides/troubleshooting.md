@@ -46,7 +46,7 @@ import { config } from 'dotenv';
 config({ path: '.env.local' });
 
 export default defineConfig({
-  users: './src/db/users.ts',
+  schema: './src/db/schema.ts',
   out: './src/db/migrations',
   dialect: 'postgresql',
   dbCredentials: {
@@ -85,7 +85,7 @@ mkdir -p src/db/migrations
 
 **Symptom:**
 ```
-Error: column "name" of relation "users" already exists
+Error: column "name" of relation "schema" already exists
 ```
 
 **Cause:** Trying to add a column that already exists in the database.
@@ -100,14 +100,14 @@ rm src/db/migrations/[latest-migration-file].sql
 
 **Option 2: Drop and recreate table (dev only, DATA LOSS)**
 ```bash
-psql $DATABASE_URL -c "DROP TABLE users CASCADE;"
+psql $DATABASE_URL -c "DROP TABLE schema CASCADE;"
 [package-manager] drizzle-kit migrate
 ```
 
 **Option 3: Manual migration (production)**
 Edit the migration file to check if column exists:
 ```sql
-ALTER TABLE users
+ALTER TABLE schema
   ADD COLUMN IF NOT EXISTS name VARCHAR(255);
 ```
 
@@ -273,7 +273,7 @@ export const db = drizzle(pool);
 
 **Symptom:**
 ```typescript
-const user = await db.insert(users).values({
+const user = await db.insert(schema).values({
   id: 1, // Error here
   email: 'test@example.com',
 });
@@ -285,7 +285,7 @@ const user = await db.insert(users).values({
 
 Remove `id` from insert (it's auto-generated):
 ```typescript
-const user = await db.insert(users).values({
+const user = await db.insert(schema).values({
   email: 'test@example.com',
 });
 ```
@@ -294,17 +294,17 @@ const user = await db.insert(users).values({
 
 **Symptom:**
 ```typescript
-const user = await db.select().from(users);
+const user = await db.select().from(schema);
 console.log(user[0].nonExistentField); // Error
 ```
 
-**Cause:** Column not defined in users.
+**Cause:** Column not defined in schema.
 
 **Solution:**
 
-Add column to users:
+Add column to schema:
 ```typescript
-export const users = pgTable('users', {
+export const schema = pgTable('schema', {
   id: serial('id').primaryKey(),
   nonExistentField: text('non_existent_field'),
 });
@@ -318,7 +318,7 @@ Then regenerate and apply migration.
 
 **Symptom:**
 ```
-Error: relation "users" does not exist
+Error: relation "schema" does not exist
 ```
 
 **Cause:** Table not created in database yet.
@@ -351,7 +351,7 @@ Regenerate and apply migrations:
 
 **2. Wrong table name in query**
 
-Check users definition vs query.
+Check schema definition vs query.
 
 **3. Case sensitivity**
 
@@ -377,7 +377,7 @@ See `references/adapters.md`.
 **Option 2: Use batch operations**
 ```typescript
 await db.batch([
-  db.insert(users).values({ email: 'test1@example.com' }),
+  db.insert(schema).values({ email: 'test1@example.com' }),
   db.insert(posts).values({ title: 'Test' }),
 ]);
 ```
@@ -421,10 +421,10 @@ const postsWithAuthors = await db.query.posts.findMany({
 
 Select only needed columns:
 ```typescript
-const users = await db.select({
-  id: users.id,
-  email: users.email,
-}).from(users);
+const schema = await db.select({
+  id: schema.id,
+  email: schema.email,
+}).from(schema);
 ```
 
 ### Connection Timeout
@@ -450,7 +450,7 @@ const pool = new Pool({
 **3. Add query timeout:**
 ```typescript
 const result = await Promise.race([
-  db.select().from(users),
+  db.select().from(schema),
   new Promise((_, reject) =>
     setTimeout(() => reject(new Error('Query timeout')), 5000)
   ),

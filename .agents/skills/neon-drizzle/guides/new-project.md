@@ -41,7 +41,7 @@ When following this guide, I will track these high-level tasks:
 - [ ] Provision Neon database (list projects, create if needed, get connection string)
 - [ ] Write connection string to environment file and verify
 - [ ] Create Drizzle configuration files (drizzle.config.ts, db connection)
-- [ ] Generate users based on app type
+- [ ] Generate schema based on app type
 - [ ] Run and verify migrations
 - [ ] Add Neon Drizzle best practices to project docs
 
@@ -69,7 +69,7 @@ grep '"vite"' package.json      # → Vite
 **Check Existing Setup:**
 ```bash
 ls drizzle.config.ts   # Already configured?
-ls src/db/users.ts    # Schema exists?
+ls src/db/schema.ts    # Schema exists?
 ```
 
 **Check Environment Files:**
@@ -123,7 +123,7 @@ import { config } from 'dotenv';
 config({ path: '.env.local' });
 
 export default defineConfig({
-  users: './src/db/users.ts',
+  schema: './src/db/schema.ts',
   out: './src/db/migrations',
   dialect: 'postgresql',
   dbCredentials: {
@@ -141,7 +141,7 @@ import { config } from 'dotenv';
 config({ path: '.env' });
 
 export default defineConfig({
-  users: './src/db/users.ts',
+  schema: './src/db/schema.ts',
   out: './src/db/migrations',
   dialect: 'postgresql',
   dbCredentials: {
@@ -183,7 +183,7 @@ See `templates/db-http.ts` and `templates/db-websocket.ts` for complete examples
 
 ## Phase 4: Schema Generation
 
-Based on app type, create appropriate users:
+Based on app type, create appropriate schema:
 
 ### 4.1. Common Patterns
 
@@ -191,7 +191,7 @@ Based on app type, create appropriate users:
 ```typescript
 import { pgTable, serial, text, boolean, timestamp, varchar } from 'drizzle-orm/pg-core';
 
-export const users = pgTable('users', {
+export const schema = pgTable('schema', {
   id: serial('id').primaryKey(),
   email: varchar('email', { length: 255 }).notNull().unique(),
   name: varchar('name', { length: 255 }).notNull(),
@@ -200,7 +200,7 @@ export const users = pgTable('users', {
 
 export const todos = pgTable('todos', {
   id: serial('id').primaryKey(),
-  userId: serial('user_id').notNull().references(() => users.id),
+  userId: serial('user_id').notNull().references(() => schema.id),
   title: text('title').notNull(),
   completed: boolean('completed').default(false),
   createdAt: timestamp('created_at').defaultNow(),
@@ -212,7 +212,7 @@ export const todos = pgTable('todos', {
 import { pgTable, serial, text, timestamp, varchar, index } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
 
-export const users = pgTable('users', {
+export const schema = pgTable('schema', {
   id: serial('id').primaryKey(),
   email: varchar('email', { length: 255 }).notNull().unique(),
   name: varchar('name', { length: 255 }).notNull(),
@@ -221,7 +221,7 @@ export const users = pgTable('users', {
 
 export const posts = pgTable('posts', {
   id: serial('id').primaryKey(),
-  userId: serial('user_id').notNull().references(() => users.id),
+  userId: serial('user_id').notNull().references(() => schema.id),
   title: text('title').notNull(),
   content: text('content').notNull(),
   createdAt: timestamp('created_at').defaultNow(),
@@ -229,19 +229,19 @@ export const posts = pgTable('posts', {
   userIdIdx: index('posts_user_id_idx').on(table.userId),
 }));
 
-export const usersRelations = relations(users, ({ many }) => ({
+export const usersRelations = relations(schema, ({ many }) => ({
   posts: many(posts),
 }));
 
 export const postsRelations = relations(posts, ({ one }) => ({
-  author: one(users, {
+  author: one(schema, {
     fields: [posts.userId],
-    references: [users.id],
+    references: [schema.id],
   }),
 }));
 ```
 
-See `templates/users-example.ts` for more complex examples.
+See `templates/schema-example.ts` for more complex examples.
 
 ## Phase 5: Migrations
 
@@ -282,9 +282,9 @@ Add these convenience scripts to your `package.json`:
 
 **Usage:**
 ```bash
-npm run db:generate  # Generate migrations from users changes
+npm run db:generate  # Generate migrations from schema changes
 npm run db:migrate   # Apply pending migrations
-npm run db:push      # Push users directly (dev only)
+npm run db:push      # Push schema directly (dev only)
 npm run db:studio    # Open Drizzle Studio
 ```
 

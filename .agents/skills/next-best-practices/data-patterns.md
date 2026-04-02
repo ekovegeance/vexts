@@ -27,17 +27,17 @@ Need to fetch data?
 Fetch data directly in Server Components - no API layer needed.
 
 ```tsx
-// app/users/page.tsx
+// app/schema/page.tsx
 async function UsersPage() {
   // Direct database access - no API round-trip
-  const users = await db.user.findMany();
+  const schema = await db.user.findMany();
 
   // Or fetch from external API
   const posts = await fetch('https://api.example.com/posts').then(r => r.json());
 
   return (
     <ul>
-      {users.map(user => <li key={user.id}>{user.name}</li>)}
+      {schema.map(user => <li key={user.id}>{user.name}</li>)}
     </ul>
   );
 }

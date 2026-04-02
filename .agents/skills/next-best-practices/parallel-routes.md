@@ -180,7 +180,7 @@ Matchers match **route segments**, not filesystem paths:
 
 ## Handling Hard Navigation
 
-When users directly visit `/photos/123` (bookmark, refresh, shared link):
+When schema directly visit `/photos/123` (bookmark, refresh, shared link):
 - The intercepting route is bypassed
 - The full `photos/[id]/page.tsx` renders
 - Modal doesn't appear (expected behavior)

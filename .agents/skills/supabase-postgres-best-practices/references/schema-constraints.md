@@ -1,8 +1,8 @@
 ---
 title: Add Constraints Safely in Migrations
 impact: HIGH
-impactDescription: Prevents migration failures and enables idempotent users changes
-tags: constraints, migrations, users, alter-table
+impactDescription: Prevents migration failures and enables idempotent schema changes
+tags: constraints, migrations, schema, alter-table
 ---
 
 ## Add Constraints Safely in Migrations
@@ -44,7 +44,7 @@ begin
     select 1 from pg_constraint
     where conname = 'check_age_positive'
   ) then
-    alter table users add constraint check_age_positive check (age > 0);
+    alter table schema add constraint check_age_positive check (age > 0);
   end if;
 end $$;
 

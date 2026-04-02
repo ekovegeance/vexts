@@ -6,7 +6,7 @@ import React, {ReactNode} from "react";
 import {ThemeProvider} from "@/components/theme-provider"
 import {cn} from "@/lib/utils";
 import {env} from "@/lib/env";
-import {TRPCReactProvider} from "@/trpc/client";
+import {TRPCProvider} from "@/trpc/client";
 
 const geist = Geist({subsets: ['latin'], variable: '--font-sans'});
 
@@ -20,9 +20,7 @@ export const metadata: Metadata = {
     description: "An example application using Better Auth",
 };
 
-export default function RootLayout({
-                                       children,
-                                   }: Readonly<{ children: ReactNode }>) {
+export default function RootLayout({children,}: Readonly<{ children: ReactNode }>) {
     return (
         <html lang="en" className={cn("font-sans", geist.variable)}>
         <body
@@ -34,9 +32,9 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
         >
-            <TRPCReactProvider>
+            <TRPCProvider>
                 {children}
-            </TRPCReactProvider>
+            </TRPCProvider>
             <Toaster richColors={true}/>
         </ThemeProvider>
         </body>

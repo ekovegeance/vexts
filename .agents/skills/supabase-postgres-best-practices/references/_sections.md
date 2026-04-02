@@ -18,7 +18,7 @@ Take the examples below as pure demonstrative. Replace each section with the act
 **Impact:** CRITICAL
 **Description:** Row-Level Security policies, privilege management, and authentication patterns.
 
-## 4. Schema Design (users)
+## 4. Schema Design (schema)
 **Impact:** HIGH
 **Description:** Table design, index strategies, partitioning, and data type selection. Foundation for long-term performance.
 

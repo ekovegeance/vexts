@@ -5,10 +5,10 @@ Create API endpoints with `route.ts` files.
 ## Basic Usage
 
 ```tsx
-// app/api/users/route.ts
+// app/api/schema/route.ts
 export async function GET() {
-  const users = await getUsers()
-  return Response.json(users)
+  const schema = await getUsers()
+  return Response.json(schema)
 }
 
 export async function POST(request: Request) {
@@ -29,10 +29,10 @@ export async function POST(request: Request) {
 ```
 app/
 ├── api/
-│   └── users/
-│       └── route.ts    # /api/users
-└── users/
-    ├── page.tsx        # /users (page)
+│   └── schema/
+│       └── route.ts    # /api/schema
+└── schema/
+    ├── page.tsx        # /schema (page)
     └── route.ts        # Warning: Conflicts with page.tsx!
 ```
 
@@ -40,11 +40,11 @@ If you need both a page and an API at the same path, use different paths:
 
 ```
 app/
-├── users/
-│   └── page.tsx        # /users (page)
+├── schema/
+│   └── page.tsx        # /schema (page)
 └── api/
-    └── users/
-        └── route.ts    # /api/users (API)
+    └── schema/
+        └── route.ts    # /api/schema (API)
 ```
 
 ## Environment Behavior
@@ -71,7 +71,7 @@ export async function GET() {
 ## Dynamic Route Handlers
 
 ```tsx
-// app/api/users/[id]/route.ts
+// app/api/schema/[id]/route.ts
 export async function GET(
   request: Request,
   { params }: { params: Promise<{ id: string }> }

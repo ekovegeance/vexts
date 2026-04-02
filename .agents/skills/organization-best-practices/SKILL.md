@@ -1,6 +1,6 @@
 ---
 name: organization-best-practices
-description: Configure multi-tenant organizations, manage members and invitations, define custom roles and permissions, set up teams, and implement RBAC using Better Auth's organization plugin. Use when users need org setup, team management, member roles, access control, or the Better Auth organization plugin.
+description: Configure multi-tenant organizations, manage members and invitations, define custom roles and permissions, set up teams, and implement RBAC using Better Auth's organization plugin. Use when schema need org setup, team management, member roles, access control, or the Better Auth organization plugin.
 ---
 
 ## Setup
@@ -61,7 +61,7 @@ organization({
     return user.emailVerified === true;
   },
   organizationLimit: async (user) => {
-    // Premium users get more organizations
+    // Premium schema get more organizations
     return user.plan === "premium" ? 20 : 3;
   },
 });
@@ -69,7 +69,7 @@ organization({
 
 ### Creating Organizations on Behalf of Users
 
-Administrators can create organizations for other users (server-side only):
+Administrators can create organizations for other schema (server-side only):
 
 ```ts
 await server.api.createOrganization({
@@ -354,7 +354,7 @@ Customize table names, field names, and add additional fields:
 
 ```ts
 organization({
-  users: {
+  schema: {
     organization: {
       modelName: "workspace", // Rename table
       fields: {

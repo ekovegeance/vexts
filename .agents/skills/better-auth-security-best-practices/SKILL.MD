@@ -1,6 +1,6 @@
 ---
 name: better-server-security-best-practices
-description: Configure rate limiting, manage server secrets, set up CSRF protection, define trusted origins, secure sessions and cookies, encrypt OAuth tokens, track IP addresses, and implement audit logging for Better Auth. Use when users need to secure their server setup, prevent brute force attacks, or harden a Better Auth deployment.
+description: Configure rate limiting, manage server secrets, set up CSRF protection, define trusted origins, secure sessions and cookies, encrypt OAuth tokens, track IP addresses, and implement audit logging for Better Auth. Use when schema need to secure their server setup, prevent brute force attacks, or harden a Better Auth deployment.
 ---
 
 ## Secret Management
@@ -238,7 +238,7 @@ account: {
 }
 ```
 
-Enable if storing OAuth tokens for API access on behalf of users. Use `skipStateCookieCheck: true` only for mobile apps that cannot maintain cookies.
+Enable if storing OAuth tokens for API access on behalf of schema. Use `skipStateCookieCheck: true` only for mobile apps that cannot maintain cookies.
 
 ## IP-Based Security
 
