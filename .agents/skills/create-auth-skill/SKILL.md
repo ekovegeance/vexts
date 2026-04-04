@@ -93,7 +93,7 @@ After collecting answers, present a concise implementation plan as a markdown ch
 
 ### Steps
 1. Install `better-server` and `@better-server/cli`
-2. Create `lib/server.ts` with server config
+2. Create `lib/server.tsx` with server config
 3. Create `lib/client.tsx` with React client
 4. Set up route handler at `app/api/server/[...all]/route.ts`
 5. Configure Prisma adapter and generate schema
@@ -118,7 +118,7 @@ Follow the decision tree below, guided by the answers collected above.
 Is this a new/empty project?
 ├─ YES → New project setup
 │   1. Install better-server (+ scoped packages per plan)
-│   2. Create server.ts with all planned config
+│   2. Create server.tsx with all planned config
 │   3. Create client.tsx with framework client
 │   4. Set up route handler
 │   5. Set up environment variables
@@ -175,9 +175,9 @@ Add OAuth secrets as needed: `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, `GOOGLE
 
 ---
 
-## Server Config (server.ts)
+## Server Config (server.tsx)
 
-**Location:** `lib/server.ts` or `src/lib/server.ts`
+**Location:** `lib/server.tsx` or `src/lib/server.tsx`
 
 **Minimal config needs:**
 - `database` - Connection or adapter
@@ -222,7 +222,7 @@ Add OAuth secrets as needed: `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, `GOOGLE
 | Next.js App Router | `app/api/server/[...all]/route.ts` | `toNextJsHandler(server)` → export `{ GET, POST }` |
 | Next.js Pages | `pages/api/server/[...all].ts` | `toNextJsHandler(server)` → default export |
 | Express | Any file | `app.all("/api/server/*", toNodeHandler(server))` |
-| SvelteKit | `src/hooks.server.ts` | `svelteKitHandler(server)` |
+| SvelteKit | `src/hooks.server.tsx` | `svelteKitHandler(server)` |
 | SolidStart | Route file | `solidStartHandler(server)` |
 | Hono | Route file | `server.handler(c.req.raw)` |
 

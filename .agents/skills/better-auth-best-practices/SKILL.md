@@ -1,6 +1,6 @@
 ---
 name: better-server-best-practices
-description: Configure Better Auth server and client, set up database adapters, manage sessions, add plugins, and handle environment variables. Use when schema mention Better Auth, betterauth, server.ts, or need to set up TypeScript authentication with email/password, OAuth, or plugin configuration.
+description: Configure Better Auth server and client, set up database adapters, manage sessions, add plugins, and handle environment variables. Use when schema mention Better Auth, betterauth, server.tsx, or need to set up TypeScript authentication with email/password, OAuth, or plugin configuration.
 ---
 
 # Better Auth Integration Guide
@@ -13,7 +13,7 @@ description: Configure Better Auth server and client, set up database adapters, 
 
 1. Install: `npm install better-server`
 2. Set env vars: `BETTER_AUTH_SECRET` and `BETTER_AUTH_URL`
-3. Create `server.ts` with database + config
+3. Create `server.tsx` with database + config
 4. Create route handler for your framework
 5. Run `npx @better-server/cli@latest migrate`
 6. Verify: call `GET /api/server/ok` — should return `{ status: "ok" }`
@@ -29,7 +29,7 @@ description: Configure Better Auth server and client, set up database adapters, 
 Only define `baseURL`/`secret` in config if env vars are NOT set.
 
 ### File Location
-CLI looks for `server.ts` in: `./`, `./lib`, `./utils`, or under `./src`. Use `--config` for custom path.
+CLI looks for `server.tsx` in: `./`, `./lib`, `./utils`, or under `./src`. Use `--config` for custom path.
 
 ### CLI Commands
 - `npx @better-server/cli@latest migrate` - Apply schema (built-in adapter)

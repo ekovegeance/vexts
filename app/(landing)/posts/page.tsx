@@ -1,10 +1,13 @@
 import React from 'react';
 import Post from "@/components/posts/post";
 import {Button} from "@/components/ui/button";
-import {Mails} from "lucide-react";
+import {Plus} from "lucide-react";
 import {Separator} from "@/components/ui/separator";
+import { trpc, HydrateClient, prefetch} from "@/trpc/server"
 
 export default function PostsPage() {
+    prefetch(trpc.posts.list.queryOptions({ limit: 6, offset: 0 }));
+
     return (
         <div className="mx-auto max-w-screen-xl px-6 py-16">
             <div className="flex items-end justify-between gap-4">
@@ -19,15 +22,15 @@ export default function PostsPage() {
                 <Button
                     className="hidden gap-3 sm:inline-flex"
                     size="lg"
-                    variant="secondary"
                 >
-                    <Mails />
-                    <span className="hidden lg:inline">Subscribe to our newsletter</span>
-                    <span className="hidden md:inline lg:hidden">Subscribe</span>
+                    <Plus/>
+                    Create Post
                 </Button>
             </div>
             <Separator className="mt-7 mb-10" />
+            <HydrateClient>
             <Post/>
+            </HydrateClient>
         </div>
     );
 }

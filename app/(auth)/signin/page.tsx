@@ -1,9 +1,8 @@
 import React from 'react';
 import {AudioWaveform} from "lucide-react";
 import {SignInForm} from "@/components/auth/signin-form";
-import Image from "next/image";
-import placeholder from "@/public/placeholder.png";
 import Link from "next/link";
+import {PlaceholderPattern} from "@/components/ui/placeholder-pattern";
 
 export default function SignInPage() {
     return (
@@ -25,11 +24,7 @@ export default function SignInPage() {
                 </div>
             </div>
             <div className="bg-muted relative hidden lg:block">
-                <Image
-                    src={placeholder}
-                    alt="Image"
-                    className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
-                />
+                <PlaceholderPattern className="absolute inset-0 size-full stroke-neutral-900/20 dark:stroke-neutral-100/20" />
             </div>
         </div>
     );

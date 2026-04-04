@@ -9,7 +9,7 @@ import { postRouter } from "@/trpc/routers/post";
  */
 export const appRouter = router( {
 
-    post: postRouter
+    posts: postRouter
 
 });
 

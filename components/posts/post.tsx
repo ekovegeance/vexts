@@ -8,7 +8,7 @@ import postImage from "@/public/post.png"
 import { trpc } from "@/trpc/client";
 
 export default function Post() {
-    const { data: posts, isLoading} = trpc.post.list.useQuery({ limit: 6, offset: 0 });
+    const { data: posts, isLoading} = trpc.posts.list.useQuery({ limit: 6, offset: 0 });
 
     if (isLoading) {
         return <p>Loading</p>
