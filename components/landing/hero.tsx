@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Author } from "@/components/landing/author";
-import { FileCode2, Triangle } from "lucide-react";
+import { FileCode2 } from "lucide-react";
+import { SiVercel } from "react-icons/si";
 
 export default function Hero() {
     return (
@@ -28,7 +29,7 @@ export default function Hero() {
                 </div>
                 <div>
                     <Button size="lg" variant="secondary">
-                        <Triangle />
+                        <SiVercel />
                         <Link href="https://vercel.com/new/clone?s=https%3A%2F%2Fgithub.com%2Fekovegeance%2Fvexts">
                             Deploy Now
                         </Link>

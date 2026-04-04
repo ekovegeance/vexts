@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3187be8f-7757-495a-87a1-881de46cb89b" name="Changes" comment="refactor: rename client to auth in authentication-related files and update usage across the application">
+    <list default="true" id="3187be8f-7757-495a-87a1-881de46cb89b" name="Changes" comment="refactor: simplify layout structure and update metadata description">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(landing)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -239,7 +237,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775270027903</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="refactor: simplify layout structure and update metadata description">
+      <option name="closed" value="true" />
+      <created>1775272653782</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1775272653782</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,6 +276,7 @@
     <MESSAGE value="fix: update README setup instructions and enhance tech stack section for clarity" />
     <MESSAGE value="feat: update author and features sections with new content and improved layout" />
     <MESSAGE value="refactor: rename client to auth in authentication-related files and update usage across the application" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: rename client to auth in authentication-related files and update usage across the application" />
+    <MESSAGE value="refactor: simplify layout structure and update metadata description" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: simplify layout structure and update metadata description" />
   </component>
 </project>
