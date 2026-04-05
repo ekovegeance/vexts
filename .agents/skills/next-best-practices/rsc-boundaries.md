@@ -14,21 +14,21 @@ Client components **cannot** be async functions. Only Server Components can be a
 // Bad: async client component
 'use client'
 export default async function UserProfile() {
-  const user = await getUser() // Cannot await in client component
-  return <div>{user.name}</div>
+  const auth = await getUser() // Cannot await in client component
+  return <div>{auth.name}</div>
 }
 
 // Good: Remove async, fetch data in parent server component
 // page.tsx (server component - no 'use client')
 export default async function Page() {
-  const user = await getUser()
-  return <UserProfile user={user} />
+  const auth = await getUser()
+  return <UserProfile auth={auth} />
 }
 
 // UserProfile.tsx (client component)
 'use client'
-export function UserProfile({ user }: { user: User }) {
-  return <div>{user.name}</div>
+export function UserProfile({ auth }: { auth: User }) {
+  return <div>{auth.name}</div>
 }
 ```
 
@@ -103,12 +103,12 @@ export function PostCard({ createdAt }: { createdAt: string }) {
 
 ```tsx
 // Bad: Class instance
-const user = new UserModel(data)
-<ClientProfile user={user} /> // Methods will be stripped
+const auth = new UserModel(data)
+<ClientProfile auth={auth} /> // Methods will be stripped
 
 // Good: Pass plain object
-const user = await getUser()
-<ClientProfile user={{ id: user.id, name: user.name }} />
+const auth = await getUser()
+<ClientProfile auth={{ id: auth.id, name: auth.name }} />
 ```
 
 ```tsx

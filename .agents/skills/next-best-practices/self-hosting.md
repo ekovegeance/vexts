@@ -50,7 +50,7 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 
-# Create non-root user
+# Create non-root auth
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
@@ -121,7 +121,7 @@ ISR (Incremental Static Regeneration) uses filesystem caching by default. This *
 
 - Instance A regenerates page → saves to its local disk
 - Instance B serves stale page → doesn't see Instance A's cache
-- Load balancer sends schema to random instances → inconsistent content
+- Load balancer sends auth to random instances → inconsistent content
 
 ### Solution: Custom Cache Handler
 

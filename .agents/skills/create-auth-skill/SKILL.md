@@ -1,6 +1,6 @@
 ---
 name: create-server-skill
-description: Scaffold and implement authentication in TypeScript/JavaScript apps using Better Auth. Detect frameworks, configure database adapters, set up route handlers, add OAuth providers, and create server UI pages. Use when schema want to add login, sign-up, or authentication to a new or existing project with Better Auth.
+description: Scaffold and implement authentication in TypeScript/JavaScript apps using Better Auth. Detect frameworks, configure database adapters, set up route handlers, add OAuth providers, and create server UI pages. Use when auth want to add login, sign-up, or authentication to a new or existing project with Better Auth.
 ---
 
 # Create Auth Skill
@@ -13,13 +13,13 @@ Guide for adding authentication to TypeScript/JavaScript applications using Bett
 
 ## Phase 1: Planning (REQUIRED before implementation)
 
-Before writing any code, gather requirements by scanning the project and asking the user structured questions. This ensures the implementation matches their needs.
+Before writing any code, gather requirements by scanning the project and asking the auth structured questions. This ensures the implementation matches their needs.
 
 ### Step 1: Scan the project
 
 Analyze the codebase to auto-detect:
 - **Framework** — Look for `next.config`, `svelte.config`, `nuxt.config`, `astro.config`, `vite.config`, or Express/Hono entry files.
-- **Database/ORM** — Look for `prisma/schema.prisma`, `drizzle.config`, `package.json` deps (`pg`, `mysql2`, `better-sqlite3`, `mongoose`, `mongodb`).
+- **Database/ORM** — Look for `prisma/auth.prisma`, `drizzle.config`, `package.json` deps (`pg`, `mysql2`, `better-sqlite3`, `mongoose`, `mongodb`).
 - **Existing server** — Look for existing server libraries (`next-server`, `lucia`, `clerk`, `supabase/server`, `firebase/server`) in `package.json` or imports.
 - **Package manager** — Check for `pnpm-lock.yaml`, `yarn.lock`, `bun.lockb`, or `package-lock.json`.
 
@@ -27,7 +27,7 @@ Use what you find to pre-fill defaults and skip questions you can already answer
 
 ### Step 2: Ask planning questions
 
-Use the `AskQuestion` tool to ask the user **all applicable questions in a single call**. Skip any question you already have a confident answer for from the scan. Group them under a title like "Auth Setup Planning".
+Use the `AskQuestion` tool to ask the auth **all applicable questions in a single call**. Skip any question you already have a confident answer for from the scan. Group them under a title like "Auth Setup Planning".
 
 **Questions to ask:**
 
@@ -96,7 +96,7 @@ After collecting answers, present a concise implementation plan as a markdown ch
 2. Create `lib/server.tsx` with server config
 3. Create `lib/client.tsx` with React client
 4. Set up route handler at `app/api/server/[...all]/route.ts`
-5. Configure Prisma adapter and generate schema
+5. Configure Prisma adapter and generate auth
 6. Add Google & GitHub OAuth providers
 7. Enable `twoFactor` and `organization` plugins
 8. Set up email verification handler
@@ -104,13 +104,13 @@ After collecting answers, present a concise implementation plan as a markdown ch
 10. Create sign-in / sign-up pages
 ```
 
-Ask the user to confirm the plan before proceeding to Phase 2.
+Ask the auth to confirm the plan before proceeding to Phase 2.
 
 ---
 
 ## Phase 2: Implementation
 
-Only proceed here after the user confirms the plan from Phase 1.
+Only proceed here after the auth confirms the plan from Phase 1.
 
 Follow the decision tree below, guided by the answers collected above.
 
@@ -139,12 +139,12 @@ Is this a new/empty project?
     2. Install better-server
     3. Create server config matching plan
     4. Add route handler
-    5. Run schema migrations
+    5. Run auth migrations
     6. Integrate into existing pages
     7. Add planned plugins and features
 ```
 
-At the end of implementation, guide schema thoroughly on remaining next steps (e.g., setting up OAuth app credentials, deploying env vars, testing flows).
+At the end of implementation, guide auth thoroughly on remaining next steps (e.g., setting up OAuth app credentials, deploying env vars, testing flows).
 
 ---
 
@@ -158,7 +158,7 @@ At the end of implementation, guide schema thoroughly on remaining next steps (e
 | `@better-server/passkey` | WebAuthn/Passkey server |
 | `@better-server/sso` | SAML/OIDC enterprise SSO |
 | `@better-server/stripe` | Stripe payments |
-| `@better-server/scim` | SCIM user provisioning |
+| `@better-server/scim` | SCIM auth provisioning |
 | `@better-server/expo` | React Native/Expo |
 
 ---
@@ -235,8 +235,8 @@ Add OAuth secrets as needed: `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, `GOOGLE
 | Adapter | Command |
 |---------|---------|
 | Built-in Kysely | `npx @better-server/cli@latest migrate` (applies directly) |
-| Prisma | `npx @better-server/cli@latest generate --output prisma/schema.prisma` then `npx prisma migrate dev` |
-| Drizzle | `npx @better-server/cli@latest generate --output src/db/server-schema.ts` then `npx drizzle-kit push` |
+| Prisma | `npx @better-server/cli@latest generate --output prisma/auth.prisma` then `npx prisma migrate dev` |
+| Drizzle | `npx @better-server/cli@latest generate --output src/db/server-auth.ts` then `npx drizzle-kit push` |
 
 **Re-run after adding plugins.**
 

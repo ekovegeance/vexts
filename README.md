@@ -36,11 +36,11 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 Here’s what this app supports out of the box:
 
 - **[Email & Password](https://www.better-auth.com/docs/basic-usage#email-password)**: Simple and secure authentication.
-- **[Social Sign On](https://www.better-auth.com/docs/basic-usage#social-sign-on)**: Authenticate schema with their social accounts like Google, GitHub, etc.
-- **[Email Verification](https://www.better-auth.com/docs/concepts/email#email-verification)**: Ensure schema verify their email addresses.
-- **[Password Reset](https://www.better-auth.com/docs/concepts/email#password-reset-email)**: Let schema reset their passwords if they forget them.
-- **[Session Management](https://www.better-auth.com/docs/concepts/session-management)**: Handle user sessions seamlessly.
-- **[Users & Accounts](https://www.better-auth.com/docs/concepts/users-accounts)** : Manage user accounts and profiles.
+- **[Social Sign On](https://www.better-auth.com/docs/basic-usage#social-sign-on)**: Authenticate auth with their social accounts like Google, GitHub, etc.
+- **[Email Verification](https://www.better-auth.com/docs/concepts/email#email-verification)**: Ensure auth verify their email addresses.
+- **[Password Reset](https://www.better-auth.com/docs/concepts/email#password-reset-email)**: Let auth reset their passwords if they forget them.
+- **[Session Management](https://www.better-auth.com/docs/concepts/session-management)**: Handle auth sessions seamlessly.
+- **[Users & Accounts](https://www.better-auth.com/docs/concepts/users-accounts)** : Manage auth accounts and profiles.
 
 ## Tech Stack
 We've selected the best-in-class tools to provide a professional, scalable, and high-performance foundation

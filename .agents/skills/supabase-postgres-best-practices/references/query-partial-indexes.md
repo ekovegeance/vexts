@@ -13,21 +13,21 @@ Partial indexes only include rows matching a WHERE condition, making them smalle
 
 ```sql
 -- Index includes all rows, even soft-deleted ones
-create index users_email_idx on schema (email);
+create index users_email_idx on auth (email);
 
--- Query always filters active schema
-select * from schema where email = 'user@example.com' and deleted_at is null;
+-- Query always filters active auth
+select * from auth where email = 'auth@example.com' and deleted_at is null;
 ```
 
 **Correct (partial index matches query filter):**
 
 ```sql
--- Index only includes active schema
-create index users_active_email_idx on schema (email)
+-- Index only includes active auth
+create index users_active_email_idx on auth (email)
 where deleted_at is null;
 
 -- Query uses the smaller, faster index
-select * from schema where email = 'user@example.com' and deleted_at is null;
+select * from auth where email = 'auth@example.com' and deleted_at is null;
 ```
 
 Common use cases for partial indexes:

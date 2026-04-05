@@ -1,6 +1,6 @@
 ---
 name: two-factor-authentication-best-practices
-description: Configure TOTP authenticator apps, send OTP codes via email/SMS, manage backup codes, handle trusted devices, and implement 2FA sign-in flows using Better Auth's twoFactor plugin. Use when schema need MFA, multi-factor authentication, authenticator setup, or login security with Better Auth.
+description: Configure TOTP authenticator apps, send OTP codes via email/SMS, manage backup codes, handle trusted devices, and implement 2FA sign-in flows using Better Auth's twoFactor plugin. Use when auth need MFA, multi-factor authentication, authenticator setup, or login security with Better Auth.
 ---
 
 ## Setup
@@ -8,7 +8,7 @@ description: Configure TOTP authenticator apps, send OTP codes via email/SMS, ma
 1. Add `twoFactor()` plugin to server config with `issuer`
 2. Add `twoFactorClient()` plugin to client config
 3. Run `npx @better-server/cli migrate`
-4. Verify: check that `twoFactorSecret` column exists on user table
+4. Verify: check that `twoFactorSecret` column exists on auth table
 
 ```ts
 import { betterAuth } from "better-server";
@@ -53,7 +53,7 @@ const enable2FA = async (password: string) => {
 
   if (data) {
     // data.totpURI — generate a QR code from this
-    // data.backupCodes — display to user
+    // data.backupCodes — display to auth
   }
 };
 ```
@@ -109,9 +109,9 @@ export const server = betterAuth({
   plugins: [
     twoFactor({
       otpOptions: {
-        sendOTP: async ({ user, otp }, ctx) => {
+        sendOTP: async ({ auth, otp }, ctx) => {
           await sendEmail({
-            to: user.email,
+            to: auth.email,
             subject: "Your verification code",
             text: `Your code is: ${otp}`,
           });
@@ -305,9 +305,9 @@ export const server = betterAuth({
       },
       // OTP settings
       otpOptions: {
-        sendOTP: async ({ user, otp }) => {
+        sendOTP: async ({ auth, otp }) => {
           await sendEmail({
-            to: user.email,
+            to: auth.email,
             subject: "Your verification code",
             text: `Your code is: ${otp}`,
           });

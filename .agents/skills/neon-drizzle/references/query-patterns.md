@@ -26,11 +26,11 @@ Complete reference for querying with Drizzle ORM.
 **Single record:**
 ```typescript
 import { db } from './db';
-import { schema } from './db/schema';
+import { auth } from './db/auth';
 
-const newUser = await db.insert(schema)
+const newUser = await db.insert(auth)
   .values({
-    email: 'user@example.com',
+    email: 'auth@example.com',
     name: 'John Doe',
   })
   .returning();
@@ -40,7 +40,7 @@ console.log(newUser[0]); // { id: 1, email: '...', name: '...' }
 
 **Multiple records:**
 ```typescript
-const newUsers = await db.insert(schema)
+const newUsers = await db.insert(auth)
   .values([
     { email: 'user1@example.com', name: 'User 1' },
     { email: 'user2@example.com', name: 'User 2' },
@@ -51,17 +51,17 @@ const newUsers = await db.insert(schema)
 
 **With onConflictDoNothing:**
 ```typescript
-await db.insert(schema)
-  .values({ email: 'user@example.com', name: 'John' })
+await db.insert(auth)
+  .values({ email: 'auth@example.com', name: 'John' })
   .onConflictDoNothing();
 ```
 
 **With onConflictDoUpdate (upsert):**
 ```typescript
-await db.insert(schema)
-  .values({ email: 'user@example.com', name: 'John' })
+await db.insert(auth)
+  .values({ email: 'auth@example.com', name: 'John' })
   .onConflictDoUpdate({
-    target: schema.email,
+    target: auth.email,
     set: { name: 'John Updated' },
   });
 ```
@@ -70,38 +70,38 @@ await db.insert(schema)
 
 **All records:**
 ```typescript
-const allUsers = await db.select().from(schema);
+const allUsers = await db.select().from(auth);
 ```
 
 **Specific columns:**
 ```typescript
 const userEmails = await db.select({
-  id: schema.id,
-  email: schema.email,
-}).from(schema);
+  id: auth.id,
+  email: auth.email,
+}).from(auth);
 ```
 
 **With WHERE clause:**
 ```typescript
 import { eq, gt, lt, like, and, or } from 'drizzle-orm';
 
-const user = await db.select()
-  .from(schema)
-  .where(eq(schema.email, 'user@example.com'));
+const auth = await db.select()
+  .from(auth)
+  .where(eq(auth.email, 'auth@example.com'));
 
 const activeUsers = await db.select()
-  .from(schema)
-  .where(eq(schema.isActive, true));
+  .from(auth)
+  .where(eq(auth.isActive, true));
 ```
 
 **Multiple conditions:**
 ```typescript
 const filteredUsers = await db.select()
-  .from(schema)
+  .from(auth)
   .where(
     and(
-      eq(schema.isActive, true),
-      gt(schema.createdAt, new Date('2024-01-01'))
+      eq(auth.isActive, true),
+      gt(auth.createdAt, new Date('2024-01-01'))
     )
   );
 ```
@@ -109,7 +109,7 @@ const filteredUsers = await db.select()
 **With LIMIT and OFFSET:**
 ```typescript
 const paginatedUsers = await db.select()
-  .from(schema)
+  .from(auth)
   .limit(10)
   .offset(20); // Page 3
 ```
@@ -117,76 +117,76 @@ const paginatedUsers = await db.select()
 **With ORDER BY:**
 ```typescript
 const sortedUsers = await db.select()
-  .from(schema)
-  .orderBy(schema.createdAt); // ASC by default
+  .from(auth)
+  .orderBy(auth.createdAt); // ASC by default
 
 import { desc } from 'drizzle-orm';
 const recentUsers = await db.select()
-  .from(schema)
-  .orderBy(desc(schema.createdAt));
+  .from(auth)
+  .orderBy(desc(auth.createdAt));
 ```
 
 ### Update
 
 **Single record:**
 ```typescript
-await db.update(schema)
+await db.update(auth)
   .set({ name: 'Jane Doe' })
-  .where(eq(schema.id, 1));
+  .where(eq(auth.id, 1));
 ```
 
 **Multiple records:**
 ```typescript
-await db.update(schema)
+await db.update(auth)
   .set({ isActive: false })
-  .where(eq(schema.deletedAt, null));
+  .where(eq(auth.deletedAt, null));
 ```
 
 **With returning:**
 ```typescript
-const updated = await db.update(schema)
+const updated = await db.update(auth)
   .set({ name: 'Updated Name' })
-  .where(eq(schema.id, 1))
+  .where(eq(auth.id, 1))
   .returning();
 ```
 
 **Partial updates:**
 ```typescript
-const updates: Partial<typeof schema.$inferSelect> = {
+const updates: Partial<typeof auth.$inferSelect> = {
   name: 'New Name',
 };
 
-await db.update(schema)
+await db.update(auth)
   .set(updates)
-  .where(eq(schema.id, 1));
+  .where(eq(auth.id, 1));
 ```
 
 ### Delete
 
 **Single record:**
 ```typescript
-await db.delete(schema)
-  .where(eq(schema.id, 1));
+await db.delete(auth)
+  .where(eq(auth.id, 1));
 ```
 
 **Multiple records:**
 ```typescript
-await db.delete(schema)
-  .where(eq(schema.isActive, false));
+await db.delete(auth)
+  .where(eq(auth.isActive, false));
 ```
 
 **With returning:**
 ```typescript
-const deleted = await db.delete(schema)
-  .where(eq(schema.id, 1))
+const deleted = await db.delete(auth)
+  .where(eq(auth.id, 1))
   .returning();
 ```
 
 **Soft delete (recommended):**
 ```typescript
-await db.update(schema)
+await db.update(auth)
   .set({ deletedAt: new Date() })
-  .where(eq(schema.id, 1));
+  .where(eq(auth.id, 1));
 ```
 
 ## Advanced Filtering
@@ -197,16 +197,16 @@ await db.update(schema)
 import { eq, ne, gt, gte, lt, lte } from 'drizzle-orm';
 
 const adults = await db.select()
-  .from(schema)
-  .where(gte(schema.age, 18));
+  .from(auth)
+  .where(gte(auth.age, 18));
 
 const recentPosts = await db.select()
   .from(posts)
   .where(gt(posts.createdAt, new Date('2024-01-01')));
 
 const excludeAdmin = await db.select()
-  .from(schema)
-  .where(ne(schema.role, 'admin'));
+  .from(auth)
+  .where(ne(auth.role, 'admin'));
 ```
 
 ### Pattern Matching
@@ -215,12 +215,12 @@ const excludeAdmin = await db.select()
 import { like, ilike } from 'drizzle-orm';
 
 const gmailUsers = await db.select()
-  .from(schema)
-  .where(like(schema.email, '%@gmail.com'));
+  .from(auth)
+  .where(like(auth.email, '%@gmail.com'));
 
 const searchByName = await db.select()
-  .from(schema)
-  .where(ilike(schema.name, '%john%')); // Case-insensitive
+  .from(auth)
+  .where(ilike(auth.name, '%john%')); // Case-insensitive
 ```
 
 ### NULL Checks
@@ -229,12 +229,12 @@ const searchByName = await db.select()
 import { isNull, isNotNull } from 'drizzle-orm';
 
 const usersWithPhone = await db.select()
-  .from(schema)
-  .where(isNotNull(schema.phoneNumber));
+  .from(auth)
+  .where(isNotNull(auth.phoneNumber));
 
 const unverifiedUsers = await db.select()
-  .from(schema)
-  .where(isNull(schema.emailVerifiedAt));
+  .from(auth)
+  .where(isNull(auth.emailVerifiedAt));
 ```
 
 ### IN Operator
@@ -243,8 +243,8 @@ const unverifiedUsers = await db.select()
 import { inArray } from 'drizzle-orm';
 
 const specificUsers = await db.select()
-  .from(schema)
-  .where(inArray(schema.id, [1, 2, 3, 4, 5]));
+  .from(auth)
+  .where(inArray(auth.id, [1, 2, 3, 4, 5]));
 ```
 
 ### BETWEEN
@@ -269,14 +269,14 @@ const postsThisMonth = await db.select()
 import { and, or, not } from 'drizzle-orm';
 
 const complexQuery = await db.select()
-  .from(schema)
+  .from(auth)
   .where(
     or(
       and(
-        eq(schema.isActive, true),
-        gte(schema.age, 18)
+        eq(auth.isActive, true),
+        gte(auth.age, 18)
       ),
-      eq(schema.role, 'admin')
+      eq(auth.role, 'admin')
     )
   );
 ```
@@ -290,18 +290,18 @@ const complexQuery = await db.select()
 const postsWithAuthors = await db.select({
   postId: posts.id,
   postTitle: posts.title,
-  authorName: schema.name,
-  authorEmail: schema.email,
+  authorName: auth.name,
+  authorEmail: auth.email,
 })
 .from(posts)
-.innerJoin(schema, eq(posts.authorId, schema.id));
+.innerJoin(auth, eq(posts.authorId, auth.id));
 ```
 
 **Left join:**
 ```typescript
 const allPostsWithOptionalAuthors = await db.select()
   .from(posts)
-  .leftJoin(schema, eq(posts.authorId, schema.id));
+  .leftJoin(auth, eq(posts.authorId, auth.id));
 ```
 
 ### Relational Queries (Recommended)
@@ -310,21 +310,21 @@ const allPostsWithOptionalAuthors = await db.select()
 ```typescript
 import { relations } from 'drizzle-orm';
 
-export const usersRelations = relations(schema, ({ many }) => ({
+export const usersRelations = relations(auth, ({ many }) => ({
   posts: many(posts),
 }));
 
 export const postsRelations = relations(posts, ({ one }) => ({
-  author: one(schema, {
+  author: one(auth, {
     fields: [posts.authorId],
-    references: [schema.id],
+    references: [auth.id],
   }),
 }));
 ```
 
 **Query with relations:**
 ```typescript
-const usersWithPosts = await db.query.schema.findMany({
+const usersWithPosts = await db.query.auth.findMany({
   with: {
     posts: true,
   },
@@ -349,7 +349,7 @@ const postsWithAuthorsAndComments = await db.query.posts.findMany({
 
 **Filtered relations:**
 ```typescript
-const usersWithRecentPosts = await db.query.schema.findMany({
+const usersWithRecentPosts = await db.query.auth.findMany({
   with: {
     posts: {
       where: gt(posts.createdAt, new Date('2024-01-01')),
@@ -362,7 +362,7 @@ const usersWithRecentPosts = await db.query.schema.findMany({
 
 **Partial selection:**
 ```typescript
-const usersWithPostTitles = await db.query.schema.findMany({
+const usersWithPostTitles = await db.query.auth.findMany({
   columns: {
     id: true,
     name: true,
@@ -387,9 +387,9 @@ import { count } from 'drizzle-orm';
 
 const userCount = await db.select({
   count: count(),
-}).from(schema);
+}).from(auth);
 
-console.log(userCount[0].count); // Total schema
+console.log(userCount[0].count); // Total auth
 ```
 
 **Count with grouping:**
@@ -432,9 +432,9 @@ const activeAuthors = await db.select({
 ### In WHERE clause
 
 ```typescript
-const activeUserIds = db.select({ id: schema.id })
-  .from(schema)
-  .where(eq(schema.isActive, true));
+const activeUserIds = db.select({ id: auth.id })
+  .from(auth)
+  .where(eq(auth.isActive, true));
 
 const postsFromActiveUsers = await db.select()
   .from(posts)
@@ -450,8 +450,8 @@ const recentPosts = db.select()
   .as('recentPosts');
 
 const authorsOfRecentPosts = await db.select()
-  .from(schema)
-  .innerJoin(recentPosts, eq(schema.id, recentPosts.authorId));
+  .from(auth)
+  .innerJoin(recentPosts, eq(auth.id, recentPosts.authorId));
 ```
 
 ## Transactions
@@ -460,13 +460,13 @@ const authorsOfRecentPosts = await db.select()
 
 ```typescript
 await db.transaction(async (tx) => {
-  const user = await tx.insert(schema)
-    .values({ email: 'user@example.com', name: 'John' })
+  const auth = await tx.insert(auth)
+    .values({ email: 'auth@example.com', name: 'John' })
     .returning();
 
   await tx.insert(posts)
     .values({
-      authorId: user[0].id,
+      authorId: auth[0].id,
       title: 'First post',
       content: 'Hello world',
     });
@@ -477,7 +477,7 @@ await db.transaction(async (tx) => {
 ```typescript
 try {
   await db.transaction(async (tx) => {
-    await tx.insert(schema).values({ email: 'user@example.com' });
+    await tx.insert(auth).values({ email: 'auth@example.com' });
     await tx.insert(posts).values({ title: 'Post' });
 
     throw new Error('Rollback!'); // Transaction rolls back
@@ -490,7 +490,7 @@ try {
 **Nested transactions:**
 ```typescript
 await db.transaction(async (tx) => {
-  await tx.insert(schema).values({ email: 'user1@example.com' });
+  await tx.insert(auth).values({ email: 'user1@example.com' });
 
   await tx.transaction(async (tx2) => {
     await tx2.insert(posts).values({ title: 'Post 1' });
@@ -503,8 +503,8 @@ await db.transaction(async (tx) => {
 **HTTP adapter alternative to transactions:**
 ```typescript
 await db.batch([
-  db.insert(schema).values({ email: 'user1@example.com' }),
-  db.insert(schema).values({ email: 'user2@example.com' }),
+  db.insert(auth).values({ email: 'user1@example.com' }),
+  db.insert(auth).values({ email: 'user2@example.com' }),
   db.insert(posts).values({ title: 'Post 1' }),
 ]);
 ```
@@ -519,7 +519,7 @@ await db.batch([
 import { sql } from 'drizzle-orm';
 
 const result = await db.execute(sql`
-  SELECT * FROM schema
+  SELECT * FROM auth
   WHERE email LIKE ${'%@gmail.com'}
 `);
 ```
@@ -527,9 +527,9 @@ const result = await db.execute(sql`
 ### SQL in WHERE clause
 
 ```typescript
-const schema = await db.select()
-  .from(schema)
-  .where(sql`${schema.email} LIKE '%@gmail.com'`);
+const auth = await db.select()
+  .from(auth)
+  .where(sql`${auth.email} LIKE '%@gmail.com'`);
 ```
 
 ### SQL expressions
@@ -558,25 +558,25 @@ const searchResults = await db.select()
 
 ❌ **Bad:**
 ```typescript
-const schema = await db.select().from(schema); // All columns
+const auth = await db.select().from(auth); // All columns
 ```
 
 ✅ **Good:**
 ```typescript
-const schema = await db.select({
-  id: schema.id,
-  email: schema.email,
-}).from(schema);
+const auth = await db.select({
+  id: auth.id,
+  email: auth.email,
+}).from(auth);
 ```
 
 ### Use indexes
 
 **Ensure indexed columns in WHERE:**
 ```typescript
-// Assuming index on schema.email
-const user = await db.select()
-  .from(schema)
-  .where(eq(schema.email, 'user@example.com')); // Fast
+// Assuming index on auth.email
+const auth = await db.select()
+  .from(auth)
+  .where(eq(auth.email, 'auth@example.com')); // Fast
 ```
 
 ### Avoid N+1 queries
@@ -587,8 +587,8 @@ const posts = await db.select().from(posts);
 
 for (const post of posts) {
   const author = await db.select()
-    .from(schema)
-    .where(eq(schema.id, post.authorId)); // N queries!
+    .from(auth)
+    .where(eq(auth.id, post.authorId)); // N queries!
 }
 ```
 
@@ -606,7 +606,7 @@ const posts = await db.query.posts.findMany({
 ```typescript
 async function getPaginatedUsers(page: number, pageSize: number = 10) {
   return db.select()
-    .from(schema)
+    .from(auth)
     .limit(pageSize)
     .offset((page - 1) * pageSize);
 }
@@ -616,33 +616,33 @@ async function getPaginatedUsers(page: number, pageSize: number = 10) {
 
 ❌ **Bad:**
 ```typescript
-for (const user of schema) {
-  await db.insert(schema).values(user); // N queries
+for (const auth of auth) {
+  await db.insert(auth).values(auth); // N queries
 }
 ```
 
 ✅ **Good:**
 ```typescript
-await db.insert(schema).values(schema); // Single query
+await db.insert(auth).values(auth); // Single query
 ```
 
 ## Type Safety
 
-### Infer types from schema
+### Infer types from auth
 
 ```typescript
-type User = typeof schema.$inferSelect;
-type NewUser = typeof schema.$inferInsert;
+type User = typeof auth.$inferSelect;
+type NewUser = typeof auth.$inferInsert;
 
-const user: User = {
+const auth: User = {
   id: 1,
-  email: 'user@example.com',
+  email: 'auth@example.com',
   name: 'John',
   createdAt: new Date(),
 };
 
 const newUser: NewUser = {
-  email: 'user@example.com',
+  email: 'auth@example.com',
   name: 'John',
 };
 ```
@@ -652,8 +652,8 @@ const newUser: NewUser = {
 ```typescript
 function getUsersByStatus(status: User['status']) {
   return db.select()
-    .from(schema)
-    .where(eq(schema.status, status));
+    .from(auth)
+    .where(eq(auth.status, status));
 }
 ```
 
@@ -661,9 +661,9 @@ function getUsersByStatus(status: User['status']) {
 
 ```typescript
 function updateUser(id: number, data: Partial<NewUser>) {
-  return db.update(schema)
+  return db.update(auth)
     .set(data)
-    .where(eq(schema.id, id))
+    .where(eq(auth.id, id))
     .returning();
 }
 ```
@@ -712,11 +712,11 @@ async function updatePost(id: number, data: Partial<NewPost>) {
 **Simple search:**
 ```typescript
 const searchUsers = await db.select()
-  .from(schema)
+  .from(auth)
   .where(
     or(
-      ilike(schema.name, `%${query}%`),
-      ilike(schema.email, `%${query}%`)
+      ilike(auth.name, `%${query}%`),
+      ilike(auth.email, `%${query}%`)
     )
   );
 ```
@@ -735,7 +735,7 @@ const searchPosts = await db.select()
 **Handle duplicates:**
 ```typescript
 try {
-  await db.insert(schema).values({ email: 'user@example.com' });
+  await db.insert(auth).values({ email: 'auth@example.com' });
 } catch (err) {
   if (err.code === '23505') { // Unique violation
     console.error('Email already exists');
@@ -745,17 +745,17 @@ try {
 
 **Or use upsert:**
 ```typescript
-await db.insert(schema)
-  .values({ email: 'user@example.com', name: 'John' })
+await db.insert(auth)
+  .values({ email: 'auth@example.com', name: 'John' })
   .onConflictDoUpdate({
-    target: schema.email,
+    target: auth.email,
     set: { name: 'John Updated' },
   });
 ```
 
 ## Related Resources
 
-- `guides/schema-only.md` - Schema design patterns
+- `guides/auth-only.md` - Schema design patterns
 - `references/adapters.md` - Transaction availability by adapter
 - `guides/troubleshooting.md` - Query error solutions
-- `templates/schema-example.ts` - Complete schema with relations
+- `templates/auth-example.ts` - Complete auth with relations

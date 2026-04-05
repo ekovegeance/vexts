@@ -4,11 +4,69 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3187be8f-7757-495a-87a1-881de46cb89b" name="Changes" comment="feat: add authentication forms with validation and loading states using new field components">
+    <list default="true" id="3187be8f-7757-495a-87a1-881de46cb89b" name="Changes" comment="feat: enhance password reset forms with improved toast notifications and routing">
+      <change afterPath="$PROJECT_DIR$/lib/db/schema/post.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/db/seed.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/better-auth-best-practices/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/better-auth-best-practices/SKILL.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/better-auth-security-best-practices/SKILL.MD" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/better-auth-security-best-practices/SKILL.MD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/create-auth-skill/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/create-auth-skill/SKILL.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/email-and-password-best-practices/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/email-and-password-best-practices/SKILL.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/neon-drizzle/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/neon-drizzle/SKILL.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/neon-drizzle/guides/existing-project.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/neon-drizzle/guides/existing-project.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/neon-drizzle/guides/new-project.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/neon-drizzle/guides/new-project.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/neon-drizzle/guides/schema-only.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/neon-drizzle/guides/schema-only.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/neon-drizzle/guides/troubleshooting.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/neon-drizzle/guides/troubleshooting.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/neon-drizzle/references/adapters.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/neon-drizzle/references/adapters.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/neon-drizzle/references/migrations.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/neon-drizzle/references/migrations.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/neon-drizzle/references/query-patterns.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/neon-drizzle/references/query-patterns.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/next-best-practices/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/next-best-practices/SKILL.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/next-best-practices/async-patterns.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/next-best-practices/async-patterns.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/next-best-practices/data-patterns.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/next-best-practices/data-patterns.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/next-best-practices/debug-tricks.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/next-best-practices/debug-tricks.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/next-best-practices/parallel-routes.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/next-best-practices/parallel-routes.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/next-best-practices/route-handlers.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/next-best-practices/route-handlers.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/next-best-practices/rsc-boundaries.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/next-best-practices/rsc-boundaries.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/next-best-practices/self-hosting.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/next-best-practices/self-hosting.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/next-cache-components/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/next-cache-components/SKILL.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/organization-best-practices/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/organization-best-practices/SKILL.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/shadcn/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/shadcn/SKILL.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/shadcn/cli.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/shadcn/cli.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/shadcn/rules/icons.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/shadcn/rules/icons.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/shadcn/rules/styling.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/shadcn/rules/styling.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/AGENTS.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/AGENTS.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/CLAUDE.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/CLAUDE.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/SKILL.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/_contributing.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/_contributing.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/_sections.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/_sections.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/_template.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/_template.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/conn-pooling.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/conn-pooling.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/conn-prepared-statements.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/conn-prepared-statements.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/data-n-plus-one.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/data-n-plus-one.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/query-covering-indexes.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/query-covering-indexes.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/query-index-types.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/query-index-types.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/query-partial-indexes.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/query-partial-indexes.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-constraints.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-constraints.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-data-types.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-data-types.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-foreign-key-indexes.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-foreign-key-indexes.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-lowercase-identifiers.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-lowercase-identifiers.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-primary-keys.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-primary-keys.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/security-privileges.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/security-privileges.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/security-rls-basics.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/security-rls-basics.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/two-factor-authentication-best-practices/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/two-factor-authentication-best-practices/SKILL.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/auth/forgot-password-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/auth/forgot-password-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/auth/reset-password-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/auth/reset-password-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drizzle.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/drizzle.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drizzle/20250626111131_milky_dragon_man/migration.sql" beforeDir="false" afterPath="$PROJECT_DIR$/drizzle/20250626111131_milky_dragon_man/migration.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drizzle/20250628070505_regular_tony_stark/migration.sql" beforeDir="false" afterPath="$PROJECT_DIR$/drizzle/20250628070505_regular_tony_stark/migration.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drizzle/20250628070714_flawless_silver_samurai/migration.sql" beforeDir="false" afterPath="$PROJECT_DIR$/drizzle/20250628070714_flawless_silver_samurai/migration.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/auth/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/auth/server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/db/relations.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/db/relations.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/db/schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/db/schema/auth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trpc/routers/post.ts" beforeDir="false" afterPath="$PROJECT_DIR$/trpc/routers/post.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,9 +118,9 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/db/schema" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/lib/db" />
-      <recent name="$PROJECT_DIR$/lib/db/schema" />
       <recent name="$PROJECT_DIR$/lib" />
       <recent name="$PROJECT_DIR$/lib/auth" />
     </key>
@@ -107,7 +165,7 @@
       <workItem from="1775280987769" duration="660000" />
       <workItem from="1775290723943" duration="12610000" />
       <workItem from="1775349662569" duration="107000" />
-      <workItem from="1775349803656" duration="7549000" />
+      <workItem from="1775349803656" duration="11207000" />
     </task>
     <task id="LOCAL-00001" summary="fix: correct typo in database variable name and update module file reference">
       <option name="closed" value="true" />
@@ -277,7 +335,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775362284769</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="feat: enhance password reset forms with improved toast notifications and routing">
+      <option name="closed" value="true" />
+      <created>1775368715753</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1775368715753</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -312,6 +378,7 @@
     <MESSAGE value="feat: update hero component to use SiVercel icon and enhance deploy button" />
     <MESSAGE value="feat: rename post router to posts and update related components for consistency" />
     <MESSAGE value="feat: add authentication forms with validation and loading states using new field components" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add authentication forms with validation and loading states using new field components" />
+    <MESSAGE value="feat: enhance password reset forms with improved toast notifications and routing" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: enhance password reset forms with improved toast notifications and routing" />
   </component>
 </project>

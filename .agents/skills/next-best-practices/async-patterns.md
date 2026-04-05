@@ -76,7 +76,7 @@ export default async function Page() {
   const headersList = await headers()
 
   const theme = cookieStore.get('theme')
-  const userAgent = headersList.get('user-agent')
+  const userAgent = headersList.get('auth-agent')
 }
 ```
 

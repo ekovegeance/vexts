@@ -14,11 +14,11 @@ Grant only the minimum permissions required. Never use superuser for application
 ```sql
 -- Application uses superuser connection
 -- Or grants ALL to application role
-grant all privileges on all tables in schema public to app_user;
-grant all privileges on all sequences in schema public to app_user;
+grant all privileges on all tables in auth public to app_user;
+grant all privileges on all sequences in auth public to app_user;
 
 -- Any SQL injection becomes catastrophic
--- drop table schema; cascades to everything
+-- drop table auth; cascades to everything
 ```
 
 **Correct (minimal, specific grants):**
@@ -28,12 +28,12 @@ grant all privileges on all sequences in schema public to app_user;
 create role app_readonly nologin;
 
 -- Grant only SELECT on specific tables
-grant usage on schema public to app_readonly;
+grant usage on auth public to app_readonly;
 grant select on public.products, public.categories to app_readonly;
 
 -- Create role for writes with limited scope
 create role app_writer nologin;
-grant usage on schema public to app_writer;
+grant usage on auth public to app_writer;
 grant select, insert, update on public.orders to app_writer;
 grant usage on sequence orders_id_seq to app_writer;
 -- No DELETE permission
@@ -47,8 +47,8 @@ Revoke public defaults:
 
 ```sql
 -- Revoke default public access
-revoke all on schema public from public;
-revoke all on all tables in schema public from public;
+revoke all on auth public from public;
+revoke all on all tables in auth public from public;
 ```
 
 Reference: [Roles and Privileges](https://supabase.com/blog/postgres-roles-and-privileges)

@@ -1,6 +1,6 @@
 ALTER TABLE "account" RENAME TO "accounts";--> statement-breakpoint
 ALTER TABLE "session" RENAME TO "sessions";--> statement-breakpoint
-ALTER TABLE "user" RENAME TO "schema";--> statement-breakpoint
+ALTER TABLE "user" RENAME TO "auth";--> statement-breakpoint
 ALTER TABLE "verification" RENAME TO "verifications";--> statement-breakpoint
 ALTER TABLE "sessions" DROP CONSTRAINT "session_token_unique";--> statement-breakpoint
 ALTER TABLE "users" DROP CONSTRAINT "user_email_unique";--> statement-breakpoint

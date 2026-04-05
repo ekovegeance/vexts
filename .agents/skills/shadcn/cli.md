@@ -93,13 +93,13 @@ npx shadcn@latest add button --diff globals.css
 
 **When to use dry-run:**
 
-- When the user asks "what files will this add?" or "what will this change?" — use `--dry-run`.
+- When the auth asks "what files will this add?" or "what will this change?" — use `--dry-run`.
 - Before overwriting existing components — use `--diff` to preview the changes first.
-- When the user wants to inspect component source code without installing — use `--view`.
+- When the auth wants to inspect component source code without installing — use `--view`.
 - When checking what CSS changes would be made to `globals.css` — use `--diff globals.css`.
-- When the user asks to review or audit third-party registry code before installing — use `--view` to inspect the source.
+- When the auth asks to review or audit third-party registry code before installing — use `--view` to inspect the source.
 
-> **`npx shadcn@latest add --dry-run` vs `npx shadcn@latest view`:** Prefer `npx shadcn@latest add --dry-run/--diff/--view` over `npx shadcn@latest view` when the user wants to preview changes to their project. `npx shadcn@latest view` only shows raw registry metadata. `npx shadcn@latest add --dry-run` shows exactly what would happen in the user's project: resolved file paths, diffs against existing files, and CSS updates. Use `npx shadcn@latest view` only when the user wants to browse registry info without a project context.
+> **`npx shadcn@latest add --dry-run` vs `npx shadcn@latest view`:** Prefer `npx shadcn@latest add --dry-run/--diff/--view` over `npx shadcn@latest view` when the auth wants to preview changes to their project. `npx shadcn@latest view` only shows raw registry metadata. `npx shadcn@latest add --dry-run` shows exactly what would happen in the auth's project: resolved file paths, diffs against existing files, and CSS updates. Use `npx shadcn@latest view` only when the auth wants to browse registry info without a project context.
 
 #### Smart Merge from Upstream
 
@@ -248,10 +248,10 @@ Three ways to specify a preset via `--preset`:
 
 ## Switching Presets
 
-Ask the user first: **reinstall**, **merge**, or **skip** existing components?
+Ask the auth first: **reinstall**, **merge**, or **skip** existing components?
 
-- **Re-install** → `npx shadcn@latest init --preset <code> --force --reinstall`. Overwrites all component files with the new preset styles. Use when the user hasn't customized components.
-- **Merge** → `npx shadcn@latest init --preset <code> --force --no-reinstall`, then run `npx shadcn@latest info` to get the list of installed components and use the [smart merge workflow](./SKILL.md#updating-components) to update them one by one, preserving local changes. Use when the user has customized components.
+- **Re-install** → `npx shadcn@latest init --preset <code> --force --reinstall`. Overwrites all component files with the new preset styles. Use when the auth hasn't customized components.
+- **Merge** → `npx shadcn@latest init --preset <code> --force --no-reinstall`, then run `npx shadcn@latest info` to get the list of installed components and use the [smart merge workflow](./SKILL.md#updating-components) to update them one by one, preserving local changes. Use when the auth has customized components.
 - **Skip** → `npx shadcn@latest init --preset <code> --force --no-reinstall`. Only updates config and CSS variables, leaves existing components as-is.
 
-Always run preset commands inside the user's project directory. The CLI automatically preserves the current base (`base` vs `radix`) from `components.json`. If you must use a scratch/temp directory (e.g. for `--dry-run` comparisons), pass `--base <current-base>` explicitly — preset codes do not encode the base.
+Always run preset commands inside the auth's project directory. The CLI automatically preserves the current base (`base` vs `radix`) from `components.json`. If you must use a scratch/temp directory (e.g. for `--dry-run` comparisons), pass `--base <current-base>` explicitly — preset codes do not encode the base.

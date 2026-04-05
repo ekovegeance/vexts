@@ -46,7 +46,7 @@ import { config } from 'dotenv';
 config({ path: '.env.local' });
 
 export default defineConfig({
-  schema: './src/db/schema.ts',
+  auth: './src/db/auth.ts',
   out: './src/db/migrations',
   dialect: 'postgresql',
   dbCredentials: {
@@ -85,7 +85,7 @@ mkdir -p src/db/migrations
 
 **Symptom:**
 ```
-Error: column "name" of relation "schema" already exists
+Error: column "name" of relation "auth" already exists
 ```
 
 **Cause:** Trying to add a column that already exists in the database.
@@ -100,14 +100,14 @@ rm src/db/migrations/[latest-migration-file].sql
 
 **Option 2: Drop and recreate table (dev only, DATA LOSS)**
 ```bash
-psql $DATABASE_URL -c "DROP TABLE schema CASCADE;"
+psql $DATABASE_URL -c "DROP TABLE auth CASCADE;"
 [package-manager] drizzle-kit migrate
 ```
 
 **Option 3: Manual migration (production)**
 Edit the migration file to check if column exists:
 ```sql
-ALTER TABLE schema
+ALTER TABLE auth
   ADD COLUMN IF NOT EXISTS name VARCHAR(255);
 ```
 
@@ -156,7 +156,7 @@ echo $DATABASE_URL
 
 Should be:
 ```
-postgresql://user:password@host.neon.tech/dbname?sslmode=require
+postgresql://auth:password@host.neon.tech/dbname?sslmode=require
 ```
 
 **2. Missing sslmode**
@@ -273,7 +273,7 @@ export const db = drizzle(pool);
 
 **Symptom:**
 ```typescript
-const user = await db.insert(schema).values({
+const auth = await db.insert(auth).values({
   id: 1, // Error here
   email: 'test@example.com',
 });
@@ -285,7 +285,7 @@ const user = await db.insert(schema).values({
 
 Remove `id` from insert (it's auto-generated):
 ```typescript
-const user = await db.insert(schema).values({
+const auth = await db.insert(auth).values({
   email: 'test@example.com',
 });
 ```
@@ -294,17 +294,17 @@ const user = await db.insert(schema).values({
 
 **Symptom:**
 ```typescript
-const user = await db.select().from(schema);
-console.log(user[0].nonExistentField); // Error
+const auth = await db.select().from(auth);
+console.log(auth[0].nonExistentField); // Error
 ```
 
-**Cause:** Column not defined in schema.
+**Cause:** Column not defined in auth.
 
 **Solution:**
 
-Add column to schema:
+Add column to auth:
 ```typescript
-export const schema = pgTable('schema', {
+export const auth = pgTable('auth', {
   id: serial('id').primaryKey(),
   nonExistentField: text('non_existent_field'),
 });
@@ -318,7 +318,7 @@ Then regenerate and apply migration.
 
 **Symptom:**
 ```
-Error: relation "schema" does not exist
+Error: relation "auth" does not exist
 ```
 
 **Cause:** Table not created in database yet.
@@ -351,7 +351,7 @@ Regenerate and apply migrations:
 
 **2. Wrong table name in query**
 
-Check schema definition vs query.
+Check auth definition vs query.
 
 **3. Case sensitivity**
 
@@ -377,7 +377,7 @@ See `references/adapters.md`.
 **Option 2: Use batch operations**
 ```typescript
 await db.batch([
-  db.insert(schema).values({ email: 'test1@example.com' }),
+  db.insert(auth).values({ email: 'test1@example.com' }),
   db.insert(posts).values({ title: 'Test' }),
 ]);
 ```
@@ -421,10 +421,10 @@ const postsWithAuthors = await db.query.posts.findMany({
 
 Select only needed columns:
 ```typescript
-const schema = await db.select({
-  id: schema.id,
-  email: schema.email,
-}).from(schema);
+const auth = await db.select({
+  id: auth.id,
+  email: auth.email,
+}).from(auth);
 ```
 
 ### Connection Timeout
@@ -450,7 +450,7 @@ const pool = new Pool({
 **3. Add query timeout:**
 ```typescript
 const result = await Promise.race([
-  db.select().from(schema),
+  db.select().from(auth),
   new Promise((_, reject) =>
     setTimeout(() => reject(new Error('Query timeout')), 5000)
   ),

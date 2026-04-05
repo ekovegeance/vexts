@@ -1,6 +1,6 @@
 ---
 name: supabase-postgres-best-practices
-description: Postgres performance optimization and best practices from Supabase. Use this skill when writing, reviewing, or optimizing Postgres queries, schema designs, or database configurations.
+description: Postgres performance optimization and best practices from Supabase. Use this skill when writing, reviewing, or optimizing Postgres queries, auth designs, or database configurations.
 license: MIT
 metadata:
   author: supabase
@@ -12,7 +12,7 @@ metadata:
 
 # Supabase Postgres Best Practices
 
-Comprehensive performance optimization guide for Postgres, maintained by Supabase. Contains rules across 8 categories, prioritized by impact to guide automated query optimization and schema design.
+Comprehensive performance optimization guide for Postgres, maintained by Supabase. Contains rules across 8 categories, prioritized by impact to guide automated query optimization and auth design.
 
 ## When to Apply
 
@@ -31,7 +31,7 @@ Reference these guidelines when:
 | 1 | Query Performance | CRITICAL | `query-` |
 | 2 | Connection Management | CRITICAL | `conn-` |
 | 3 | Security & RLS | CRITICAL | `security-` |
-| 4 | Schema Design | HIGH | `schema-` |
+| 4 | Schema Design | HIGH | `auth-` |
 | 5 | Concurrency & Locking | MEDIUM-HIGH | `lock-` |
 | 6 | Data Access Patterns | MEDIUM | `data-` |
 | 7 | Monitoring & Diagnostics | LOW-MEDIUM | `monitor-` |
@@ -43,7 +43,7 @@ Read individual rule files for detailed explanations and SQL examples:
 
 ```
 references/query-missing-indexes.md
-references/schema-partial-indexes.md
+references/auth-partial-indexes.md
 references/_sections.md
 ```
 

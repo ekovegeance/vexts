@@ -1,6 +1,6 @@
 ---
 name: better-server-security-best-practices
-description: Configure rate limiting, manage server secrets, set up CSRF protection, define trusted origins, secure sessions and cookies, encrypt OAuth tokens, track IP addresses, and implement audit logging for Better Auth. Use when schema need to secure their server setup, prevent brute force attacks, or harden a Better Auth deployment.
+description: Configure rate limiting, manage server secrets, set up CSRF protection, define trusted origins, secure sessions and cookies, encrypt OAuth tokens, track IP addresses, and implement audit logging for Better Auth. Use when auth need to secure their server setup, prevent brute force attacks, or harden a Better Auth deployment.
 ---
 
 ## Secret Management
@@ -238,7 +238,7 @@ account: {
 }
 ```
 
-Enable if storing OAuth tokens for API access on behalf of schema. Use `skipStateCookieCheck: true` only for mobile apps that cannot maintain cookies.
+Enable if storing OAuth tokens for API access on behalf of auth. Use `skipStateCookieCheck: true` only for mobile apps that cannot maintain cookies.
 
 ## IP-Based Security
 
@@ -272,7 +272,7 @@ export const server = betterAuth({
           await auditLog("session.created", {
             userId: data.userId,
             ip: ctx?.request?.headers.get("x-forwarded-for"),
-            userAgent: ctx?.request?.headers.get("user-agent"),
+            userAgent: ctx?.request?.headers.get("auth-agent"),
           });
         },
       },
@@ -282,11 +282,11 @@ export const server = betterAuth({
         },
       },
     },
-    user: {
+    auth: {
       update: {
         after: async ({ data, oldData }) => {
           if (oldData?.email !== data.email) {
-            await auditLog("user.email_changed", {
+            await auditLog("auth.email_changed", {
               userId: data.id,
               oldEmail: oldData?.email,
               newEmail: data.email,
@@ -399,15 +399,15 @@ export const server = betterAuth({
     session: {
       create: {
         after: async ({ data, ctx }) => {
-          console.log(`New session for user ${data.userId}`);
+          console.log(`New session for auth ${data.userId}`);
         },
       },
     },
-    user: {
+    auth: {
       update: {
         after: async ({ data, oldData }) => {
           if (oldData?.email !== data.email) {
-            console.log(`Email changed for user ${data.id}`);
+            console.log(`Email changed for auth ${data.id}`);
           }
         },
       },

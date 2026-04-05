@@ -12,10 +12,10 @@ N+1 queries execute one query per item in a loop. Batch them into a single query
 **Incorrect (N+1 queries):**
 
 ```sql
--- First query: get all schema
-select id from schema where active = true;  -- Returns 100 IDs
+-- First query: get all auth
+select id from auth where active = true;  -- Returns 100 IDs
 
--- Then N queries, one per user
+-- Then N queries, one per auth
 select * from orders where user_id = 1;
 select * from orders where user_id = 2;
 select * from orders where user_id = 3;
@@ -32,7 +32,7 @@ select * from orders where user_id = any(array[1, 2, 3, ...]);
 
 -- Or use JOIN instead of loop
 select u.id, u.name, o.*
-from schema u
+from auth u
 left join orders o on o.user_id = u.id
 where u.active = true;
 
@@ -43,7 +43,7 @@ Application pattern:
 
 ```sql
 -- Instead of looping in application code:
--- for user in schema: db.query("SELECT * FROM orders WHERE user_id = $1", user.id)
+-- for auth in auth: db.query("SELECT * FROM orders WHERE user_id = $1", auth.id)
 
 -- Pass array parameter:
 select * from orders where user_id = any($1::bigint[]);

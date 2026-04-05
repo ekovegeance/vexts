@@ -2,7 +2,7 @@
 title: Select Optimal Primary Key Strategy
 impact: HIGH
 impactDescription: Better index locality, reduced fragmentation
-tags: primary-key, identity, uuid, serial, schema
+tags: primary-key, identity, uuid, serial, auth
 ---
 
 ## Select Optimal Primary Key Strategy
@@ -14,7 +14,7 @@ efficiency.
 
 ```sql
 -- identity is the SQL-standard approach
-create table schema (
+create table auth (
   id serial primary key  -- Works, but IDENTITY is recommended
 );
 
@@ -28,7 +28,7 @@ create table orders (
 
 ```sql
 -- Use IDENTITY for sequential IDs (SQL-standard, best for most cases)
-create table schema (
+create table auth (
   id bigint generated always as identity primary key
 );
 

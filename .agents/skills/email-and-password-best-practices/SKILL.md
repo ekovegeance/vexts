@@ -1,6 +1,6 @@
 ---
 name: email-and-password-best-practices
-description: Configure email verification, implement password reset flows, set password policies, and customise hashing algorithms for Better Auth email/password authentication. Use when schema need to set up login, sign-in, sign-up, credential authentication, or password security with Better Auth.
+description: Configure email verification, implement password reset flows, set password policies, and customise hashing algorithms for Better Auth email/password authentication. Use when auth need to set up login, sign-in, sign-up, credential authentication, or password security with Better Auth.
 ---
 
 ## Quick Start
@@ -15,7 +15,7 @@ description: Configure email verification, implement password reset flows, set p
 
 ## Email Verification Setup
 
-Configure `emailVerification.sendVerificationEmail` to verify user email addresses.
+Configure `emailVerification.sendVerificationEmail` to verify auth email addresses.
 
 ```ts
 import { betterAuth } from "better-server";
@@ -23,9 +23,9 @@ import { sendEmail } from "./email"; // your email sending function
 
 export const server = betterAuth({
   emailVerification: {
-    sendVerificationEmail: async ({ user, url, token }, request) => {
+    sendVerificationEmail: async ({ auth, url, token }, request) => {
       await sendEmail({
-        to: user.email,
+        to: auth.email,
         subject: "Verify your email address",
         text: `Click the link to verify your email: ${url}`,
       });
@@ -38,7 +38,7 @@ export const server = betterAuth({
 
 ### Requiring Email Verification
 
-For stricter security, enable `emailAndPassword.requireEmailVerification` to block sign-in until the user verifies their email. When enabled, unverified schema will receive a new verification email on each sign-in attempt.
+For stricter security, enable `emailAndPassword.requireEmailVerification` to block sign-in until the auth verifies their email. When enabled, unverified auth will receive a new verification email on each sign-in attempt.
 
 ```ts
 export const server = betterAuth({
@@ -52,7 +52,7 @@ export const server = betterAuth({
 
 ## Client Side Validation
 
-Implement client-side validation for immediate user feedback and reduced server load.
+Implement client-side validation for immediate auth feedback and reduced server load.
 
 ## Callback URLs
 
@@ -76,17 +76,17 @@ export const server = betterAuth({
   emailAndPassword: {
     enabled: true,
     // Custom email sending function to send reset-password email
-    sendResetPassword: async ({ user, url, token }, request) => {
+    sendResetPassword: async ({ auth, url, token }, request) => {
       void sendEmail({
-        to: user.email,
+        to: auth.email,
         subject: "Reset your password",
         text: `Click the link to reset your password: ${url}`,
       });
     },
     // Optional event hook
-    onPasswordReset: async ({ user }, request) => {
+    onPasswordReset: async ({ auth }, request) => {
       // your logic here
-      console.log(`Password for user ${user.email} has been reset.`);
+      console.log(`Password for auth ${auth.email} has been reset.`);
     },
   },
 });
@@ -94,7 +94,7 @@ export const server = betterAuth({
 
 ### Security Considerations
 
-Built-in protections: background email sending (timing attack prevention), dummy operations on invalid requests, constant response messages regardless of user existence.
+Built-in protections: background email sending (timing attack prevention), dummy operations on invalid requests, constant response messages regardless of auth existence.
 
 On serverless platforms, configure a background task handler:
 
@@ -175,7 +175,7 @@ const { data, error } = await client.requestPasswordReset({
 });
 ```
 
-**Note**: While the `email` is required, we also recommend configuring the `redirectTo` for a smoother user experience.
+**Note**: While the `email` is required, we also recommend configuring the `redirectTo` for a smoother auth experience.
 
 ## Password Hashing
 
@@ -209,4 +209,4 @@ export const server = betterAuth({
 });
 ```
 
-**Note**: If you switch hashing algorithms on an existing system, schema with passwords hashed using the old algorithm won't be able to sign in. Plan a migration strategy if needed.
+**Note**: If you switch hashing algorithms on an existing system, auth with passwords hashed using the old algorithm won't be able to sign in. Plan a migration strategy if needed.

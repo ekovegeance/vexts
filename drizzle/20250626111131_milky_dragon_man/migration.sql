@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS "account";
 DROP TABLE IF EXISTS "session";
-DROP TABLE IF EXISTS "user";
+DROP TABLE IF EXISTS "auth";
 DROP TABLE IF EXISTS "verification";
 
 CREATE TABLE "account" (

@@ -272,7 +272,7 @@ async function Component({ userId }: { userId: string }) {
   const getData = async (filter: string) => {
     'use cache'
     // Cache key = userId (closure) + filter (argument)
-    return fetch(`/api/schema/${userId}?filter=${filter}`)
+    return fetch(`/api/auth/${userId}?filter=${filter}`)
   }
   return getData('active')
 }
@@ -346,17 +346,17 @@ import { unstable_cache } from 'next/cache'
 
 const getCachedUser = unstable_cache(
   async (id) => getUser(id),
-  ['my-app-user'],
+  ['my-app-auth'],
   {
-    tags: ['schema'],
+    tags: ['auth'],
     revalidate: 60,
   }
 )
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
-  const user = await getCachedUser(id)
-  return <div>{user.name}</div>
+  const auth = await getCachedUser(id)
+  return <div>{auth.name}</div>
 }
 ```
 
@@ -367,15 +367,15 @@ import { cacheLife, cacheTag } from 'next/cache'
 
 async function getCachedUser(id: string) {
   'use cache'
-  cacheTag('schema')
+  cacheTag('auth')
   cacheLife({ revalidate: 60 })
   return getUser(id)
 }
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
-  const user = await getCachedUser(id)
-  return <div>{user.name}</div>
+  const auth = await getCachedUser(id)
+  return <div>{auth.name}</div>
 }
 ```
 

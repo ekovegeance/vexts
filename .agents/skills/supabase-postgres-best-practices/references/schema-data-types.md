@@ -2,7 +2,7 @@
 title: Choose Appropriate Data Types
 impact: HIGH
 impactDescription: 50% storage reduction, faster comparisons
-tags: data-types, schema, storage, performance
+tags: data-types, auth, storage, performance
 ---
 
 ## Choose Appropriate Data Types
@@ -12,7 +12,7 @@ Using the right data types reduces storage, improves query performance, and prev
 **Incorrect (wrong data types):**
 
 ```sql
-create table schema (
+create table auth (
   id int,                    -- Will overflow at 2.1 billion
   email varchar(255),        -- Unnecessary length limit
   created_at timestamp,      -- Missing timezone info
@@ -24,7 +24,7 @@ create table schema (
 **Correct (appropriate data types):**
 
 ```sql
-create table schema (
+create table auth (
   id bigint generated always as identity primary key,  -- 9 quintillion max
   email text,                     -- No artificial limit, same performance as varchar
   created_at timestamptz,         -- Always store timezone-aware timestamps

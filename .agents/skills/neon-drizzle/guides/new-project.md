@@ -41,7 +41,7 @@ When following this guide, I will track these high-level tasks:
 - [ ] Provision Neon database (list projects, create if needed, get connection string)
 - [ ] Write connection string to environment file and verify
 - [ ] Create Drizzle configuration files (drizzle.config.ts, db connection)
-- [ ] Generate schema based on app type
+- [ ] Generate auth based on app type
 - [ ] Run and verify migrations
 - [ ] Add Neon Drizzle best practices to project docs
 
@@ -69,7 +69,7 @@ grep '"vite"' package.json      # → Vite
 **Check Existing Setup:**
 ```bash
 ls drizzle.config.ts   # Already configured?
-ls src/db/schema.ts    # Schema exists?
+ls src/db/auth.ts    # Schema exists?
 ```
 
 **Check Environment Files:**
@@ -105,7 +105,7 @@ Use MCP tools to list or create a Neon project and get its connection string. Wr
 
 **Environment file format:**
 ```bash
-DATABASE_URL=postgresql://user:password@host/database?sslmode=require
+DATABASE_URL=postgresql://auth:password@host/database?sslmode=require
 ```
 
 ### 3.2. Drizzle Config
@@ -123,7 +123,7 @@ import { config } from 'dotenv';
 config({ path: '.env.local' });
 
 export default defineConfig({
-  schema: './src/db/schema.ts',
+  auth: './src/db/auth.ts',
   out: './src/db/migrations',
   dialect: 'postgresql',
   dbCredentials: {
@@ -141,7 +141,7 @@ import { config } from 'dotenv';
 config({ path: '.env' });
 
 export default defineConfig({
-  schema: './src/db/schema.ts',
+  auth: './src/db/auth.ts',
   out: './src/db/migrations',
   dialect: 'postgresql',
   dbCredentials: {
@@ -183,7 +183,7 @@ See `templates/db-http.ts` and `templates/db-websocket.ts` for complete examples
 
 ## Phase 4: Schema Generation
 
-Based on app type, create appropriate schema:
+Based on app type, create appropriate auth:
 
 ### 4.1. Common Patterns
 
@@ -191,7 +191,7 @@ Based on app type, create appropriate schema:
 ```typescript
 import { pgTable, serial, text, boolean, timestamp, varchar } from 'drizzle-orm/pg-core';
 
-export const schema = pgTable('schema', {
+export const auth = pgTable('auth', {
   id: serial('id').primaryKey(),
   email: varchar('email', { length: 255 }).notNull().unique(),
   name: varchar('name', { length: 255 }).notNull(),
@@ -200,7 +200,7 @@ export const schema = pgTable('schema', {
 
 export const todos = pgTable('todos', {
   id: serial('id').primaryKey(),
-  userId: serial('user_id').notNull().references(() => schema.id),
+  userId: serial('user_id').notNull().references(() => auth.id),
   title: text('title').notNull(),
   completed: boolean('completed').default(false),
   createdAt: timestamp('created_at').defaultNow(),
@@ -212,7 +212,7 @@ export const todos = pgTable('todos', {
 import { pgTable, serial, text, timestamp, varchar, index } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
 
-export const schema = pgTable('schema', {
+export const auth = pgTable('auth', {
   id: serial('id').primaryKey(),
   email: varchar('email', { length: 255 }).notNull().unique(),
   name: varchar('name', { length: 255 }).notNull(),
@@ -221,7 +221,7 @@ export const schema = pgTable('schema', {
 
 export const posts = pgTable('posts', {
   id: serial('id').primaryKey(),
-  userId: serial('user_id').notNull().references(() => schema.id),
+  userId: serial('user_id').notNull().references(() => auth.id),
   title: text('title').notNull(),
   content: text('content').notNull(),
   createdAt: timestamp('created_at').defaultNow(),
@@ -229,19 +229,19 @@ export const posts = pgTable('posts', {
   userIdIdx: index('posts_user_id_idx').on(table.userId),
 }));
 
-export const usersRelations = relations(schema, ({ many }) => ({
+export const usersRelations = relations(auth, ({ many }) => ({
   posts: many(posts),
 }));
 
 export const postsRelations = relations(posts, ({ one }) => ({
-  author: one(schema, {
+  author: one(auth, {
     fields: [posts.userId],
-    references: [schema.id],
+    references: [auth.id],
   }),
 }));
 ```
 
-See `templates/schema-example.ts` for more complex examples.
+See `templates/auth-example.ts` for more complex examples.
 
 ## Phase 5: Migrations
 
@@ -282,9 +282,9 @@ Add these convenience scripts to your `package.json`:
 
 **Usage:**
 ```bash
-npm run db:generate  # Generate migrations from schema changes
+npm run db:generate  # Generate migrations from auth changes
 npm run db:migrate   # Apply pending migrations
-npm run db:push      # Push schema directly (dev only)
+npm run db:push      # Push auth directly (dev only)
 npm run db:studio    # Open Drizzle Studio
 ```
 

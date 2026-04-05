@@ -2,7 +2,7 @@ import {protectedProcedure, publicProcedure, router} from "@/trpc/init";
 import z from "zod";
 import {db} from "@/lib/db";
 import {TRPCError} from "@trpc/server";
-import {posts} from "@/lib/db/schema";
+import {posts} from "@/lib/db/schema/auth";
 import {eq} from "drizzle-orm";
 
 export const postRouter = router({

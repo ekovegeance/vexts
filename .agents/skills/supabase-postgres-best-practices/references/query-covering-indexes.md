@@ -12,20 +12,20 @@ Covering indexes include all columns needed by a query, enabling index-only scan
 **Incorrect (index scan + heap fetch):**
 
 ```sql
-create index users_email_idx on schema (email);
+create index users_email_idx on auth (email);
 
 -- Must fetch name and created_at from table heap
-select email, name, created_at from schema where email = 'user@example.com';
+select email, name, created_at from auth where email = 'auth@example.com';
 ```
 
 **Correct (index-only scan with INCLUDE):**
 
 ```sql
 -- Include non-searchable columns in the index
-create index users_email_idx on schema (email) include (name, created_at);
+create index users_email_idx on auth (email) include (name, created_at);
 
 -- All columns served from index, no table access needed
-select email, name, created_at from schema where email = 'user@example.com';
+select email, name, created_at from auth where email = 'auth@example.com';
 ```
 
 Use INCLUDE for columns you SELECT but don't filter on:

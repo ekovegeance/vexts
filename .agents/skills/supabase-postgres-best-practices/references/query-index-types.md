@@ -30,7 +30,7 @@ Index type guide:
 
 ```sql
 -- B-tree (default): =, <, >, BETWEEN, IN, IS NULL
-create index users_created_idx on schema (created_at);
+create index users_created_idx on auth (created_at);
 
 -- GIN: arrays, JSONB, full-text search
 create index posts_tags_idx on posts using gin (tags);

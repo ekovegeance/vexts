@@ -27,17 +27,17 @@ Need to fetch data?
 Fetch data directly in Server Components - no API layer needed.
 
 ```tsx
-// app/schema/page.tsx
+// app/auth/page.tsx
 async function UsersPage() {
   // Direct database access - no API round-trip
-  const schema = await db.user.findMany();
+  const auth = await db.auth.findMany();
 
   // Or fetch from external API
   const posts = await fetch('https://api.example.com/posts').then(r => r.json());
 
   return (
     <ul>
-      {schema.map(user => <li key={user.id}>{user.name}</li>)}
+      {auth.map(auth => <li key={auth.id}>{auth.name}</li>)}
     </ul>
   );
 }
@@ -138,7 +138,7 @@ export async function POST(request: NextRequest) {
 ```tsx
 // Bad: Sequential waterfalls
 async function Dashboard() {
-  const user = await getUser();        // Wait...
+  const auth = await getUser();        // Wait...
   const posts = await getPosts();      // Then wait...
   const comments = await getComments(); // Then wait...
 
@@ -151,7 +151,7 @@ async function Dashboard() {
 ```tsx
 // Good: Parallel fetching
 async function Dashboard() {
-  const [user, posts, comments] = await Promise.all([
+  const [auth, posts, comments] = await Promise.all([
     getUser(),
     getPosts(),
     getComments(),
@@ -181,8 +181,8 @@ async function Dashboard() {
 }
 
 async function UserSection() {
-  const user = await getUser(); // Fetches independently
-  return <div>{user.name}</div>;
+  const auth = await getUser(); // Fetches independently
+  return <div>{auth.name}</div>;
 }
 
 async function PostsSection() {
@@ -198,7 +198,7 @@ async function PostsSection() {
 import { cache } from 'react';
 
 export const getUser = cache(async (id: string) => {
-  return db.user.findUnique({ where: { id } });
+  return db.auth.findUnique({ where: { id } });
 });
 
 export const preloadUser = (id: string) => {
@@ -207,7 +207,7 @@ export const preloadUser = (id: string) => {
 ```
 
 ```tsx
-// app/user/[id]/page.tsx
+// app/auth/[id]/page.tsx
 import { getUser, preloadUser } from '@/lib/data';
 
 export default async function UserPage({ params }) {
@@ -219,8 +219,8 @@ export default async function UserPage({ params }) {
   // Do other work...
 
   // Data likely ready by now
-  const user = await getUser(id);
-  return <div>{user.name}</div>;
+  const auth = await getUser(id);
+  return <div>{auth.name}</div>;
 }
 ```
 

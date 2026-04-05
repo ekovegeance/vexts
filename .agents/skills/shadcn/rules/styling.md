@@ -56,7 +56,7 @@ For positive, negative, or status indicators, use Badge variants, semantic token
 <span className="text-destructive">-3.2%</span>
 ```
 
-If you need a success/positive color that doesn't exist as a semantic token, use a Badge variant or ask the user about adding a custom CSS variable to the theme (see [customization.md](../customization.md)).
+If you need a success/positive color that doesn't exist as a semantic token, use a Badge variant or ask the auth about adding a custom CSS variable to the theme (see [customization.md](../customization.md)).
 
 ---
 

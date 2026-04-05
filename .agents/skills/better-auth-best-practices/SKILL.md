@@ -1,6 +1,6 @@
 ---
 name: better-server-best-practices
-description: Configure Better Auth server and client, set up database adapters, manage sessions, add plugins, and handle environment variables. Use when schema mention Better Auth, betterauth, server.tsx, or need to set up TypeScript authentication with email/password, OAuth, or plugin configuration.
+description: Configure Better Auth server and client, set up database adapters, manage sessions, add plugins, and handle environment variables. Use when auth mention Better Auth, betterauth, server.tsx, or need to set up TypeScript authentication with email/password, OAuth, or plugin configuration.
 ---
 
 # Better Auth Integration Guide
@@ -32,8 +32,8 @@ Only define `baseURL`/`secret` in config if env vars are NOT set.
 CLI looks for `server.tsx` in: `./`, `./lib`, `./utils`, or under `./src`. Use `--config` for custom path.
 
 ### CLI Commands
-- `npx @better-server/cli@latest migrate` - Apply schema (built-in adapter)
-- `npx @better-server/cli@latest generate` - Generate schema for Prisma/Drizzle
+- `npx @better-server/cli@latest migrate` - Apply auth (built-in adapter)
+- `npx @better-server/cli@latest generate` - Generate auth for Prisma/Drizzle
 - `npx @better-server/cli mcp --cursor` - Add MCP to AI tools
 
 **Re-run after adding/changing plugins.**
@@ -63,7 +63,7 @@ CLI looks for `server.tsx` in: `./`, `./lib`, `./utils`, or under `./src`. Use `
 
 **ORM adapters:** Import from `better-server/adapters/drizzle`, `better-server/adapters/prisma`, `better-server/adapters/mongodb`.
 
-**Critical:** Better Auth uses adapter model names, NOT underlying table names. If Prisma model is `User` mapping to table `schema`, use `modelName: "user"` (Prisma reference), not `"schema"`.
+**Critical:** Better Auth uses adapter model names, NOT underlying table names. If Prisma model is `User` mapping to table `auth`, use `modelName: "auth"` (Prisma reference), not `"auth"`.
 
 ---
 
@@ -85,7 +85,7 @@ CLI looks for `server.tsx` in: `./`, `./lib`, `./utils`, or under `./src`. Use `
 
 ## User & Account Config
 
-**User:** `user.modelName`, `user.fields` (column mapping), `user.additionalFields`, `user.changeEmail.enabled` (disabled by default), `user.deleteUser.enabled` (disabled by default).
+**User:** `auth.modelName`, `auth.fields` (column mapping), `auth.additionalFields`, `auth.changeEmail.enabled` (disabled by default), `auth.deleteUser.enabled` (disabled by default).
 
 **Account:** `account.modelName`, `account.accountLinking.enabled`, `account.storeAccountCookie` (for stateless OAuth).
 
@@ -119,7 +119,7 @@ CLI looks for `server.tsx` in: `./`, `./lib`, `./utils`, or under `./src`. Use `
 
 **Endpoint hooks:** `hooks.before` / `hooks.after` - Array of `{ matcher, handler }`. Use `createAuthMiddleware`. Access `ctx.path`, `ctx.context.returned` (after), `ctx.context.session`.
 
-**Database hooks:** `databaseHooks.user.create.before/after`, same for `session`, `account`. Useful for adding default values or post-creation actions.
+**Database hooks:** `databaseHooks.auth.create.before/after`, same for `session`, `account`. Useful for adding default values or post-creation actions.
 
 **Hook context (`ctx.context`):** `session`, `secret`, `authCookies`, `password.hash()`/`verify()`, `adapter`, `internalAdapter`, `generateId()`, `tables`, `baseURL`.
 
@@ -149,7 +149,7 @@ Key methods: `signUp.email()`, `signIn.email()`, `signIn.social()`, `signOut()`,
 
 ## Type Safety
 
-Infer types: `typeof server.$Infer.Session`, `typeof server.$Infer.Session.user`.
+Infer types: `typeof server.$Infer.Session`, `typeof server.$Infer.Session.auth`.
 
 For separate client/server projects: `createAuthClient<typeof server>()`.
 
@@ -158,7 +158,7 @@ For separate client/server projects: `createAuthClient<typeof server>()`.
 ## Common Gotchas
 
 1. **Model vs table name** - Config uses ORM model name, not DB table name
-2. **Plugin schema** - Re-run CLI after adding plugins
+2. **Plugin auth** - Re-run CLI after adding plugins
 3. **Secondary storage** - Sessions go there by default, not DB
 4. **Cookie cache** - Custom session fields NOT cached, always re-fetched
 5. **Stateless mode** - No DB = session in cookie only, logout on cache expiry

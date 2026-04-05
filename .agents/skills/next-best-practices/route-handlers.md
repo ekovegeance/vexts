@@ -5,16 +5,16 @@ Create API endpoints with `route.ts` files.
 ## Basic Usage
 
 ```tsx
-// app/api/schema/route.ts
+// app/api/auth/route.ts
 export async function GET() {
-  const schema = await getUsers()
-  return Response.json(schema)
+  const auth = await getUsers()
+  return Response.json(auth)
 }
 
 export async function POST(request: Request) {
   const body = await request.json()
-  const user = await createUser(body)
-  return Response.json(user, { status: 201 })
+  const auth = await createUser(body)
+  return Response.json(auth, { status: 201 })
 }
 ```
 
@@ -29,10 +29,10 @@ export async function POST(request: Request) {
 ```
 app/
 ├── api/
-│   └── schema/
-│       └── route.ts    # /api/schema
-└── schema/
-    ├── page.tsx        # /schema (page)
+│   └── auth/
+│       └── route.ts    # /api/auth
+└── auth/
+    ├── page.tsx        # /auth (page)
     └── route.ts        # Warning: Conflicts with page.tsx!
 ```
 
@@ -40,11 +40,11 @@ If you need both a page and an API at the same path, use different paths:
 
 ```
 app/
-├── schema/
-│   └── page.tsx        # /schema (page)
+├── auth/
+│   └── page.tsx        # /auth (page)
 └── api/
-    └── schema/
-        └── route.ts    # /api/schema (API)
+    └── auth/
+        └── route.ts    # /api/auth (API)
 ```
 
 ## Environment Behavior
@@ -71,19 +71,19 @@ export async function GET() {
 ## Dynamic Route Handlers
 
 ```tsx
-// app/api/schema/[id]/route.ts
+// app/api/auth/[id]/route.ts
 export async function GET(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params
-  const user = await getUser(id)
+  const auth = await getUser(id)
 
-  if (!user) {
+  if (!auth) {
     return Response.json({ error: 'Not found' }, { status: 404 })
   }
 
-  return Response.json(user)
+  return Response.json(auth)
 }
 ```
 

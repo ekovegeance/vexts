@@ -19,10 +19,10 @@ Complete guide for database migrations with Drizzle and Neon.
 
 ### 1. Schema Change
 
-Update your schema file:
+Update your auth file:
 ```typescript
-// src/db/schema.ts
-export const schema = pgTable('schema', {
+// src/db/auth.ts
+export const auth = pgTable('auth', {
   id: serial('id').primaryKey(),
   email: varchar('email', { length: 255 }).notNull(),
   phoneNumber: varchar('phone_number', { length: 20 }), // NEW
@@ -37,7 +37,7 @@ npm run drizzle-kit generate
 ```
 
 **What this does:**
-- Compares schema.ts with database
+- Compares auth.ts with database
 - Generates SQL in migrations folder
 - Creates migration metadata
 
@@ -56,7 +56,7 @@ src/db/migrations/
 **Always review** generated SQL before applying:
 ```sql
 -- 0001_add_phone_number.sql
-ALTER TABLE schema ADD COLUMN phone_number VARCHAR(20);
+ALTER TABLE auth ADD COLUMN phone_number VARCHAR(20);
 ```
 
 ### 4. Apply Migration
@@ -93,7 +93,7 @@ import { config } from 'dotenv';
 config({ path: '.env.local' });
 
 export default defineConfig({
-  schema: './src/db/schema.ts',
+  auth: './src/db/auth.ts',
   out: './src/db/migrations',
   dialect: 'postgresql',
   dbCredentials: {
@@ -172,7 +172,7 @@ tsx scripts/migrate.ts
 **First migration creates all tables:**
 ```sql
 -- 0000_initial.sql
-CREATE TABLE schema (
+CREATE TABLE auth (
   id SERIAL PRIMARY KEY,
   email VARCHAR(255) NOT NULL UNIQUE,
   name VARCHAR(255) NOT NULL,
@@ -181,7 +181,7 @@ CREATE TABLE schema (
 
 CREATE TABLE posts (
   id SERIAL PRIMARY KEY,
-  user_id INTEGER NOT NULL REFERENCES schema(id),
+  user_id INTEGER NOT NULL REFERENCES auth(id),
   title TEXT NOT NULL,
   content TEXT NOT NULL,
   created_at TIMESTAMP DEFAULT NOW()
@@ -194,7 +194,7 @@ CREATE INDEX posts_user_id_idx ON posts(user_id);
 
 **Schema:**
 ```typescript
-export const schema = pgTable('schema', {
+export const auth = pgTable('auth', {
   id: serial('id').primaryKey(),
   email: varchar('email', { length: 255 }).notNull(),
   phoneNumber: varchar('phone_number', { length: 20 }), // NEW
@@ -203,14 +203,14 @@ export const schema = pgTable('schema', {
 
 **Generated:**
 ```sql
-ALTER TABLE schema ADD COLUMN phone_number VARCHAR(20);
+ALTER TABLE auth ADD COLUMN phone_number VARCHAR(20);
 ```
 
 ### Dropping Columns
 
 **Schema:**
 ```typescript
-export const schema = pgTable('schema', {
+export const auth = pgTable('auth', {
   id: serial('id').primaryKey(),
   email: varchar('email', { length: 255 }).notNull(),
   // removed: phoneNumber
@@ -219,7 +219,7 @@ export const schema = pgTable('schema', {
 
 **Generated:**
 ```sql
-ALTER TABLE schema DROP COLUMN phone_number;
+ALTER TABLE auth DROP COLUMN phone_number;
 ```
 
 **Warning:** Data loss! Back up first.
@@ -230,7 +230,7 @@ ALTER TABLE schema DROP COLUMN phone_number;
 
 **Schema:**
 ```typescript
-export const schema = pgTable('schema', {
+export const auth = pgTable('auth', {
   id: serial('id').primaryKey(),
   fullName: varchar('full_name', { length: 255 }), // was 'name'
 });
@@ -238,14 +238,14 @@ export const schema = pgTable('schema', {
 
 **Generated (WRONG):**
 ```sql
-ALTER TABLE schema DROP COLUMN name;
-ALTER TABLE schema ADD COLUMN full_name VARCHAR(255);
+ALTER TABLE auth DROP COLUMN name;
+ALTER TABLE auth ADD COLUMN full_name VARCHAR(255);
 ```
 
 **Solution:** Manually edit migration:
 ```sql
 -- Change to:
-ALTER TABLE schema RENAME COLUMN name TO full_name;
+ALTER TABLE auth RENAME COLUMN name TO full_name;
 ```
 
 ### Changing Column Types
@@ -306,7 +306,7 @@ ALTER TABLE comments
 
 **Unique:**
 ```typescript
-export const schema = pgTable('schema', {
+export const auth = pgTable('auth', {
   id: serial('id').primaryKey(),
   email: varchar('email', { length: 255 }).notNull().unique(),
 });
@@ -314,7 +314,7 @@ export const schema = pgTable('schema', {
 
 **Generated:**
 ```sql
-ALTER TABLE schema ADD CONSTRAINT users_email_unique UNIQUE (email);
+ALTER TABLE auth ADD CONSTRAINT users_email_unique UNIQUE (email);
 ```
 
 **Check:**
@@ -346,20 +346,20 @@ npm run drizzle-kit generate
 **Step 2:** Edit migration to add data transformation:
 ```sql
 -- Add column
-ALTER TABLE schema ADD COLUMN full_name VARCHAR(255);
+ALTER TABLE auth ADD COLUMN full_name VARCHAR(255);
 
 -- Populate with data
-UPDATE schema SET full_name = first_name || ' ' || last_name;
+UPDATE auth SET full_name = first_name || ' ' || last_name;
 
 -- Make not null after population
-ALTER TABLE schema ALTER COLUMN full_name SET NOT NULL;
+ALTER TABLE auth ALTER COLUMN full_name SET NOT NULL;
 ```
 
 ### Conditional Migrations
 
 **Add IF NOT EXISTS for idempotency:**
 ```sql
-ALTER TABLE schema
+ALTER TABLE auth
   ADD COLUMN IF NOT EXISTS phone_number VARCHAR(20);
 
 CREATE INDEX IF NOT EXISTS posts_title_idx ON posts(title);
@@ -377,10 +377,10 @@ CREATE INDEX IF NOT EXISTS posts_title_idx ON posts(title);
 **Migration 1 (Deploy this first):**
 ```sql
 -- Add new column
-ALTER TABLE schema ADD COLUMN full_name VARCHAR(255);
+ALTER TABLE auth ADD COLUMN full_name VARCHAR(255);
 
 -- Copy data
-UPDATE schema SET full_name = name;
+UPDATE auth SET full_name = name;
 ```
 
 **Application update:** Write to both `name` and `full_name`.
@@ -388,10 +388,10 @@ UPDATE schema SET full_name = name;
 **Migration 2 (Deploy after apps updated):**
 ```sql
 -- Make new column not null
-ALTER TABLE schema ALTER COLUMN full_name SET NOT NULL;
+ALTER TABLE auth ALTER COLUMN full_name SET NOT NULL;
 
 -- Drop old column
-ALTER TABLE schema DROP COLUMN name;
+ALTER TABLE auth DROP COLUMN name;
 ```
 
 ### Rollback Strategies
@@ -401,10 +401,10 @@ ALTER TABLE schema DROP COLUMN name;
 Create reverse migration:
 ```sql
 -- up.sql
-ALTER TABLE schema ADD COLUMN phone_number VARCHAR(20);
+ALTER TABLE auth ADD COLUMN phone_number VARCHAR(20);
 
 -- down.sql (create manually)
-ALTER TABLE schema DROP COLUMN phone_number;
+ALTER TABLE auth DROP COLUMN phone_number;
 ```
 
 **Option 2: Snapshot and restore**
@@ -421,7 +421,7 @@ psql $DATABASE_URL < backup.sql
 
 **Option 3: Drizzle push (dev only)**
 
-Reset to schema state:
+Reset to auth state:
 ```bash
 npm run drizzle-kit push --force
 ```
@@ -536,7 +536,7 @@ npm run drizzle-kit generate
 
 **Option 1:** Edit migration to use IF NOT EXISTS:
 ```sql
-ALTER TABLE schema
+ALTER TABLE auth
   ADD COLUMN IF NOT EXISTS phone_number VARCHAR(20);
 ```
 
@@ -553,13 +553,13 @@ npm run drizzle-kit migrate
 **Solution:** Drop in reverse dependency order:
 ```sql
 DROP TABLE comments;  -- First (depends on posts)
-DROP TABLE posts;     -- Then (depends on schema)
-DROP TABLE schema;     -- Finally
+DROP TABLE posts;     -- Then (depends on auth)
+DROP TABLE auth;     -- Finally
 ```
 
 Or use CASCADE (data loss!):
 ```sql
-DROP TABLE schema CASCADE;
+DROP TABLE auth CASCADE;
 ```
 
 ### Error: "cannot drop column"
@@ -576,7 +576,7 @@ WHERE column_name = 'your_column';
 DROP VIEW view_name;
 
 -- Then drop column
-ALTER TABLE schema DROP COLUMN your_column;
+ALTER TABLE auth DROP COLUMN your_column;
 ```
 
 ## Best Practices
@@ -621,9 +621,9 @@ Wrap multiple operations:
 ```sql
 BEGIN;
 
-ALTER TABLE schema ADD COLUMN phone_number VARCHAR(20);
-UPDATE schema SET phone_number = '000-000-0000' WHERE phone_number IS NULL;
-ALTER TABLE schema ALTER COLUMN phone_number SET NOT NULL;
+ALTER TABLE auth ADD COLUMN phone_number VARCHAR(20);
+UPDATE auth SET phone_number = '000-000-0000' WHERE phone_number IS NULL;
+ALTER TABLE auth ALTER COLUMN phone_number SET NOT NULL;
 
 COMMIT;
 ```
@@ -635,18 +635,18 @@ Add comments in migration files:
 -- Breaking change: Removing deprecated 'username' column
 -- Applications must use 'email' instead
 -- Migration date: 2024-01-15
-ALTER TABLE schema DROP COLUMN username;
+ALTER TABLE auth DROP COLUMN username;
 ```
 
 ### 6. Keep Migrations Small
 
 One logical change per migration:
 - ✅ Good: "Add phone number column"
-- ❌ Bad: "Add phone number, refactor schema table, update indexes"
+- ❌ Bad: "Add phone number, refactor auth table, update indexes"
 
 ## Related Resources
 
 - `guides/troubleshooting.md` - Migration error solutions
-- `guides/schema-only.md` - Schema change patterns
+- `guides/auth-only.md` - Schema change patterns
 - `references/adapters.md` - Connection configuration
 - Scripts: `scripts/run-migration.ts`

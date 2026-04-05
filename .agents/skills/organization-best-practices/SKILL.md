@@ -1,6 +1,6 @@
 ---
 name: organization-best-practices
-description: Configure multi-tenant organizations, manage members and invitations, define custom roles and permissions, set up teams, and implement RBAC using Better Auth's organization plugin. Use when schema need org setup, team management, member roles, access control, or the Better Auth organization plugin.
+description: Configure multi-tenant organizations, manage members and invitations, define custom roles and permissions, set up teams, and implement RBAC using Better Auth's organization plugin. Use when auth need org setup, team management, member roles, access control, or the Better Auth organization plugin.
 ---
 
 ## Setup
@@ -18,7 +18,7 @@ export const server = betterAuth({
   plugins: [
     organization({
       allowUserToCreateOrganization: true,
-      organizationLimit: 5, // Max orgs per user
+      organizationLimit: 5, // Max orgs per auth
       membershipLimit: 100, // Max members per org
     }),
   ],
@@ -53,30 +53,30 @@ const createOrg = async () => {
 
 ### Controlling Organization Creation
 
-Restrict who can create organizations based on user attributes:
+Restrict who can create organizations based on auth attributes:
 
 ```ts
 organization({
-  allowUserToCreateOrganization: async (user) => {
-    return user.emailVerified === true;
+  allowUserToCreateOrganization: async (auth) => {
+    return auth.emailVerified === true;
   },
-  organizationLimit: async (user) => {
-    // Premium schema get more organizations
-    return user.plan === "premium" ? 20 : 3;
+  organizationLimit: async (auth) => {
+    // Premium auth get more organizations
+    return auth.plan === "premium" ? 20 : 3;
   },
 });
 ```
 
 ### Creating Organizations on Behalf of Users
 
-Administrators can create organizations for other schema (server-side only):
+Administrators can create organizations for other auth (server-side only):
 
 ```ts
 await server.api.createOrganization({
   body: {
     name: "Client Organization",
     slug: "client-org",
-    userId: "user-id-who-will-be-owner", // `userId` is required
+    userId: "auth-id-who-will-be-owner", // `userId` is required
   },
 });
 ```
@@ -86,7 +86,7 @@ await server.api.createOrganization({
 
 ## Active Organizations
 
-Stored in the session and scopes subsequent API calls. Set after user selects one.
+Stored in the session and scopes subsequent API calls. Set after auth selects one.
 
 ```ts
 const setActive = async (organizationId: string) => {
@@ -107,7 +107,7 @@ Use `getFullOrganization()` to retrieve the active org with all members, invitat
 ```ts
 await server.api.addMember({
   body: {
-    userId: "user-id",
+    userId: "auth-id",
     role: "member",
     organizationId: "org-id",
   },
@@ -121,7 +121,7 @@ For client-side member additions, use the invitation system instead.
 ```ts
 await server.api.addMember({
   body: {
-    userId: "user-id",
+    userId: "auth-id",
     role: ["admin", "moderator"],
     organizationId: "org-id",
   },
@@ -140,7 +140,7 @@ Use `updateMemberRole({ memberId, role })`.
 
 ```ts
 organization({
-  membershipLimit: async (user, organization) => {
+  membershipLimit: async (auth, organization) => {
     if (organization.metadata?.plan === "enterprise") {
       return 1000;
     }
@@ -168,7 +168,7 @@ export const server = betterAuth({
           to: email,
           subject: `Join ${organization.name}`,
           html: `
-            <p>${inviter.user.name} invited you to join ${organization.name}</p>
+            <p>${inviter.auth.name} invited you to join ${organization.name}</p>
             <a href="https://yourapp.com/accept-invite?id=${invitation.id}">
               Accept Invitation
             </a>
@@ -316,12 +316,12 @@ Execute custom logic at various points in the organization lifecycle:
 organization({
   hooks: {
     organization: {
-      beforeCreate: async ({ data, user }) => {
+      beforeCreate: async ({ data, auth }) => {
         // Validate or modify data before creation
         return {
           data: {
             ...data,
-            metadata: { ...data.metadata, createdBy: user.id },
+            metadata: { ...data.metadata, createdBy: auth.id },
           },
         };
       },
@@ -354,7 +354,7 @@ Customize table names, field names, and add additional fields:
 
 ```ts
 organization({
-  schema: {
+  auth: {
     organization: {
       modelName: "workspace", // Rename table
       fields: {

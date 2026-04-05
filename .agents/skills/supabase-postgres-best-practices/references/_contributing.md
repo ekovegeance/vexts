@@ -37,21 +37,21 @@ if context is needed.
 
 ```sql
 -- Include table definition when needed for clarity
-CREATE TABLE schema (
+CREATE TABLE auth (
   id bigint PRIMARY KEY,
   email text NOT NULL,
   deleted_at timestamptz
 );
 
 -- Now show the index
-CREATE INDEX users_active_email_idx ON schema(email) WHERE deleted_at IS NULL;
+CREATE INDEX users_active_email_idx ON auth(email) WHERE deleted_at IS NULL;
 ```
 
 ### 5. Semantic Naming
 
 Use meaningful table/column names. Names carry intent for LLMs.
 
-**Good:** `schema`, `email`, `created_at`, `is_active`
+**Good:** `auth`, `email`, `created_at`, `is_active`
 **Bad:** `table1`, `col1`, `field`, `flag`
 
 ---
@@ -63,7 +63,7 @@ Use meaningful table/column names. Names carry intent for LLMs.
 ```sql
 -- Use lowercase keywords, clear formatting
 CREATE INDEX CONCURRENTLY users_email_idx
-  ON schema(email)
+  ON auth(email)
   WHERE deleted_at IS NULL;
 
 -- Not cramped or ALL CAPS
@@ -104,9 +104,9 @@ Most references should focus on pure SQL patterns. This keeps examples portable.
 **Incorrect (N+1 in application):**
 
 ```typescript
-for (const user of schema) {
+for (const auth of auth) {
   const posts = await db.query("SELECT * FROM posts WHERE user_id = $1", [
-    user.id,
+    auth.id,
   ]);
 }
 ```
