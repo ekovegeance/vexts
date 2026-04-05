@@ -8,74 +8,63 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { useForm } from "@tanstack/react-form-nextjs";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { auth } from "@/lib/auth/client";
 import { toast } from "sonner";
-import { useState } from "react";
-import { Loader2 } from "lucide-react";
-
-const resetPasswordSchema = z.object({
-  password: z.string().min(6, "Password must be at least 6 characters long"),
-});
+import React, { useState } from "react";
+import {ResetPasswordSchema} from "@/schemas/auth-schema";
+import {Alert, AlertDescription, AlertTitle} from "@/components/ui/alert";
+import {AlertCircleIcon} from "lucide-react";
+import {Field, FieldError, FieldLabel} from "@/components/ui/field";
+import {Spinner} from "@/components/ui/spinner";
 
 export function ResetPasswordForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const form = useForm<z.infer<typeof resetPasswordSchema>>({
-    resolver: zodResolver(resetPasswordSchema),
-    defaultValues: {
-      password: "",
-    },
-  });
-
-  async function onSubmit(values: z.infer<typeof resetPasswordSchema>) {
-    const token = new URLSearchParams(window.location.search).get("token");
-    if (!token) {
-      console.log("No token found in the URL");
-      return;
-    }
-
-    // Handle form submission logic here
-    await auth.resetPassword(
-      {
-        newPassword: values.password,
-        token: token,
+  const form = useForm({
+      defaultValues:{
+            password: "",
       },
-      {
-        onRequest: (ctx) => {
-          console.log("Request context:", ctx);
-          setLoading(true);
-        },
-        onSuccess: (ctx) => {
-          console.log("Password reset successfully", ctx);
-          setLoading(false);
-          toast.success(
-            "Password reset successfully. You can now log in with your new password."
+      validators: {
+          onSubmit: ResetPasswordSchema
+      },
+      onSubmit: async ({value}) => {
+            const token = new URLSearchParams(window.location.search).get("token");
+            if (!token) {
+                setError("No token found in the URL")
+                return;
+            }
+
+          await auth.resetPassword(
+              {
+                  newPassword: value.password,
+                  token: token,
+              },
+              {
+                  onRequest: () => {
+                      setLoading(true);
+                  },
+                  onSuccess: () => {
+                      setLoading(false);
+                      toast.success(
+                          "Password reset successfully. You can now log in with your new password."
+                      );
+                  },
+                  onError: (ctx) => {
+                        setError(ctx.error.message);
+                  },
+              }
           );
-        },
-        onError: (ctx) => {
-          console.error("Error during password reset", ctx);
-          toast.error("Failed to reset password. Please try again.");
-        },
       }
-    );
-  }
+  })
+
+
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
@@ -87,32 +76,55 @@ export function ResetPasswordForm({
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className=" space-y-8">
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Password</FormLabel>
-                    <FormControl>
-                      <Input {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
+            <form
+                id="reset-password-form"
+                onSubmit={(e) => {
+                    e.preventDefault();
+                    form.handleSubmit()
+                }}
+            >
+                {error && (
+                    <Alert variant="destructive" className="max-w-md mb-4">
+                        <AlertCircleIcon />
+                        <AlertTitle>Error</AlertTitle>
+                        <AlertDescription>
+                            {error}
+                        </AlertDescription>
+                    </Alert>
                 )}
-              />
-              <Button type="submit" className="w-full" disabled={loading}>
-                {loading ? (
-                  <span className="flex items-center justify-center">
-                    <Loader2 className="animate-spin" />
-                  </span>
-                ) : (
-                  "Reset Password"
-                )}
-              </Button>
+
+                <form.Field name="password">
+                    {(field) => {
+                        const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
+                        return (
+                            <Field>
+                                <FieldLabel htmlFor={field.name}>New Password</FieldLabel>
+                                <Input
+                                    id={field.name}
+                                    value={field.state.value}
+                                    onBlur={field.handleBlur}
+                                    onChange={(e) => field.handleChange(e.target.value)}
+                                    aria-invalid={isInvalid}
+                                    placeholder="Enter your email"
+                                />
+                                {isInvalid && (
+                                    <FieldError errors={field.state.meta.errors}/>
+                                )}
+                            </Field>
+                        )
+                    }}
+                </form.Field>
+                <div className="flex w-full justify-end">
+                    <Button
+                        type="submit"
+                        form="reset-password-form"
+                        className="mt-4 w-full"
+                    >
+                        {loading ? <Spinner/> : null}
+                        Reset Password
+                    </Button>
+                </div>
             </form>
-          </Form>
         </CardContent>
       </Card>
     </div>

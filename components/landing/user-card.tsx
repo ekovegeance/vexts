@@ -12,7 +12,6 @@ import { toast } from "sonner";
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
-import { EditUserDialog } from "@/components/landing/edit-user-dialog";
 
 export default function UserCard(props: {
   session: Session;
@@ -108,7 +107,6 @@ export default function UserCard(props: {
               ) : null}
             </div>
           </div>
-          <EditUserDialog/>
         </div>
         <div>
           {session.user.emailVerified ? null : (

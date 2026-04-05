@@ -1,150 +1,179 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import { z } from "zod";
-import React, { ComponentProps, useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import React, {ComponentProps, useState} from "react";
+import {Input} from "@/components/ui/input";
+import {Button} from "@/components/ui/button";
 import Link from "next/link";
-import { auth } from "@/lib/auth/client";
-import { useRouter } from "next/navigation";
-import { toast } from "sonner";
-import { CircleAlert, Loader2 } from "lucide-react";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import InputPassword from "@/components/ui/input-password";
+import {SocialSignInButton} from "@/components/auth/social-sign-button";
+import {useForm} from "@tanstack/react-form-nextjs";
+import {SignUpFormSchema} from "@/schemas/auth-schema";
+import {Field, FieldError, FieldGroup, FieldLabel,} from "@/components/ui/field"
+import {auth} from "@/lib/auth/client";
+import {Spinner} from "@/components/ui/spinner";
+import {Alert, AlertDescription, AlertTitle} from "@/components/ui/alert";
+import {AlertCircleIcon} from "lucide-react";
+import { toast } from "sonner";
+import {useRouter} from "next/navigation";
 
-const signUpSchema = z.object({
-  name: z.string().min(2, "Name is required"),
-  email: z.string().email().min(2, "Email is required"),
-  password: z.string().min(6, "Password must be at least 6 characters long"),
-});
+export function SignUpForm({className, ...props}: ComponentProps<"form">) {
+    const [error, setError] = useState<string | null>(null);
+    const [loading, setLoading] = useState(false);
+    const router = useRouter()
 
-export function SignUpForm({ className, ...props }: ComponentProps<"form">) {
-  const route = useRouter(); //use the router to navigate after signup
-  const [loading, setLoading] = useState(false); //loading state for the form submission
-  const [error, setError] = useState<string | null>(null); //error state for the form submission
-  const form = useForm<z.infer<typeof signUpSchema>>({
-    resolver: zodResolver(signUpSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      password: "",
-    },
-  });
+    const form = useForm({
+        defaultValues: {
+            name: "",
+            email: "",
+            password: "",
+        },
+        validators: {
+            onSubmit: SignUpFormSchema
+        },
+        onSubmit: async ({value}) => {
+            await auth.signUp.email(
+                {
+                    name: value.name,
+                    email: value.email,
+                    password: value.password,
+                },
+                {
+                    onRequest: () => {
+                        setLoading(true);
+                    },
+                    onSuccess:() =>{
+                        setLoading(false);
+                        toast.success("Account created successfully! Please check your email to verify your account.");
+                        router.push("/signin")
+                    },
+                    onError: (ctx) => {                        setError(ctx.error.message);
+                        setLoading(false);
+                        setError(ctx.error.message);
+                    } },
+            );
+        }
+    })
 
-  async function onSubmit(values: z.infer<typeof signUpSchema>) {
-    // Handle form submission logic here
-    const { data, error } = await auth.signUp.email(
-      {
-        name: values.name,
-        email: values.email,
-        password: values.password,
-      },
-      {
-        onRequest: (ctx) => {
-          console.log("Request context:", ctx);
-          setLoading(true); //set loading to true when the request is made
-        },
-        onSuccess: (ctx) => {
-          route.push("/signin");
-          toast.success("Sign up successful!.");
-          console.log("Sign up successfully", ctx);
-        },
-        onError: (ctx) => {
-          setError(ctx.error.message); //set the error message if the request fails
-          toast.error(`Sign up failed. ${ctx.error.message}`);
-          setLoading(false)
-        },
-      },
+
+    return (
+        <div className={`flex flex-col gap-6 ${className ?? ""}`}>
+            <form
+                id="sign-up-form"
+                onSubmit={(e) => {
+                    e.preventDefault();
+                    form.handleSubmit()
+                }}
+            >
+
+                <div className="flex flex-col items-center gap-2 text-center mb-8">
+                    <h1 className="text-2xl font-bold"> Register your account</h1>
+                    <p className="text-muted-foreground text-sm text-balance">
+                        Enter your email below to create a new account
+                    </p>
+                </div>
+                {error && (
+                    <Alert variant="destructive" className="max-w-md mb-4">
+                        <AlertCircleIcon />
+                        <AlertTitle>Error</AlertTitle>
+                        <AlertDescription>
+                            {error}
+                        </AlertDescription>
+                    </Alert>
+                )}
+                <FieldGroup>
+                    <form.Field name="name">
+                        {(field) => {
+                            const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
+                            return (
+                                <Field>
+                                    <FieldLabel htmlFor={field.name}>Name</FieldLabel>
+                                    <Input
+                                        id={field.name}
+                                        value={field.state.value}
+                                        onBlur={field.handleBlur}
+                                        onChange={(e) => field.handleChange(e.target.value)}
+                                        aria-invalid={isInvalid}
+                                        placeholder="Enter your name"
+                                    />
+                                    {isInvalid && (
+                                        <FieldError errors={field.state.meta.errors}/>
+                                    )}
+                                </Field>
+                            )
+                        }}
+                    </form.Field>
+
+                    <form.Field name="email">
+                        {(field) => {
+                            const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
+                            return (
+                                <Field>
+                                    <FieldLabel htmlFor={field.name}>Email</FieldLabel>
+                                    <Input
+                                        id={field.name}
+                                        value={field.state.value}
+                                        onBlur={field.handleBlur}
+                                        onChange={(e) => field.handleChange(e.target.value)}
+                                        aria-invalid={isInvalid}
+                                        placeholder="Enter your email"
+                                    />
+                                    {isInvalid && (
+                                        <FieldError errors={field.state.meta.errors}/>
+                                    )}
+                                </Field>
+                            )
+                        }}
+                    </form.Field>
+
+                    <form.Field name="password">
+                        {(field) => {
+                            const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
+                            return (
+                                <Field>
+                                    <FieldLabel htmlFor={field.name}>Password</FieldLabel>
+                                    <InputPassword
+                                        id={field.name}
+                                        value={field.state.value}
+                                        onBlur={field.handleBlur}
+                                        onChange={(e) => field.handleChange(e.target.value)}
+                                        aria-invalid={isInvalid}
+                                        placeholder="Enter your password"
+                                    />
+                                    {isInvalid && (
+                                        <FieldError errors={field.state.meta.errors}/>
+                                    )}
+                                </Field>
+                            )
+                        }}
+                    </form.Field>
+                </FieldGroup>
+                <div className="flex w-full justify-end">
+                    <Button
+                        type="submit"
+                        form="sign-up-form"
+                        className="mt-4 w-full"
+                    >
+                        {loading ? <Spinner/> : null}
+                        Sign Up
+                    </Button>
+                </div>
+
+                <div className="text-center text-sm mt-4">
+                    Have an account?{" "}
+                    <Link href="/signin" className="underline underline-offset-4">
+                        Sign In
+                    </Link>
+                </div>
+
+            </form>
+
+            <div
+                className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
+        <span className="bg-background text-muted-foreground relative z-10 px-2">
+          Or continue with
+        </span>
+            </div>
+            <SocialSignInButton provider="google"/>
+        </div>
     );
-    console.log(data, error);
-  }
-
-  return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className={cn("flex flex-col gap-6", className)}
-        {...props}
-      >
-        <div className="flex flex-col items-center gap-2 text-center">
-          <h1 className="text-2xl font-bold">Register your account</h1>
-          <p className="text-muted-foreground text-sm text-balance">
-            Enter your email below to create a new account
-          </p>
-        </div>
-        <div className="grid gap-6">
-          {error && (
-            <Alert variant="destructive">
-              <CircleAlert />
-              <AlertTitle>Error!</AlertTitle>
-              <AlertDescription>{error}</AlertDescription>
-            </Alert>
-          )}
-          <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Name</FormLabel>
-                <FormControl>
-                  <Input placeholder="John Doe" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
-                <FormControl>
-                  <Input placeholder="example@mail.com" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="password"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Password</FormLabel>
-                <FormControl>
-                  <InputPassword {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <Button type="submit" className="w-full" disabled={loading}>
-            {loading ? (
-              <Loader2 size={16} className=" animate-spin" />
-            ) : (
-              "Sign Up"
-            )}
-          </Button>
-        </div>
-        <div className="text-center text-sm">
-          Have an account?{" "}
-          <Link href="/signin" className="underline underline-offset-4">
-            Sign In
-          </Link>
-        </div>
-      </form>
-    </Form>
-  );
 }
