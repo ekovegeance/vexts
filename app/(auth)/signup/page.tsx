@@ -3,6 +3,7 @@ import Link from "next/link";
 import {SignUpForm} from "@/components/auth/signup-form";
 import { AudioWaveform } from "lucide-react";
 import {PlaceholderPattern} from "@/components/ui/placeholder-pattern";
+import AppLogoIcon from "@/components/app-logo-icon";
 
 export default function SignUpPage() {
     return (
@@ -10,10 +11,7 @@ export default function SignUpPage() {
             <div className="flex flex-col gap-4 p-6 md:p-10">
                 <div className="flex justify-center gap-2 md:justify-start">
                     <Link href="/" className="flex items-center gap-2 font-medium">
-                        <div
-                            className="bg-primary text-primary-foreground flex size-6 items-center justify-center rounded-md">
-                            <AudioWaveform className="size-4"/>
-                        </div>
+                        <AppLogoIcon/>
                         vexts
                     </Link>
                 </div>

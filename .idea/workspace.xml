@@ -4,24 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3187be8f-7757-495a-87a1-881de46cb89b" name="Changes" comment="feat: update environment variables for development and enhance hero component layout">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="3187be8f-7757-495a-87a1-881de46cb89b" name="Changes" comment="feat: update database migration and configuration for new schema structure">
+      <change afterPath="$PROJECT_DIR$/components/app-logo-icon.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/appearance-dropdown.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/footer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/nav/nav-bar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/nav/nav-user-skeleton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/user-info.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/user-menu-content.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hooks/use-appearance.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hooks/use-initials.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hooks/use-mobile-navigation.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hooks/use-mobile.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hooks/use-mobile.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drizzle.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/drizzle.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drizzle/20250626111131_milky_dragon_man/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/drizzle/20250626111131_milky_dragon_man/snapshot.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/drizzle/20250628070505_regular_tony_stark/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/drizzle/20250628070505_regular_tony_stark/snapshot.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/drizzle/20250628070714_flawless_silver_samurai/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/drizzle/20250628070714_flawless_silver_samurai/snapshot.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/drizzle/20260401051138_green_bloodscream/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/drizzle/20260401051138_green_bloodscream/snapshot.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/drizzle/20260401071458_married_speedball/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/drizzle/20260401071458_married_speedball/snapshot.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/drizzle/20260401093555_worthless_zarda/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/drizzle/20260401093555_worthless_zarda/snapshot.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/db/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/db/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/db/seed.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(auth)/signin/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/signin/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(auth)/signup/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/signup/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(landing)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/navbar/navbar.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/navbar/user-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/user-menu.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,33 +53,38 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;vexts&quot;,
-    &quot;js.debugger.nextJs.config.created.client&quot;: &quot;true&quot;,
-    &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/me/git/vexts/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "vexts",
+    "js.debugger.nextJs.config.created.client": "true",
+    "js.debugger.nextJs.config.created.server": "true",
+    "last_opened_file_path": "/Users/me/git/vexts/components",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "/Users/me/git/vexts/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/components" />
+      <recent name="$PROJECT_DIR$/hooks" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/components" />
       <recent name="$PROJECT_DIR$/lib/db/schema" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/lib/db" />
       <recent name="$PROJECT_DIR$/lib" />
-      <recent name="$PROJECT_DIR$/lib/auth" />
     </key>
   </component>
   <component name="RunManager" selected="npm.Next.js: server-side">
@@ -125,6 +131,7 @@
       <workItem from="1775562308297" duration="35000" />
       <workItem from="1775562369338" duration="4142000" />
       <workItem from="1775570955686" duration="32000" />
+      <workItem from="1775571018527" duration="3125000" />
     </task>
     <task id="LOCAL-00001" summary="fix: correct typo in database variable name and update module file reference">
       <option name="closed" value="true" />
@@ -318,7 +325,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775562832951</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="feat: update database migration and configuration for new schema structure">
+      <option name="closed" value="true" />
+      <created>1775571177916</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1775571177916</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -356,6 +371,7 @@
     <MESSAGE value="feat: enhance password reset forms with improved toast notifications and routing" />
     <MESSAGE value="feat: rename schema references to auth and update related components for consistency" />
     <MESSAGE value="feat: update environment variables for development and enhance hero component layout" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: update environment variables for development and enhance hero component layout" />
+    <MESSAGE value="feat: update database migration and configuration for new schema structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: update database migration and configuration for new schema structure" />
   </component>
 </project>
