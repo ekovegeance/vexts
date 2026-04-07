@@ -18,7 +18,7 @@ export default function Hero() {
                     Powered by <Author />
                 </p>
             </div>
-            <div className="grid grid-cols md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-4">
                 <div>
                     <Button size="lg">
                         <FileCode2 />

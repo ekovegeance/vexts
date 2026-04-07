@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3187be8f-7757-495a-87a1-881de46cb89b" name="Changes" comment="feat: rename schema references to auth and update related components for consistency">
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/auth/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/auth/server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trpc/client.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/trpc/client.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trpc/routers/post.ts" beforeDir="false" afterPath="$PROJECT_DIR$/trpc/routers/post.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/landing/hero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/landing/hero.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,6 +107,8 @@
       <workItem from="1775290723943" duration="12610000" />
       <workItem from="1775349662569" duration="107000" />
       <workItem from="1775349803656" duration="12368000" />
+      <workItem from="1775562308297" duration="35000" />
+      <workItem from="1775562369338" duration="413000" />
     </task>
     <task id="LOCAL-00001" summary="fix: correct typo in database variable name and update module file reference">
       <option name="closed" value="true" />
