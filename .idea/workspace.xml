@@ -4,13 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3187be8f-7757-495a-87a1-881de46cb89b" name="Changes" comment="feat: rename schema references to auth and update related components for consistency">
+    <list default="true" id="3187be8f-7757-495a-87a1-881de46cb89b" name="Changes" comment="feat: update environment variables for development and enhance hero component layout">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/auth/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/auth/server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trpc/client.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/trpc/client.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trpc/routers/post.ts" beforeDir="false" afterPath="$PROJECT_DIR$/trpc/routers/post.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drizzle.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/drizzle.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drizzle/20250626111131_milky_dragon_man/migration.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/drizzle/20250626111131_milky_dragon_man/snapshot.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/drizzle/20250628070505_regular_tony_stark/migration.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/drizzle/20250628070505_regular_tony_stark/snapshot.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/drizzle/20250628070714_flawless_silver_samurai/migration.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/drizzle/20250628070714_flawless_silver_samurai/snapshot.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/drizzle/20260401051138_green_bloodscream/migration.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/drizzle/20260401051138_green_bloodscream/snapshot.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/drizzle/20260401071458_married_speedball/migration.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/drizzle/20260401071458_married_speedball/snapshot.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/drizzle/20260401093555_worthless_zarda/migration.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/drizzle/20260401093555_worthless_zarda/snapshot.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/db/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/db/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/db/seed.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +56,7 @@
   &quot;keyToString&quot;: {
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;vexts&quot;,
@@ -110,6 +122,9 @@
       <workItem from="1775290723943" duration="12610000" />
       <workItem from="1775349662569" duration="107000" />
       <workItem from="1775349803656" duration="12368000" />
+      <workItem from="1775562308297" duration="35000" />
+      <workItem from="1775562369338" duration="4142000" />
+      <workItem from="1775570955686" duration="32000" />
     </task>
     <task id="LOCAL-00001" summary="fix: correct typo in database variable name and update module file reference">
       <option name="closed" value="true" />
@@ -295,7 +310,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775381230743</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="feat: update environment variables for development and enhance hero component layout">
+      <option name="closed" value="true" />
+      <created>1775562832951</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1775562832951</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -332,6 +355,7 @@
     <MESSAGE value="feat: add authentication forms with validation and loading states using new field components" />
     <MESSAGE value="feat: enhance password reset forms with improved toast notifications and routing" />
     <MESSAGE value="feat: rename schema references to auth and update related components for consistency" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: rename schema references to auth and update related components for consistency" />
+    <MESSAGE value="feat: update environment variables for development and enhance hero component layout" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: update environment variables for development and enhance hero component layout" />
   </component>
 </project>

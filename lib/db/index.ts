@@ -4,5 +4,5 @@ import { env } from "@/lib/env"
 import {relations} from "@/lib/db/relations"
 
 const connection = env.DATABASE_URL
-const client = postgres(connection);
+const client = postgres(connection, {prepare: false});
 export const db = drizzle({client, relations});
