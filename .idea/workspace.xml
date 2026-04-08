@@ -4,25 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3187be8f-7757-495a-87a1-881de46cb89b" name="Changes" comment="feat: update database migration and configuration for new schema structure">
-      <change afterPath="$PROJECT_DIR$/components/app-logo-icon.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/appearance-dropdown.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/footer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/nav/nav-bar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/nav/nav-user-skeleton.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/user-info.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/user-menu-content.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hooks/use-appearance.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hooks/use-initials.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hooks/use-mobile-navigation.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hooks/use-mobile.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hooks/use-mobile.tsx" afterDir="false" />
+    <list default="true" id="3187be8f-7757-495a-87a1-881de46cb89b" name="Changes" comment="feat: add app logo icon and appearance toggle dropdown components">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/signin/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/signin/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/signup/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/signup/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(landing)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/navbar/navbar.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/navbar/user-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/user-menu.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,27 +36,27 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "vexts",
-    "js.debugger.nextJs.config.created.client": "true",
-    "js.debugger.nextJs.config.created.server": "true",
-    "last_opened_file_path": "/Users/me/git/vexts/components",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "/Users/me/git/vexts/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;vexts&quot;,
+    &quot;js.debugger.nextJs.config.created.client&quot;: &quot;true&quot;,
+    &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/me/git/vexts/components&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/me/git/vexts/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/components" />
@@ -131,7 +114,7 @@
       <workItem from="1775562308297" duration="35000" />
       <workItem from="1775562369338" duration="4142000" />
       <workItem from="1775570955686" duration="32000" />
-      <workItem from="1775571018527" duration="3125000" />
+      <workItem from="1775571018527" duration="3628000" />
     </task>
     <task id="LOCAL-00001" summary="fix: correct typo in database variable name and update module file reference">
       <option name="closed" value="true" />
@@ -333,7 +316,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775571177916</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="feat: add app logo icon and appearance toggle dropdown components">
+      <option name="closed" value="true" />
+      <created>1775574744263</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1775574744263</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -372,6 +363,7 @@
     <MESSAGE value="feat: rename schema references to auth and update related components for consistency" />
     <MESSAGE value="feat: update environment variables for development and enhance hero component layout" />
     <MESSAGE value="feat: update database migration and configuration for new schema structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: update database migration and configuration for new schema structure" />
+    <MESSAGE value="feat: add app logo icon and appearance toggle dropdown components" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add app logo icon and appearance toggle dropdown components" />
   </component>
 </project>

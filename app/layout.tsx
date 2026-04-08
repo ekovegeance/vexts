@@ -1,5 +1,5 @@
 import type {Metadata} from "next";
-import {Plus_Jakarta_Sans} from "next/font/google";
+import {Geist} from "next/font/google";
 import "./globals.css";
 import {Toaster} from "@/components/ui/sonner";
 import React, {ReactNode} from "react";
@@ -8,7 +8,7 @@ import {env} from "@/lib/env";
 import {TRPCProvider} from "@/trpc/client";
 
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+const geist = Geist({
     subsets: ["latin"],
     weight: ["200", "300", "400", "500", "600", "700", "800"],
 });
@@ -22,7 +22,7 @@ export default function RootLayout({children,}: Readonly<{ children: ReactNode }
     return (
         <html lang="en"  suppressHydrationWarning={true}>
         <body
-            className={`${plusJakartaSans.className} ${plusJakartaSans.className} antialiased`}
+            className={`${geist.className} ${geist.className} antialiased`}
         >
         <ThemeProvider
             attribute="class"
